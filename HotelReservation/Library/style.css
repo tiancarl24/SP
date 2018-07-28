@@ -1,0 +1,39 @@
+.cls-content .cls-content-sm, .cls-content .cls-content-lg {
+	min-width: 270px;
+	margin: 0 auto;
+	position: relative;
+	background-color: white;
+	border: 0;
+	box-shadow: none;
+}
+.loginheader{
+	width: 90%;
+}
+#container.mainnav-sm #mainnav-menu > .active-link > a, #container.mainnav-sm #mainnav-menu > .active-sub > a, #container.mainnav-sm #mainnav-menu > .active-link a:hover, #container.mainnav-sm #mainnav-menu > .active-sub a:hover {
+	background-color: #b36900 !important;
+	box-shadow: none;
+}
+#container .table th {
+    font-size: 1.05em;
+    font-weight: 600;
+    border-bottom: 1px solid #b36900;
+    color: white;
+    background-color: #b36900;
+}
+.Right{
+	float: right;
+}
+.MR{
+	margin-right: 20px;
+}
+.Righttxt{
+	float: right;
+}
+.none{
+	display: none;
+}
+.titleheading{
+    color: #2c425b;
+    font-size: 20px;
+    font-weight: 600;
+}
