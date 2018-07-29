@@ -3,6 +3,7 @@ include 'utils.php';
 ?>
 <?php 
 $RNo = json_decode($_GET['Data'],true);
+
 $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 ?>
 <!DOCTYPE html>
@@ -39,6 +40,10 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 
 	<!-- Theme Style -->
 	<link rel="stylesheet" href="css/styles.css">
+	<!-- jQuery -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <!-- Available main styles: styles-blue.css, styles-green.css, styles-orange.css, styles-pink.css,
     	styles-violet.css, styles-gray.css-->
 
@@ -139,6 +144,23 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 						<br>
 						<div class="row">
 							<label></label>
+							<?php 
+							DBOpen();
+
+							$AppID = DBGetData("SELECT MAX(reservationid) FROM reservations_temp");
+							//dump($AppID);
+							$AppID = substr($AppID[0][0],-8); 
+							//dump($AppID);
+							$AppID = date('Y') . sprintf("%'08d",$AppID);
+							//dump($AppID);
+							$AppID = $AppID+1; 
+							//dump($AppID);
+
+							DBClose();
+							?>
+							<div class="col-md-6">
+								<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>" >
+							</div>
 							<div class="col-md-6">
 								<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>" >
 							</div>
@@ -185,9 +207,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 						</form>
 					</div>
 					<div class="col-md-4">
-						<form method="POST" action="checkout.php">
-							<input type="submit" id="btnPaypal" name="btnPaypal" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;" value="PAY ONLINE">
-						</form>
+						<button type="button" id="btnPaypal" name="btnPaypal" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;">PAY ONLINE</button>
 					</div>
 				</div>
 
@@ -195,10 +215,69 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 		</div>
 	</div>
 
+	<form class="paypal" action="function/payments.php" method="post" id="paypal_form">
+		<div id="PaymentModal" class="modal fade" role="dialog" data-backdrop="dynamic">
+			<div class="modal-dialog" style="width: 25%">
+				<div class="modal-content">
+					<div class="modal-header bg-mint">
+						<h4 class="modal-title" style="color: white"> </h4>
+						<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
+					</div>
+					<div class="modal-body form-contol">
+						<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>" >
+						<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>" >
+						<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>" >
+						<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>" >
+						<br>
+						<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>" >
 
+						<!-- -------------------------------------------------- -->
+						<label style="display: none;">FNAME :</label><input type="hidden" class="LabelInput" id="fname" name="fname" value="<?php echo $RNo['FNAME'] ?>" >
+						<label style="display: none;">LNAME :</label><input type="hidden" class="LabelInput" id="lname" name="lname" value="<?php echo $RNo['LNAME'] ?>" >
+						<label style="display: none;">ADDRESS :</label><input type="hidden" class="LabelInput" id="address" name="address" value="<?php echo $RNo['ADDRESS'] ?>" >
+						<label style="display: none;">CITY :</label><input type="hidden" class="LabelInput" id="city" name="city" value="<?php echo $RNo['CITY'] ?>" >
+						<label style="display: none;">ZIPCODE :</label><input type="hidden" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" >
+						<label style="display: none;">PHONE :</label><input type="hidden" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>" >
+						
+						<label style="display: none">CHECK IN :</label><input type="hidden" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>" >
+						<label style="display: none">CHECK OUT :</label><input type="hidden" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>" >
+						<label style="display: none">ADULT :</label><input type="hidden" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>" >
+						<label style="display: none">CHILDREN :</label><input type="hidden" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>" >
+						<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>" >
+						<label style="display: none">TOTAL DAYS :</label><input type="hidden" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>" >
+						<!-- -------------------------------------------------- -->
 
-
-
+						<input type="hidden" name="cmd" value="_xclick" />
+						<input type="hidden" name="no_note" value="1" />
+						<input type="hidden" name="lc" value="UK" />
+						<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+						<input type="hidden" name="first_name" value="Customer's First Name" />
+						<input type="hidden" name="last_name" value="Customer's Last Name" />
+						<input type="hidden" name="payer_email" value="customer@example.com" />
+						<input type="hidden" name="item_number" value="<?php echo $AppID ?>" / >
+					</div>
+					<div class="modal-footer">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<input type="submit" id="btnHalf" name="btnHalf" value="Half Payment">
+							</div>
+							<div class="col-md-6">
+								<input type="submit" id="btnFull" name="btnFull" value="Full Payment">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- <script type="text/javascript">
+		var btnPaypal = document.getElementById('btnPaypal');
+		btnPaypal.onclick = function()
+		{
+			$('#PaymentModal').modal('show');
+		}
+	</script> -->
+	<script src="bower_components/jquery-animatenumber/jquery.animateNumber.min.js"></script>
 	<script type="text/javascript">
 		var ctr;
 		var ctr_ID;
@@ -235,13 +314,27 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 		</div>
 	</div>
 </section>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.bxslider.min.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/custom.js"></script>
-<script src="contactform/contactform.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<!--Start Style Switcher (remove before upload to Themeforest)-->
+<script src="js/style-switcher.js"></script>
+<!--End Style Switcher (remove before upload to Themeforest)-->
+
+<script src="bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="bower_components/jquery-animatenumber/jquery.animateNumber.min.js"></script>
+<script src="bower_components/bootstrap-3-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btnPaypal").click(function(){
+			$("#PaymentModal").modal();
+		});
+	});
+</script>
 </body>
 </html>
 

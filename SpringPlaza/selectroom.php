@@ -106,7 +106,7 @@ include "utils.php";
 							<br>
 							<br>
 							<br>
-							<form method="GET" action="reservationdetails.php">
+							<form method="GET" action="reservationdetails.php" action="pay.php">
 								<?php 
 								$RTYPE = $_GET['cboRoom'];
 								$CIN = $_GET['dtCheckIN'];
@@ -128,6 +128,7 @@ include "utils.php";
 								$dayout = intval($dayout[1]);
 
 								$DAYS = $dayout - $dayin;
+								//AAYUSIN PA YUNG DAYS SA IN AND OUT
 
 								wr("<input type='hidden' value='$CIN'>");
 								wr("<input type='hidden' value='$COUT'>");

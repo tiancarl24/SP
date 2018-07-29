@@ -98,7 +98,7 @@ include "utils.php";
             <div class="row">
                 <div class="col-md-6">
                     <p class="footer-copyright">
-                        &copy; 2015 HotelSpringPlaza. All rights reserved.
+                        &copy; 2018 HotelSpringPlaza. All rights reserved.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -152,6 +152,7 @@ aria-hidden="true">
 
 
 <script src="js/custom.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("#ShowModal").click(function(){
@@ -159,5 +160,6 @@ aria-hidden="true">
         });
     });
 </script>
+
 </body>
 </html>

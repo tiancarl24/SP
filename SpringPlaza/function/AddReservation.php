@@ -1,6 +1,7 @@
 <?php 
 include '../utils.php';
 
+$AppID = $_POST['resID'];
 $FNAME = $_POST['fname'];
 $LNAME = $_POST['lname'];
 $NAME = $_POST['name'];
@@ -44,8 +45,11 @@ $rs = DBExecute(" INSERT INTO reservations SET firstname = '$FNAME',
 	modeofpayment = 'Pay in Bank',
 	downpayment = '0',
 	totalamount = '$TOTAL',
-	balance = '0',
-	Status = 'Pending' ");
+	balance = '$TOTAL',
+	Status = 'Pending' 
+	Email = '$EMAIL'
+	TotalPaid = '0'
+	ReservationID = '$AppID' ");
 
 $update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '$ROOMNO' ");
 
@@ -80,6 +84,8 @@ $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
 	<br>
 	RESERVATION DETAILS
 	<br>
+	<br>
+	RESERVATION ID: '.$AppID.'
 	<br>
 	CHECK IN: '.$NEWCIN.'
 	<br>
