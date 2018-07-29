@@ -24,11 +24,17 @@ $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 
 
 // Product being purchased.
 $DATA = $_POST;
+$option = $_POST['txtOption'];
 $CIN = $_POST['cin'];
 $COUT = $_POST['cout'];
 $ResID = $_POST['resID'];
 $itemName = $_POST['roomtype'];
 $itemAmount = $_POST['totalprice'];
+
+if($option == "Half")
+{
+    $itemAmount = $itemAmount / 2;
+}
 
 // Include Functions
 require 'functions.php';

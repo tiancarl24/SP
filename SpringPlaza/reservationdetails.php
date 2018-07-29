@@ -255,6 +255,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 						<input type="hidden" name="last_name" value="Customer's Last Name" />
 						<input type="hidden" name="payer_email" value="customer@example.com" />
 						<input type="hidden" name="item_number" value="<?php echo $AppID ?>" / >
+						<input type="text" name="txtOption" value="" class="OPT" / >
 					</div>
 					<div class="modal-footer">
 						<div class="col-md-12">
@@ -299,6 +300,25 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 
 			}
 		}); 
+	</script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function()
+		{
+			$("#btnHalf").click(function()
+			{
+				 $(".OPT").val("Half");
+			});
+		});
+
+		$(document).ready(function()
+		{
+			$("#btnFull").click(function()
+			{
+				 $(".OPT").val("Full");
+			});
+		});
 	</script>
 </div>
 </div>

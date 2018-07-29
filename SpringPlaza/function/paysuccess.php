@@ -81,7 +81,11 @@ $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
 	<br>
 	DAYS: '.$TempData[0][7].'
 	<br>
-	TOTAL FEES: '.$TempData[0][21].'
+	PAID: '.number_format($TempData[0][21]).'
+	<br>
+	BALANCE: '.number_format($TempData[0][18]).'
+	<br>
+	TOTAL FEE: '.number_format($TempData[0][17]).'
 	<br>
 	<br>
 	<br>

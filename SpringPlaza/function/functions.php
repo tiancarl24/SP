@@ -1,39 +1,77 @@
 <?php 
 include '../utils.php';
-    //dump($ResID);
-DBOpen();
+//dump($itemAmount);
 
-$timestampIN = strtotime($CIN);
-$NEWCIN = date('Y-m-d', $timestampIN);
+if($option == "Half")
+{
+     DBOpen();
 
-$timestampOUT = strtotime($COUT);
-$NEWCOUT = date('Y-m-d', $timestampOUT);
+    $timestampIN = strtotime($CIN);
+    $NEWCIN = date('Y-m-d', $timestampIN);
 
-$rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['fname']."',
-    lastname = '".$DATA['lname']."',
-    contactno = '".$DATA['phone']."',
-    address = '".$DATA['address']."',
-    adult = '".$DATA['adult']."',
-    child = '".$DATA['children']."',
-    days = '".$DATA['days']."',
-    reservationdate = '".$maniladate."',
-    checkindate = '".$NEWCIN."',
-    checkoutdate = '".$NEWCOUT."',
-    checkintime = '".$manilatime."',
-    checkouttime = '".$manilatime."',
-    roomtype = '".$DATA['roomtype']."',
-    roomno = '".$DATA['roomno']."',
-    modeofpayment = 'Paypal',
-    downpayment = '".$itemAmount."',
-    totalamount = '".$DATA['totalprice']."',
-    balance = '0',
-    Status = 'Approved',
-    Email = '".$DATA['email']."',
-    TotalPaid = '".$itemAmount."',
-    ReservationID = '".$ResID."' ");
+    $timestampOUT = strtotime($COUT);
+    $NEWCOUT = date('Y-m-d', $timestampOUT);
 
-DBClose();
-    //dump($insertdata);
+    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['fname']."',
+        lastname = '".$DATA['lname']."',
+        contactno = '".$DATA['phone']."',
+        address = '".$DATA['address']."',
+        adult = '".$DATA['adult']."',
+        child = '".$DATA['children']."',
+        days = '".$DATA['days']."',
+        reservationdate = '".$maniladate."',
+        checkindate = '".$NEWCIN."',
+        checkoutdate = '".$NEWCOUT."',
+        checkintime = '".$manilatime."',
+        checkouttime = '".$manilatime."',
+        roomtype = '".$DATA['roomtype']."',
+        roomno = '".$DATA['roomno']."',
+        modeofpayment = 'Paypal',
+        downpayment = '".$itemAmount."',
+        totalamount = '".$DATA['totalprice']."',
+        balance = '".$itemAmount."',
+        Status = 'Approved',
+        Email = '".$DATA['email']."',
+        TotalPaid = '".$itemAmount."',
+        ReservationID = '".$ResID."' ");
+
+    DBClose();
+}
+else
+{
+    DBOpen();
+
+    $timestampIN = strtotime($CIN);
+    $NEWCIN = date('Y-m-d', $timestampIN);
+
+    $timestampOUT = strtotime($COUT);
+    $NEWCOUT = date('Y-m-d', $timestampOUT);
+
+    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['fname']."',
+        lastname = '".$DATA['lname']."',
+        contactno = '".$DATA['phone']."',
+        address = '".$DATA['address']."',
+        adult = '".$DATA['adult']."',
+        child = '".$DATA['children']."',
+        days = '".$DATA['days']."',
+        reservationdate = '".$maniladate."',
+        checkindate = '".$NEWCIN."',
+        checkoutdate = '".$NEWCOUT."',
+        checkintime = '".$manilatime."',
+        checkouttime = '".$manilatime."',
+        roomtype = '".$DATA['roomtype']."',
+        roomno = '".$DATA['roomno']."',
+        modeofpayment = 'Paypal',
+        downpayment = '".$itemAmount."',
+        totalamount = '".$DATA['totalprice']."',
+        balance = '0',
+        Status = 'Approved',
+        Email = '".$DATA['email']."',
+        TotalPaid = '".$itemAmount."',
+        ReservationID = '".$ResID."' ");
+
+    DBClose();
+}
 
 function verifyTransaction($data) 
 {
