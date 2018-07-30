@@ -67,12 +67,39 @@
               </a>
             </li>
             <li class="">
-              <a href="Reservations.php">
+              <a href="#">
                 <i class="fa fa-users"></i>
                 <span class="menu-title">
                   <strong>Reservations</strong>
                 </span>
+                <i class="fa fa-sort-desc"></i>
               </a>
+              <ul>
+                <li class="">
+                  <a href="Reservations.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Pending</strong>
+                    </span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="ApprovedReservations.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Approved</strong>
+                    </span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="DisapprovedReservations.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Disapproved</strong>
+                    </span>
+                  </a>
+                </li> 
+              </ul>
             </li>  
             <li class="">
               <a href="Reports.php">

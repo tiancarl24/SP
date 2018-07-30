@@ -12,7 +12,7 @@ include "utils.php";
 
 		<!--Page Title-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">Pending Reservations</h1>
+			<h1 class="page-header text-overflow">Approved Reservations</h1>
 		</div>
 		<div class="modal fade" id="ViewMemberModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
@@ -46,7 +46,7 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from reservations WHERE Status = 'Pending'");
+				$rs = DBGetData("SELECT * from reservations WHERE Status = 'Approved'");
 				if(empty($rs))
 				{
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
@@ -100,8 +100,6 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnApprove","Approve","col-sm-2 Right MR","greensuccess");
-				wrBtn("button","btnDisapprove","Disapprove","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
