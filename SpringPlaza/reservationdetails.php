@@ -109,8 +109,18 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 				<br>
 				<br>
 				<br>
-				<div style="width: 80%; height: auto; border: solid 2px black; margin-right: auto; margin-left: auto; display: block;">
+				<div id="divtext" name="divtext" class="col-sm-12" style="text-align: center;">
+					<center style="padding: 10px; color: orange; font-size: 20px;">SORRY THE ROOM IS NOT AVAILABLE AT THE DATE YOU PICK</center>
+					<!-- <center>PLEASE CHECK YOUR EMAIL FOR THE BANK DETAILS</center> -->
+					<br>
+					<br>
+					<br>
+					<!-- <input type="submit" name="" value="OK"> -->
+				</div>
+				<div id="divpersonalinfo" name = "divpersonalinfo" style="width: 80%; height: auto; border: solid 2px orange; margin-right: auto; margin-left: auto; display: block">
 					<div style="padding: 10px; color: orange; font-size: 20px;">
+						<input type="hidden" id="lblValidate" name="lblValidate">
+
 						<h2 class="hometext"><center>Personal Details</center></h2>
 						<br>
 						<div class="row">
@@ -159,10 +169,10 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 							DBClose();
 							?>
 							<div class="col-md-6">
-								<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>" >
+								<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID1" name="resID1" value="<?php echo $AppID ?>" >
 							</div>
 							<div class="col-md-6">
-								<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>" >
+								<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin1" name="cin1" value="<?php echo $RNo['CIN'] ?>" >
 							</div>
 							<div class="col-md-6">
 								<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>" >
@@ -170,10 +180,10 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>" >
+								<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno1" name="roomno1" value="<?php echo $RNo['ROOMNO'] ?>" >
 							</div>
 							<div class="col-md-6">
-								<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>" >
+								<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype1" name="roomtype1" value="<?php echo $RNo['RTYPE'] ?>" >
 							</div>
 						</div>
 						<div class="row">
@@ -255,7 +265,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 						<input type="hidden" name="last_name" value="Customer's Last Name" />
 						<input type="hidden" name="payer_email" value="customer@example.com" />
 						<input type="hidden" name="item_number" value="<?php echo $AppID ?>" / >
-						<input type="text" name="txtOption" value="" class="OPT" / >
+						<input type="hidden" name="txtOption" value="" class="OPT" / >
 					</div>
 					<div class="modal-footer">
 						<div class="col-md-12">
@@ -308,7 +318,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 		{
 			$("#btnHalf").click(function()
 			{
-				 $(".OPT").val("Half");
+				$(".OPT").val("Half");
 			});
 		});
 
@@ -316,7 +326,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 		{
 			$("#btnFull").click(function()
 			{
-				 $(".OPT").val("Full");
+				$(".OPT").val("Full");
 			});
 		});
 	</script>
@@ -353,6 +363,41 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 		$("#btnPaypal").click(function(){
 			$("#PaymentModal").modal();
 		});
+	});
+</script>
+
+<script type="text/javascript">
+	
+	$.ajax(
+	{
+		type: "POST",
+		url: "function/ValidateCheckin.php",
+		data:
+		{
+			resID: resID1.value,
+			cin: cin.value,
+			roomno: roomno.value,
+			roomtype: roomtype.value
+		},
+		success: function(response)
+		{
+			var rs = JSON.parse(response);
+			// /alert(rs);
+			document.getElementById('lblValidate').value = rs[0][0];
+
+			if(rs == 1)
+			{
+				document.getElementById('divtext').style.display = "block";
+				document.getElementById('btnPayinbank').style.display = "none";
+				document.getElementById('btnPaypal').style.display = "none";
+			}
+			else
+			{
+				document.getElementById('divtext').style.display = "none";
+				document.getElementById('btnPayinbank').style.display = "block";
+				document.getElementById('btnPaypal').style.display = "block";
+			}
+		}
 	});
 </script>
 </body>

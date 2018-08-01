@@ -106,7 +106,7 @@ include "utils.php";
 							<br>
 							<br>
 							<br>
-							<form method="GET" action="reservationdetails.php" action="pay.php">
+							<form method="GET" action="reservationdetails.php">
 								<?php 
 								$RTYPE = $_GET['cboRoom'];
 								$CIN = $_GET['dtCheckIN'];
@@ -143,6 +143,7 @@ include "utils.php";
 								wr("<input type='hidden' value='$PHONE'>");
 								wr("<input type='hidden' value='$EMAIL'>");
 								wr("<input type='hidden' value='$DAYS'>");
+
 								wr('<br>');
 								wr("<h3 class='hometext'>Select Available Room</h3>");
 								DBOpen();

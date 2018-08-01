@@ -82,7 +82,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"]))
 }
 else 
 {
-    dump('else');
+    //dump('else');
    // Handle the PayPal response.
 
 // Create a connection to the database.
@@ -106,7 +106,7 @@ else
 // database.
     if (verifyTransaction($_POST) && checkTxnid($data['txn_id'])) 
     {
-        dump('if');
+        //dump('if');
         if (addPayment($data) !== false) 
         {
         // Payment successfully added.

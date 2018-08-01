@@ -1,7 +1,7 @@
 <?php 
 include '../utils.php';
 
-$AppID = $_POST['resID'];
+$AppID = $_POST['resID1'];
 $FNAME = $_POST['fname'];
 $LNAME = $_POST['lname'];
 $NAME = $_POST['name'];
@@ -10,10 +10,10 @@ $CITY = $_POST['city'];
 $ZIPCODE = $_POST['zipcode'];
 $PHONE = $_POST['phone'];
 $EMAIL = $_POST['email'];
-$CIN = $_POST['cin'];
+$CIN = $_POST['cin1'];
 $COUT = $_POST['cout'];
-$ROOMNO = $_POST['roomno'];
-$RTYPE = $_POST['roomtype'];
+$ROOMNO = $_POST['roomno1'];
+$RTYPE = $_POST['roomtype1'];
 $ADULT = $_POST['adult'];
 $CHILD = $_POST['children'];
 $PRICE = $_POST['price'];
@@ -25,6 +25,8 @@ $NEWCIN = date('Y-m-d', $timestampIN);
 
 $timestampOUT = strtotime($COUT);
 $NEWCOUT = date('Y-m-d', $timestampOUT);
+
+// /dump($NEWCOUT);
 
 DBOpen();
 
@@ -46,12 +48,35 @@ $rs = DBExecute(" INSERT INTO reservations SET firstname = '$FNAME',
 	downpayment = '0',
 	totalamount = '$TOTAL',
 	balance = '$TOTAL',
-	Status = 'Pending' 
-	Email = '$EMAIL'
-	TotalPaid = '0'
+	Status = 'Pending', 
+	Email = '$EMAIL',
+	TotalPaid = '0',
 	ReservationID = '$AppID' ");
 
-$update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '$ROOMNO' ");
+
+$rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
+	lastname = '$LNAME',
+	contactno = '$PHONE',
+	address = '$ADDRESS',
+	adult = '$ADULT',
+	child = '$CHILD',
+	days = '$DAYS',
+	reservationdate = '$maniladate',
+	checkindate = '$NEWCIN',
+	checkoutdate = '$NEWCOUT',
+	checkintime = '$manilatime',
+	checkouttime = '$manilatime',
+	roomtype = '$RTYPE',
+	roomno = '$ROOMNO',
+	modeofpayment = 'Pay in Bank',
+	downpayment = '0',
+	totalamount = '$TOTAL',
+	balance = '$TOTAL',
+	Status = 'Pending', 
+	Email = '$EMAIL',
+	TotalPaid = '0',
+	ReservationID = '$AppID' ");
+//$update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '$ROOMNO' ");
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
 
