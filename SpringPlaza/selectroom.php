@@ -144,10 +144,16 @@ include "utils.php";
 								wr("<input type='hidden' value='$EMAIL'>");
 								wr("<input type='hidden' value='$DAYS'>");
 
+								$timestampIN = strtotime($CIN);
+								$NEWCIN = date('Y-m-d', $timestampIN);
+
 								wr('<br>');
 								wr("<h3 class='hometext'>Select Available Room</h3>");
 								DBOpen();
-								$rs = DBGetData(" SELECT roomimage.filename, roominformation.roomdescription, roominformation.roomtype, roominformation.roomprice, roominformation.roomavailability, roominformation.roomid, roominformation.id, roominformation.roomno from roomimage join roominformation on roomimage.roomid = roominformation.roomid where roominformation.roomtype LIKE '%$RTYPE%' and roominformation.roomavailability = 'Available' ");
+								$rs = DBGetData(" SELECT roomimage.filename, roominformation.roomdescription, roominformation.roomtype, roominformation.roomprice, roominformation.roomavailability, roominformation.roomid, roominformation.id, roominformation.roomno from roomimage join roominformation on roomimage.roomid = roominformation.roomid where NOT roominformation.roomno IN (SELECT roomno from reservations where checkindate = '$NEWCIN') AND roominformation.roomtype LIKE '%$RTYPE%' and roominformation.roomavailability = 'Available' ");
+								//dump($rs);
+
+
 
 								wr(" <table id = 'tblSelectRoom' name = 'tblSelectRoom' class = 'table' style = 'font-size: 13px;'> ");
 								wr(" <thead style='color: orange; border: none;'> ");

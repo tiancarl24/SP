@@ -366,40 +366,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 	});
 </script>
 
-<script type="text/javascript">
-	
-	$.ajax(
-	{
-		type: "POST",
-		url: "function/ValidateCheckin.php",
-		data:
-		{
-			resID: resID1.value,
-			cin: cin.value,
-			roomno: roomno.value,
-			roomtype: roomtype.value
-		},
-		success: function(response)
-		{
-			var rs = JSON.parse(response);
-			// /alert(rs);
-			document.getElementById('lblValidate').value = rs[0][0];
 
-			if(rs == 1)
-			{
-				document.getElementById('divtext').style.display = "block";
-				document.getElementById('btnPayinbank').style.display = "none";
-				document.getElementById('btnPaypal').style.display = "none";
-			}
-			else
-			{
-				document.getElementById('divtext').style.display = "none";
-				document.getElementById('btnPayinbank').style.display = "block";
-				document.getElementById('btnPaypal').style.display = "block";
-			}
-		}
-	});
-</script>
 </body>
 </html>
 

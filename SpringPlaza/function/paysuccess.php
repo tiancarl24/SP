@@ -32,7 +32,7 @@ $SaveData = DBExecute(" INSERT INTO reservations SET firstname = '".$TempData[0]
 	TotalPaid = '".$TempData[0][21]."',
 	ReservationID = '".$TempData[0][22]."' ");
 
-$update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '".$TempData[0][14]."' ");
+// $update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '".$TempData[0][14]."' ");
 DBClose();
 
 DBOpen();
