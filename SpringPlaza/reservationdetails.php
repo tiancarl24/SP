@@ -109,14 +109,6 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 				<br>
 				<br>
 				<br>
-				<div id="divtext" name="divtext" class="col-sm-12" style="text-align: center;">
-					<center style="padding: 10px; color: orange; font-size: 20px;">SORRY THE ROOM IS NOT AVAILABLE AT THE DATE YOU PICK</center>
-					<!-- <center>PLEASE CHECK YOUR EMAIL FOR THE BANK DETAILS</center> -->
-					<br>
-					<br>
-					<br>
-					<!-- <input type="submit" name="" value="OK"> -->
-				</div>
 				<div id="divpersonalinfo" name = "divpersonalinfo" style="width: 80%; height: auto; border: solid 2px orange; margin-right: auto; margin-left: auto; display: block">
 					<div style="padding: 10px; color: orange; font-size: 20px;">
 						<input type="hidden" id="lblValidate" name="lblValidate">

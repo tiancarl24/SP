@@ -180,14 +180,29 @@
 </form>
 
 <script type="text/javascript">
-    
+
     var dtCheckOUT = document.getElementById('dtCheckOUT');
     dtCheckOUT.onchange = function()
     {
+        if(dtCheckIN.value == "")
+        {
+            alert("Please select check in date first");
+            dtCheckOUT.value = "mm/dd/yyyy";
+        }
+
         if(dtCheckOUT.value < dtCheckIN.value)
         {
-        alert("Checkout date is invalid")
-           dtCheckOUT.value = "mm/dd/yyyy";
+            alert("Checkout date is invalid")
+            dtCheckOUT.value = "mm/dd/yyyy";
         }
+    }
+</script>
+
+<script type="text/javascript">
+    
+    var dtCheckIN = document.getElementById('dtCheckIN');
+    dtCheckIN.onchange = function()
+    {
+        dtCheckOUT.value = "";
     }
 </script>

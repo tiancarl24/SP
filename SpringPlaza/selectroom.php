@@ -121,13 +121,16 @@ include "utils.php";
 								$PHONE = $_GET['txtPhone'];
 								$EMAIL = $_GET['txtEmail'];
 
-								$dayin = explode('/', $CIN);
-								$dayin = intval($dayin[1]);
+								$timestampIN = strtotime($CIN);
+								$NEWCIN = date('Y-m-d', $timestampIN);
 
-								$dayout = explode('/', $COUT);
-								$dayout = intval($dayout[1]);
+								$timestampOUT = strtotime($COUT);
+								$NEWCOUT = date('Y-m-d', $timestampOUT);
 
-								$DAYS = $dayout - $dayin;
+								$date1=date_create($NEWCIN);
+								$date2=date_create($NEWCOUT);
+								$diff=date_diff($date1,$date2);
+								$diff = $diff->format("%a");
 								//AAYUSIN PA YUNG DAYS SA IN AND OUT
 
 								wr("<input type='hidden' value='$CIN'>");
@@ -142,15 +145,13 @@ include "utils.php";
 								wr("<input type='hidden' value='$CITY'>");
 								wr("<input type='hidden' value='$PHONE'>");
 								wr("<input type='hidden' value='$EMAIL'>");
-								wr("<input type='hidden' value='$DAYS'>");
-
-								$timestampIN = strtotime($CIN);
-								$NEWCIN = date('Y-m-d', $timestampIN);
+								wr("<input type='hidden' value='$diff'>");
+								//dump($NEWCIN);
 
 								wr('<br>');
 								wr("<h3 class='hometext'>Select Available Room</h3>");
 								DBOpen();
-								$rs = DBGetData(" SELECT roomimage.filename, roominformation.roomdescription, roominformation.roomtype, roominformation.roomprice, roominformation.roomavailability, roominformation.roomid, roominformation.id, roominformation.roomno from roomimage join roominformation on roomimage.roomid = roominformation.roomid where NOT roominformation.roomno IN (SELECT roomno from reservations where checkindate = '$NEWCIN') AND roominformation.roomtype LIKE '%$RTYPE%' and roominformation.roomavailability = 'Available' ");
+								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' ");
 								//dump($rs);
 
 
@@ -249,4 +250,21 @@ include "utils.php";
 					ctr_ID = ctr[0];
 				}
 			}); 
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$datetime1 = $NEWCIN;
+
+				$datetime2 = $NEWCOUT;
+
+				$difference = $datetime1->diff($datetime2);
+
+				echo 'Difference: '.$difference->y.' years, ' 
+				.$difference->m.' months, ' 
+				.$difference->d.' days';
+
+				alert($difference);
+			});
 		</script>
