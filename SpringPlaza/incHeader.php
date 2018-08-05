@@ -1,3 +1,6 @@
+<?php
+include "utils.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -80,7 +83,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Nav-Links start -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a class="scroll-to" href="#sc-rooms">Rooms & Facilities</a></li>
+                    <li><a class="scroll-to" href="#sc-features">Amenities</a></li>
+                    <li><a class="scroll-to" href="#sc-rooms">Rooms & Facilities</a></li>
                     <li><a class="scroll-to" href="#MapLocation">Map Location</a></li>
                     <li><a class="scroll-to" href="#Gallery">Album Gallery</a></li>
                     <li><a class="scroll-to" href="#About">About</a></li>
@@ -101,15 +105,22 @@
         <div class="carousel-inner" role="listbox">
             <!--Slider Items start-->
             <div class="item active">
-                <img src="img/slider-img-1.jpg" alt="The Sea Villa">
+                <img src="../HotelReservation/Carousel/spring.jpg" alt="The Sea Villa">
 
                 <div class="carousel-caption">Describe the Image for SEO 1</div>
             </div>
-            
-            <div class="item">
-                <img src="img/slider-img-2.jpg" alt="The Sea Villa">
-                <div class="carousel-caption">Describe the Image for SEO 2</div>
-            </div>
+            <?php
+            DBOpen();
+            $rs = DBGetData("SELECT * FROM carousel");
+            foreach($rs as $rs)
+            {
+                wr("<div class='item'>
+                    <img src='../HotelReservation/Carousel/$rs[1]' alt='The Sea Villa'>
+                    <div class='carousel-caption'>Describe the Image for SEO 2</div>
+                    </div>");
+            }
+            DBClose();
+            ?>
             <!--Slider Items end-->
         </div>
         <!-- Controls start -->

@@ -30,7 +30,7 @@
                                 wr("<div class='col-md-3'>");
                                 wr("<div class='room-tabs-gallery'>");
                                 wr("<div class='room-tabs-gallery-thumbnails'>");
-                                wr("<a class='room-tabs-gallery-thumb' href='#1floor'>");
+                                wr("<a class='room-tabs-gallery-thumb room-tabs-gallery-preview-container' href='#1floor'>");
                                 wr("<img class='img-responsive' src='../HotelReservation/Gallery/$firstfloor[2]' style='height: 200px;' alt='Gallery Thumbnail' title='The Image Title1'/>");
                                 wr("</a>");
                                 wr("</div>");

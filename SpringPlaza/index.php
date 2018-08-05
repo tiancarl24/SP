@@ -1,7 +1,6 @@
 <?php 
 include "incHeader.php";
-include "incAmenities.php"; 
-include "utils.php";
+include "incAmenities.php";
 ?>
 <!--Room Tabs start-->
 <section class="room-tabs" id="sc-rooms">
