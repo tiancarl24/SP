@@ -195,6 +195,12 @@
             alert("Checkout date is invalid")
             dtCheckOUT.value = "mm/dd/yyyy";
         }
+        
+         if(dtCheckOUT.value == dtCheckIN.value)
+        {
+            dtCheckIN.value = "";
+            alert("Invalid Check out Date")
+        }
     }
 </script>
 

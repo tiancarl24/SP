@@ -129,8 +129,8 @@ include "utils.php";
 
 								$date1=date_create($NEWCIN);
 								$date2=date_create($NEWCOUT);
-								$diff=date_diff($date1,$date2);
-								$diff = $diff->format("%a");
+								$DAYS=date_diff($date1,$date2);
+								$DAYS = $DAYS->format("%a");
 								//AAYUSIN PA YUNG DAYS SA IN AND OUT
 
 								wr("<input type='hidden' value='$CIN'>");
@@ -145,19 +145,18 @@ include "utils.php";
 								wr("<input type='hidden' value='$CITY'>");
 								wr("<input type='hidden' value='$PHONE'>");
 								wr("<input type='hidden' value='$EMAIL'>");
-								wr("<input type='hidden' value='$diff'>");
+								wr("<input type='hidden' value='$DAYS'>");
 								//dump($NEWCIN);
 
 								wr('<br>');
 								wr("<h3 class='hometext'>Select Available Room</h3>");
 								DBOpen();
 								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' ");
-								//dump($rs);
-
 
 
 								wr(" <table id = 'tblSelectRoom' name = 'tblSelectRoom' class = 'table' style = 'font-size: 13px;'> ");
 								wr(" <thead style='color: orange; border: none;'> ");
+								wr("");
 								wr(" <tr> ");
 								wr(" <th> ROOM PIC </th> ");
 								wr(" <th> ROOM ID </th> ");
