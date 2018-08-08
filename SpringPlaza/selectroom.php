@@ -146,12 +146,20 @@ include "utils.php";
 								wr("<input type='hidden' value='$PHONE'>");
 								wr("<input type='hidden' value='$EMAIL'>");
 								wr("<input type='hidden' value='$DAYS'>");
-								//dump($NEWCIN);
+
+								DBOpen();
+
+								$count = DBGetData(" SELECT count(*) as count from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' ");
+							
+								DBClose();
+								//dump($count[0][0]);
 
 								wr('<br>');
 								wr("<h3 class='hometext'>Select Available Room</h3>");
+								wr("<label style='font-size: 20px; color: orange;'>".$count[0][0]." Available Room(s)</label>");
 								DBOpen();
-								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' ");
+								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
+								//dump($count);
 
 
 								wr(" <table id = 'tblSelectRoom' name = 'tblSelectRoom' class = 'table' style = 'font-size: 13px;'> ");
