@@ -18,21 +18,24 @@ $target_file = $directory . basename($_FILES["image"]["name"]);
 
 move_uploaded_file($filetmp, $target_file);
 
-DBOpen();
-
-$imgupload = DBExecute(" INSERT INTO roomimage (filename,RoomID)VALUES('$filename','$RoomID')");
-
-for($zx = 1; $zx <= $txtQuantity; $zx++)
+if (strpos($RoomNo, 13) !== true)
 {
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else
+{
+	DBOpen();
+
+	$imgupload = DBExecute(" INSERT INTO roomimage (filename,RoomID)VALUES('$filename','$RoomID')");
+
+
 	$AddRoom = DBExecute(" INSERT INTO roominformation SET
 		RoomID = '$RoomID', RoomName = '$RoomName', RoomNo = '$RoomNo',
-		RoomType = '$RoomType', RoomPrice = '$RoomPrice',
+		RoomType = '$RoomType', RoomPrice = '$RoomPrice',	
 		RoomDescription = '$RoomDescription', RoomAvailability = 'Available'
 		");
-	$RoomNo++;
+	DBClose();
+
+	redirMsg('../Rooms.php','New room successfully added!!');
 }
-
-DBClose();
-
-redirMsg('../Rooms.php','New room successfully added!!')
 ?>

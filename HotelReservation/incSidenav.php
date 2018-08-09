@@ -59,6 +59,14 @@
               </a>
             </li>  
             <li class="">
+              <a href="Floors.php">
+                <i class="fa fa-users"></i>
+                <span class="menu-title">
+                  <strong>Floors</strong>
+                </span>
+              </a>
+            </li>  
+            <li class="">
               <a href="Accounts.php">
                 <i class="fa fa-users"></i>
                 <span class="menu-title">
