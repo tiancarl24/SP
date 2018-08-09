@@ -18,7 +18,47 @@ $target_file = $directory . basename($_FILES["image"]["name"]);
 
 move_uploaded_file($filetmp, $target_file);
 
-if (strpos($RoomNo, 13) !== true)
+if ($RoomNo == 13)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 113)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 213)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 313)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 413)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 513)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 613)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 713)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 813)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 913)
+{
+	redirMsg('../Rooms.php','Room 13 is not allowed');
+}
+else if ($RoomNo == 1013)
 {
 	redirMsg('../Rooms.php','Room 13 is not allowed');
 }

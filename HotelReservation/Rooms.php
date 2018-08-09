@@ -133,10 +133,6 @@ include "utils.php";
 					<div class="row">
 						<?php wrTextArea('txtRoomDescription','Room Description','col-lg-12') ?>
 					</div>
-					<br>
-					<div class="row">
-						<?php wrInput('text','txtQuantity','Room Quantity','col-lg-4 Righttxt'); ?>
-					</div>
 				</div>
 				<br>
 				<br>
