@@ -162,7 +162,14 @@ include "utils.php";
 								//dump($count);
 
 
-								wr(" <table id = 'tblSelectRoom' name = 'tblSelectRoom' class = 'table' style = 'font-size: 13px;'> ");
+								if(empty($rs))
+								{
+									wr('<br>');
+									wr("<label style='font-size: 40px; color: orange;'><center>NO AVAILABLE ROOM..</center></label>");
+								}
+								else
+								{
+									wr(" <table id = 'tblSelectRoom' name = 'tblSelectRoom' class = 'table' style = 'font-size: 13px;'> ");
 								wr(" <thead style='color: orange; border: none;'> ");
 								wr("");
 								wr(" <tr> ");
@@ -205,7 +212,7 @@ include "utils.php";
 
 
 									wr(" <tr> ");
-									wr(" <td><img src='../HotelReservation/Function/RoomImages/$rs[0]' style='width: 100%; height:190px;'></td> ");
+									wr(" <td><img src='../HotelReservation/Function/RoomImages/$rs[0]' style='width: 50%; height:190px;'></td> ");
 									wr(" <td>$rs[7]</td> ");
 									wr(" <td>$rs[1]</td> ");
 									wr(" <td>$rs[2]</td> ");
@@ -215,6 +222,7 @@ include "utils.php";
 								}
 								wr(" </tbody> ");
 								wr(" </table> ");
+								}
 								DBClose();
 								wr('<br>');
 

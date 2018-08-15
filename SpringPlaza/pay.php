@@ -35,11 +35,13 @@ include 'utils.php';
 
 		<form method="POST" action="function/paysuccess.php">
 			<div class="col-sm-12">
-				<center>THANK YOU FOR YOUR RESERVATION</center>
-				<center>Your Booking is Confirmed. Please Check your email for the Details of your Reservation. </center>
+				<center style="color: orange; font-size: 40px">THANK YOU FOR YOUR RESERVATION</center>
+				<center style="color: orange; font-size: 40px">Your Booking is Confirmed. Please Check your email for the Details of your Reservation. </center>
 				<br>
 				<br>
 				<br>
-				<input type="submit" name="" value="OK">
+				<div style="text-align: center;">
+					<input class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white; font-size: 30px; width: 20%" type="submit" name="" value="OK">
+				</div>
 			</div>
 		</form>
