@@ -57,6 +57,41 @@
                   <strong>Carousel</strong>
                 </span>
               </a>
+            </li> 
+            <li class="">
+              <a href="Amenities.php">
+                <i class="fa fa-users"></i>
+                <span class="menu-title">
+                  <strong>Amenities</strong>
+                </span>
+              </a>
+            </li>
+            <li class="">
+              <a href="#">
+                <i class="fa fa-users"></i>
+                <span class="menu-title">
+                  <strong>Hotel Information</strong>
+                </span>
+                <i class="fa fa-sort-desc"></i>
+              </a>
+              <ul>
+                <li class="">
+                  <a href="About.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>About</strong>
+                    </span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="ApprovedReservations.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Contact</strong>
+                    </span>
+                  </a>
+                </li>
+              </ul>
             </li>  
             <li class="">
               <a href="Floors.php">

@@ -57,19 +57,26 @@ include "incAmenities.php";
     <?php include "album.php" ?>
     <section class="about" id="About">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="about-image">
-                        <img src="img/about-img.jpg" alt="Owner Image" class="img-responsive"/>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <h2>About the Hotel</h2>
+            <?php
+            DBOpen();
+            $about = DBGetData(" SELECT * FROM about ");
+            foreach($about as $about)
+            {
+                wr("<div class='row'>");
+                wr("<div class='col-md-4'>");
+                wr("<div class='about-image'>");
+                wr("<img src='../HotelReservation/Gallery/$about[1]' alt='Owner Image' class='img-responsive'/>");
+                wr("</div>");
+                wr("</div>");
+                wr("<div class='col-md-8'>");
+                wr("<h2>About the Hotel</h2>");
+                wr("<p>$about[2]</p>");
+                wr("</div>");
+                wr("</div>");
+            }
+            DBClose();
+            ?>
 
-                    <p>Spring Plaza Hotel is a budget hotel located in the developed city of Dasmarinas City, Cavite. Conveniently located away from the hustle and bustle of the city but close to everything. Only 15 minutes away from Tagaytay and within easy access to two of the cities leading department stores, this is the ideal choice for those wanting for a quiet and private retreat without breaking the bank.</p>
-                    <p>We present travellers clean and amazingly affordable rooms. Guests will enjoy the laid back and serene environment of our location.</p>
-                </div>
-            </div>
         </div>
     </section>
     <!--About end-->

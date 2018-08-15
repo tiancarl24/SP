@@ -6,10 +6,10 @@ $id = $_POST["GetImageID"];
 
 DBOpen();
 
-$AddRoom = DBExecute(" DELETE FROM gallery WHERE id = '$id'");
+$AddRoom = DBExecute(" DELETE FROM carousel WHERE id = '$id'");
 
 DBClose();
 
-redirMsg('../gallery.php','Delete Room successfully!!')
+redirMsg('../carousel.php','Delete Image Carousel Successfully!!')
 
 ?>

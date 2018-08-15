@@ -20,6 +20,7 @@
                         {
                             wr("<li role='presentation'><a href='#2floor' aria-controls='2floor' role='tab' data-toggle='tab'>$nav[1]</a></li>");
                         }
+                        
                         DBClose();
                         ?>
                     </ul>
@@ -60,15 +61,15 @@
                          foreach($Second as $Second)
                          {
                             wr("<div class='col-md-3'>");
-                            wr("<div class='room-tabs-gallery'>");
-                            wr("<div class='room-tabs-gallery-thumbnails'>");
-                            wr("<a class='room-tabs-gallery-thumb' href='#2floor'>");
-                            wr("<img class='img-responsive' src='../HotelReservation/Gallery/$Second[2]' style='height: 200px;' alt='Gallery Thumbnail' title='The Image Title1'/>");
-                            wr("</a>");
-                            wr("</div>");
-                            wr("<div class='clearfix'></div>");
-                            wr("</div>");
-                            wr("</div>");
+                                wr("<div class='room-tabs-gallery'>");
+                                wr("<div class='room-tabs-gallery-thumbnails'>");
+                                wr("<a class='room-tabs-gallery-thumb room-tabs-gallery-preview-container' href='#1floor'>");
+                                wr("<img class='img-responsive' src='../HotelReservation/Gallery/$firstfloor[2]' style='height: 200px;' alt='Gallery Thumbnail' title='The Image Title1'/>");
+                                wr("</a>");
+                                wr("</div>");
+                                wr("<div class='clearfix'></div>");
+                                wr("</div>");
+                                wr("</div>");
                         }
                         DBClose();
                         ?>
