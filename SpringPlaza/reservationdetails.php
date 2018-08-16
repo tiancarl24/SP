@@ -160,7 +160,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 
 							DBClose();
 							?>
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID1" name="resID1" value="<?php echo $AppID ?>"  readonly>
 							</div>
 							<div class="col-md-6">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2018 at 11:41 AM
+-- Generation Time: Aug 16, 2018 at 04:44 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -39,7 +39,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `filename`, `Description`) VALUES
-(1, '', 'The Spring Plaza Hotel is a budget hotel located in the developed city of Dasmarinas City, Cavite. Conveniently located away from the hustle and bustle of the city but close to everything. Only 15 minutes away from Tagaytay and within easy access to two of the cities leading department stores, this is the ideal choice for those wanting for a quiet and private retreat without breaking the bank.We present travellers clean and amazingly affordable rooms. Guests will enjoy the laid back and serene environment of our location.');
+(1, 'about-img.jpg', 'The Spring Plaza Hotel is a budget hotel located in the developed city of Dasmarinas City, Cavite. Conveniently located away from the hustle and bustle of the city but close to everything. Only 15 minutes away from Tagaytay and within easy access to two of the cities leading department stores, this is the ideal choice for those wanting for a quiet and private retreat without breaking the bank.We present travellers clean and amazingly affordable rooms. Guests will enjoy the laid back and serene environment of our location.');
 
 -- --------------------------------------------------------
 
@@ -101,6 +101,26 @@ CREATE TABLE `carousel` (
 
 INSERT INTO `carousel` (`id`, `filename`, `ImageName`) VALUES
 (2, 'stair.jpg', 'Slide2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `TelNo` int(15) NOT NULL,
+  `MobileNo` int(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `Address`, `TelNo`, `MobileNo`) VALUES
+(1, 'Sampaloc, Dasmarinas, Cavite 2', 7811542, 123123);
 
 -- --------------------------------------------------------
 
@@ -200,7 +220,8 @@ INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Addr
 (4, 'Gimson', 'Recilla', '234346345523', 'California', 3, 0, 4, '2018-07-29', '2018-08-01', '2018-08-05', '17:38:01', '17:38:01', 'Fan Room', '3', 'Paypal', 3600, 3600, 0, 'Approved', 'recillagimson@gmail.com', 3600, '201800000002'),
 (5, 'Mga', 'BIBE', '09168585154', 'asdasd', 2, 0, 8, '2018-08-09', '2018-08-10', '2018-08-18', '09:18:08', '09:18:08', 'Fan Room', '1', 'Pay in Bank', 0, 7200, 7200, 'Pending', 'markangeloguanez18548721@gmail.com', 0, '201800000003'),
 (6, 'asd', 'asd', '123123', 'asd', 1, 0, 7, '2018-08-09', '2018-08-23', '2018-08-30', '09:20:17', '09:20:17', 'Fan Room', '1', 'Pay in Bank', 0, 6300, 6300, 'Pending', 'admin@gmail.com', 0, '201800000004'),
-(7, 'Gimson', 'Recilla', '233123', 'Imus cavite', 1, 0, 3, '2018-08-09', '2018-08-15', '2018-08-18', '10:23:29', '10:23:29', 'Deluxe Room', '8', 'Pay in Bank', 0, 4500, 4500, 'Pending', 'admin@gmail.com', 0, '201800000005');
+(7, 'Gimson', 'Recilla', '233123', 'Imus cavite', 1, 0, 3, '2018-08-09', '2018-08-15', '2018-08-18', '10:23:29', '10:23:29', 'Deluxe Room', '8', 'Pay in Bank', 0, 4500, 4500, 'Pending', 'admin@gmail.com', 0, '201800000005'),
+(8, 'asd', 'as', '123', 'as', 1, 0, 12, '2018-08-16', '2018-08-17', '2018-08-29', '10:28:33', '10:28:33', 'Fan Room', '2', 'Pay in Bank', 0, 10800, 10800, 'Pending', 'admin@gmail.com', 0, '201800000006');
 
 -- --------------------------------------------------------
 
@@ -243,7 +264,8 @@ INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, 
 (13, 'Gimson', 'Recilla', '234346345523', 'California', 3, 0, 4, '2018-07-29', '2018-08-01', '2018-08-05', '17:38:01', '17:38:01', 'Fan Room', '3', 'Paypal', 3600, 3600, 0, 'Approved', 'recillagimson@gmail.com', 3600, '201800000002'),
 (14, 'Mga', 'BIBE', '09168585154', 'asdasd', 2, 0, 8, '2018-08-09', '2018-08-10', '2018-08-18', '09:18:08', '09:18:08', 'Fan Room', '1', 'Pay in Bank', 0, 7200, 7200, 'Pending', 'markangeloguanez18548721@gmail.com', 0, '201800000003'),
 (15, 'asd', 'asd', '123123', 'asd', 1, 0, 7, '2018-08-09', '2018-08-23', '2018-08-30', '09:20:17', '09:20:17', 'Fan Room', '1', 'Pay in Bank', 0, 6300, 6300, 'Pending', 'admin@gmail.com', 0, '201800000004'),
-(16, 'Gimson', 'Recilla', '233123', 'Imus cavite', 1, 0, 3, '2018-08-09', '2018-08-15', '2018-08-18', '10:23:29', '10:23:29', 'Deluxe Room', '8', 'Pay in Bank', 0, 4500, 4500, 'Pending', 'admin@gmail.com', 0, '201800000005');
+(16, 'Gimson', 'Recilla', '233123', 'Imus cavite', 1, 0, 3, '2018-08-09', '2018-08-15', '2018-08-18', '10:23:29', '10:23:29', 'Deluxe Room', '8', 'Pay in Bank', 0, 4500, 4500, 'Pending', 'admin@gmail.com', 0, '201800000005'),
+(17, 'asd', 'as', '123', 'as', 1, 0, 12, '2018-08-16', '2018-08-17', '2018-08-29', '10:28:33', '10:28:33', 'Fan Room', '2', 'Pay in Bank', 0, 10800, 10800, 'Pending', 'admin@gmail.com', 0, '201800000006');
 
 -- --------------------------------------------------------
 
@@ -362,6 +384,12 @@ ALTER TABLE `carousel`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `floors`
 --
 ALTER TABLE `floors`
@@ -438,6 +466,12 @@ ALTER TABLE `carousel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
@@ -459,13 +493,13 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `roomimage`
@@ -477,7 +511,7 @@ ALTER TABLE `roomimage`
 -- AUTO_INCREMENT for table `roominformation`
 --
 ALTER TABLE `roominformation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -36,7 +36,6 @@ include "incAmenities.php";
                     wr("</div>");
                     wr("</div>");
                     wr("<br>");
-
                 }
                 DBClose();
                 ?>
@@ -83,41 +82,48 @@ include "incAmenities.php";
     <!--Address start-->
     <section class="address" id="Contact">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2><img src="img/address-logo.png" alt="Logo"/></h2>
-                    <address>Sampaloc, Dasmariñas, Cavite</address>
-                    <p class="address-info">If you have questions or need additional information, please call Us:</p>
-                    <ul class="phones">
-                        <li><i class="fa fa-phone"></i> (02) - 7811540</li>
-                        <li><i class="fa fa-mobile"></i> (+63) 932 921 3163</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Address end-->
+            <?php
+            DBOpen();
+            $Contact = DBGetData(" SELECT * FROM contact ");
+            foreach($Contact as $Contact)
+            {
+             wr("<div class='row'>");
+             wr("<div class='col-md-12'>");
+             wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
+             wr("<address>$Contact[1]</address>");
+             wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
+             wr("<ul class='phones'>");
+             wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
+             wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
+             wr("</ul>");
+             wr("</div>"); 
+         }
+         DBClose();
+         ?>
+     </div>
+ </section>
+ <!--Address end-->
 
-    <!--Footer start-->
-    <footer class="footer" id="sc-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="footer-copyright">
-                        &copy; 2018 HotelSpringPlaza. All rights reserved.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <ul class="footer-social-media">
-                        <li><a href="#"><i class="fa fa-twitter fa-fw"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus fa-fw"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook fa-fw"></i></a></li>
-                    </ul>
-                </div>
+ <!--Footer start-->
+ <footer class="footer" id="sc-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="footer-copyright">
+                    &copy; 2018 HotelSpringPlaza. All rights reserved.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-social-media">
+                    <li><a href="#"><i class="fa fa-twitter fa-fw"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus fa-fw"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook fa-fw"></i></a></li>
+                </ul>
             </div>
         </div>
-    </footer>
-    <!--Footer end-->
+    </div>
+</footer>
+<!--Footer end-->
 </div>
 <!--End content before Slider-->
 
