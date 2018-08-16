@@ -4,18 +4,19 @@ include "../incSecure.php";
 
 $RowID = $_POST['txtRowID'];
 $imagename = $_POST['txtImageFile'];
-//dump($imagename);
+// dump($imagename);
 
-$filename = $_FILES["image"]["name"];
-$filetype = $_FILES["image"]["type"];
-$filetmp = $_FILES["image"]["tmp_name"];
+$filename = $_FILES["txtImageFile"]["name"];
+$filetype = $_FILES["txtImageFile"]["type"];
+$filetmp = $_FILES["txtImageFile"]["tmp_name"];
 
 $directory = "../Gallery/";
-$target_file = $directory . basename($_FILES["image"]["name"]);
+$target_file = $directory . basename($_FILES["txtImageFile"]["name"]);
 
 move_uploaded_file($filetmp, $target_file);
+
 DBOpen();
-$rs = DBExecute(" UPDATE about SET filename = '$imagename' WHERE id = " .SQLs($RowID));
+$rs = DBExecute(" UPDATE about SET filename = '$filename' WHERE id = " .SQLs($RowID));
 
 DbClose();
 

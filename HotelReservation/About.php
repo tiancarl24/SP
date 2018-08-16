@@ -131,7 +131,7 @@ include "utils.php";
 		</div>
 	</div>
 </form>
-<form method="POST" action="Function/Function-UpdateAboutImage.php" enctype="multipart/form-data">
+<form method="POST" action="Function/Function-UpdateAboutImage.php" enctype="multipart/form-data" >
 	<div class="modal fade" id="UpdateImageModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">

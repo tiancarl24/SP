@@ -84,7 +84,7 @@
                   </a>
                 </li>
                 <li class="">
-                  <a href="ApprovedReservations.php">
+                  <a href="Contact.php">
                     <i class="fa fa-users"></i>
                     <span class="menu-title">
                       <strong>Contact</strong>

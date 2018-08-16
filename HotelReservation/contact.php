@@ -12,7 +12,7 @@ include "utils.php";
 
 		<!--Page Title-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">Gallery</h1>
+			<h1 class="page-header text-overflow">Update Contact</h1>
 		</div>
 		<div class="modal fade" id="ViewMemberModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
@@ -37,7 +37,7 @@ include "utils.php";
 			<div class="panel-heading">
 				<br>
 				<span class="panel-title">
-					<span>Image list</span>
+					<span>Contact Information</span>
 				</span>
 			</div>
 			<div class="panel-body">
@@ -45,14 +45,14 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from gallery ");
+				$rs = DBGetData("SELECT * from contact");
 				if(empty($rs))
 				{
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 					wr(" <thead> ");
-					wr(" <tr> ");
-					wr(" <th><center>Image Name</center></th> ");
-					wr(" <th><center>Image</center></th> ");
+					wr("  <tr> ");
+					wr(" <th><center>Floor ID.</center></th> ");
+					wr(" <th><center>Floors</center></th> ");
 					wr(" </tr> ");
 					wr(" </thead> ");
 					wr(" <tbody> ");
@@ -70,9 +70,10 @@ include "utils.php";
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 					wr(" <thead> ");
 					wr(" <tr> ");
-					wr(" <th><center>id</center></th> ");
-					wr(" <th><center>Item No.</center></th> ");
-					wr(" <th><center>Item Name</center></th> ");
+					wr(" <th><center>ID</center></th> ");
+					wr(" <th><center>Address</center></th> ");
+					wr(" <th><center>Tel No.</center></th> ");
+					wr(" <th><center>Mobile No.</center></th> ");
 					wr(" </tr> ");
 					wr(" </thead> ");
 					wr(" <tbody> ");
@@ -82,6 +83,7 @@ include "utils.php";
 						wr(" <td style='text-align: center';>$rs[0]</td> ");
 						wr(" <td style='text-align: center';>$rs[1]</td> ");
 						wr(" <td style='text-align: center';>$rs[2]</td> ");
+						wr(" <td style='text-align: center';>$rs[3]</td> ");
 							// wr(" <td>$rs[4]</td> ");
 						wr(" </tr> ");
 					}
@@ -89,70 +91,35 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnNewRoom","Add New Image","col-sm-2 Right","bluegreen");
-				wrBtn("button","btnDeleteRoom","Discard Room","col-sm-2 Right MR","red");
+				wrBtn("button","btnUpdateAmenities","Update Contact","col-sm-2 Right MR","orange");
 				?>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
-<!--Add new Item Modal-->
-<form method="POST" action="Function/Function-AddImage.php" enctype="multipart/form-data">
-	<div class="modal fade" id="NewRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<!--Update Item Modal-->
+<form method="POST" action="Function/Function-UpdateContact.php" enctype="multipart/form-data">
+	<div class="modal fade" id="UpdateAccountModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Insert New Item</h4>
+					<h4 class="modal-title">Update Amenities</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
 					<div class="row">
 						<?php
-						wrInput('text','txtImageName','Image Name','col-lg-4');
-						wrInput('file','image','Upload image','col-lg-4 Righttxt');
+						wrInput('text','txtRowID','ID','col-lg-6');
+						wrInput('text','txtUpdateContactAddress','TITLE','col-lg-6');
 						?>
 					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<label>Floor: </label>
-							<select id="Floor" name="Floor" class="form-control">
-								<option value="First">First Floor</option>
-								<option value="Second">Second Floor</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<br>
-				<br>
-				<!--Modal footer-->
-				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<button class="btn btn-primary">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-<!-- Update Room MODAL -->
-<form method="POST" action="Function/Function-DeleteGalleryImage.php">
-	<div class="modal fade" id="DeleteRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!--Modal header-->
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Delete Room</h4>
-				</div>
-				<!--Modal body-->
-				<div class="modal-body">
-					<center><h1>Are you sure you want to delete </h1></center>
+					<br>
 					<div class="row">
 						<?php
-						wrInput('text','GetGalleryImageID','Image ID','col-lg-4');
+						wrInput('text','txtUpdateContactTelNo','Tel No.','col-lg-6');
+						wrInput('text','txtUpdateContactMobileNo','Mobile No.','col-lg-6');
 						?>
 					</div>
 				</div>
@@ -161,13 +128,12 @@ include "utils.php";
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<button class="btn btn-primary">Yes</button>
+					<input type="submit" id="btnYes" name="btnYes" class="btn btn-primary" value="Yes">
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-<!-- ------------ -->
 <script type="text/javascript">
 	var ctr;
 	var ctr_ID;
@@ -213,46 +179,42 @@ include "utils.php";
 		});
 	}
 </script>
+<!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
 <script type="text/javascript">
-	var btnNewRoom = document.getElementById('btnNewRoom');
-	btnNewRoom.onclick = function()
+	
+	var btnUpdateAmenities = document.getElementById('btnUpdateAmenities');
+	btnUpdateAmenities.onclick = function()
 	{
-		$('#NewRoomModal').modal('show');
-	}
-</script>
-<script type="text/javascript">
-	var btnDeleteRoom = document.getElementById('btnDeleteRoom');
-	btnDeleteRoom.onclick = function()
-	{
-		if (ctr_ID == null) 
+		if(ctr_ID == null)
 		{
 			$.niftyNoty
 			({
 				type: 'danger',
 				title: 'Invalid Action',
-				message: 'Please select room to edit!',
+				message: 'Select Amenities you want to update!',
 				container: 'floating',
-				timer: 1000,
+				timer: 3000,
 			});
 		}
 		else
 		{
-			
 			$.ajax(
 			{
 				type: "POST",
-				url: "GetIDImageGalleryDelete.php",
-				cache: false,
+				url: "Function/GetUpdateContact.php",
 				data:
 				{
 					ctr_ID: ctr_ID
 				},
 				success: function(response)
 				{
-					var result = JSON .parse(response);
-					$('#DeleteRoomModal').modal('show');
-					document.getElementById('GetGalleryImageID').value = result[0][0];
-				},
+					var res = JSON.parse(response);
+					$('#UpdateAccountModal').modal('show');
+					document.getElementById("txtRowID").value = res[0][0];
+					document.getElementById('txtUpdateContactAddress').value = res[0][1];
+					document.getElementById('txtUpdateContactTelNo').value = res[0][2];
+					document.getElementById('txtUpdateContactMobileNo').value = res[0][2];
+				}
 			});
 		}
 	}
