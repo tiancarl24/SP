@@ -41,6 +41,69 @@ $bankinfo = DBGetData("SELECT * from bankinfo");
 
 require_once '../vendor/autoload.php';
 
+//PDF
+
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+$html =
+'<html>'.
+'<body>'.
+'<table name="demo" id="demo" class="table table-striped table-bordered" cellspacing="0" width="100%">'.
+'<thead>'.
+'<tr style="">'.
+'<th>RESERVATION ID</th>'.
+'<th>CHECK IN</th>'.
+'<th>CHECK OUT</th>'. 
+'<th>ROOM NO</th>'.
+'<th>ROOM TYPE</th>'. 
+'<th>ADULT</th>'.
+'<th>CHILD</th>'. 
+'<th>DAYS</th>'.
+'<th>PAID</th>'.
+'<th>BALANCE</th>'.
+'<th>TOTAL FEE</th>'.    
+'</tr>'.
+'</thead>'.
+'<tbody>'.
+'<!--INSERT DATA HERE-->'.
+'<tr>'.
+'<td>'.$TempData[0][22].'</td>'.
+'<td>'.$TempData[0][9].'</td>'.
+'<td>'.$TempData[0][10].'</td>'.
+'<td>'.$TempData[0][14].'</td>'.
+'<td>'.$TempData[0][13].'</td>'.
+'<td>'.$TempData[0][5].'</td>'.
+'<td>'.$TempData[0][6].'</td>'.
+'<td>'.$TempData[0][7].'</td>'.
+'<td>'.number_format($TempData[0][21]).'</td>'.
+'<td>'.number_format($TempData[0][18]).'</td>'.
+'<td>'.number_format($TempData[0][17]).'</td>'. 
+'</tr>'.
+'</tbody>'.
+'</table>'.
+'<br>'.
+'<br>'.
+'</body>'.
+'</html>';
+//instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// // Output the generated PDF to Browser
+// $dompdf->stream($refno);
+
+file_put_contents("../pdf/".$TempData[0][22].".pdf",$dompdf->output($TempData[0][22]));  
+
+// EMAIL
+
 	// Create the Transport
 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
 ->setUsername('springplazahotel247@gmail.com')
@@ -51,8 +114,9 @@ $mailer = new Swift_Mailer($transport);
 
 	// Create a message
 $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
-->setFrom(['crm.philpacs@gmail.com' => 'HotelSpringPlaza'])
+->setFrom(['springplazahotel247@gmail.com' => 'HotelSpringPlaza'])
 ->setTo([$TempData[0][20] => 'A name'])
+->attach(Swift_Attachment::fromPath('../pdf/'.$TempData[0][22].'.pdf'))
 ->setBody('Hi '.$TempData[0][1].' '.$TempData[0][2].'!
 	<br>
 	<br>
@@ -60,32 +124,6 @@ $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
 	Your Reservation is paid via Paypal.
 	<br>
 	please kindly present this to the front desk of Hotel Spring Plaza for verification
-	<br>
-	<br>
-	RESERVATION DETAILS
-	<br>
-	<br>
-	RESERVATION ID: '.$TempData[0][22].'
-	<br>
-	CHECK IN: '.$TempData[0][9].'
-	<br>
-	CHECK OUT: '.$TempData[0][10].'
-	<br>
-	ROOM NO: '.$TempData[0][14].'
-	<br>
-	ROOM TYPE: '.$TempData[0][13].'
-	<br>
-	ADULT: '.$TempData[0][5].'
-	<br>
-	CHILD: '.$TempData[0][6].'
-	<br>
-	DAYS: '.$TempData[0][7].'
-	<br>
-	PAID: '.number_format($TempData[0][21]).'
-	<br>
-	BALANCE: '.number_format($TempData[0][18]).'
-	<br>
-	TOTAL FEE: '.number_format($TempData[0][17]).'
 	<br>
 	<br>
 	<br>

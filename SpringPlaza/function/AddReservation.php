@@ -80,10 +80,76 @@ $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
 
-
+//>>PDF AND EMAIL
 
 require_once '../vendor/autoload.php';
+//PDF
 
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+$html =
+'<html>'.
+'<body>'.
+'Reservation Details'.
+'<table name="demo" id="demo" class="table table-striped table-bordered" cellspacing="0" width="100%">'.
+'<thead>'.
+'<tr style="">'.
+'<th>RESERVATION ID</th>'.
+'<th>CHECK IN</th>'.
+'<th>CHECK OUT</th>'. 
+'<th>ROOM NO</th>'.
+'<th>ROOM TYPE</th>'. 
+'<th>ADULT</th>'.
+'<th>CHILD</th>'. 
+'<th>DAYS</th>'.
+'<th>TOTAL FEE</th>'.    
+'</tr>'.
+'</thead>'.
+'<tbody>'.
+'<!--INSERT DATA HERE-->'.
+'<tr>'.
+'<td>'.$AppID.'</td>'.
+'<td>'.$NEWCIN.'</td>'.
+'<td>'.$NEWCOUT.'</td>'.
+'<td>'.$ROOMNO.'</td>'.
+'<td>'.$RTYPE.'</td>'.
+'<td>'.$ADULT.'</td>'.
+'<td>'.$CHILD.'</td>'.
+'<td>'.$DAYS.'</td>'.
+'<td>'.number_format($TOTAL).'</td>'. 
+'</tr>'.
+'</tbody>'.
+'</table>'.
+'<br>'.
+'<br>'.
+'BANK DETAILS'.
+'<br>'.
+'<br>'.
+'BANK: '.$bankinfo[0][1].''.
+'<br>'.
+'ACCOUNT NAME: '.$bankinfo[0][2].''.
+'<br>'.
+'ACCOUNT NUMBER: '.$bankinfo[0][3].''.
+'</body>'.
+'</html>';
+//instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// // Output the generated PDF to Browser
+// $dompdf->stream($refno);
+
+file_put_contents("../pdf/".$AppID.".pdf",$dompdf->output($AppID));  
+
+// EMAIL
 	// Create the Transport
 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
 ->setUsername('springplazahotel247@gmail.com')
@@ -94,8 +160,9 @@ $mailer = new Swift_Mailer($transport);
 
 	// Create a message
 $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
-->setFrom(['crm.philpacs@gmail.com' => 'HotelSpringPlaza'])
+->setFrom(['springplazahotel247@gmail.com' => 'HotelSpringPlaza'])
 ->setTo([$EMAIL => 'A name'])
+->attach(Swift_Attachment::fromPath('../pdf/'.$AppID.'.pdf'))
 ->setBody('Hi '.$FNAME.' '.$LNAME.'!
 	<br>
 	<br>
@@ -103,40 +170,6 @@ $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
 	Your Reservation is now submitted to our hotel representative
 	<br>
 	please settle atleast half of the total price of your bill to ensure your reservation.
-	<br>
-	this is the bank details of Hotel Spring Plaza.
-	<br>
-	<br>
-	RESERVATION DETAILS
-	<br>
-	<br>
-	RESERVATION ID: '.$AppID.'
-	<br>
-	CHECK IN: '.$NEWCIN.'
-	<br>
-	CHECK OUT: '.$NEWCOUT.'
-	<br>
-	ROOM NO: '.$ROOMNO.'
-	<br>
-	ROOM TYPE: '.$RTYPE.'
-	<br>
-	ADULT: '.$ADULT.'
-	<br>
-	CHILD: '.$CHILD.'
-	<br>
-	DAYS: '.$DAYS.'
-	<br>
-	TOTAL FEES: '.number_format($TOTAL).'
-	<br>
-	<br>
-	BANK DETAILS
-	<br>
-	<br>
-	BANK: '.$bankinfo[0][1].'
-	<br>
-	ACCOUNT NAME: '.$bankinfo[0][2].'
-	<br>
-	ACCOUNT NUMBER: '.$bankinfo[0][3].'
 	<br>
 	<br>
 	<br>
