@@ -52,6 +52,13 @@ function wrInput($type, $name, $value, $colsize) {
   <input type='$type' id='$name' name='$name' class='form-control'>
   </div>");
 }
+function wrInputRO($type, $name, $value, $colsize) {
+ if ($type == "") $type = "text";
+ wr("<div class='$colsize'>
+  <label class='control-label'>$value</label>
+  <input type='$type' id='$name' name='$name' class='form-control' readonly>
+  </div>");
+}
 function wrInput2($type, $name, $value, $colsize,$echo) {
  if ($type == "") $type = "text";
  wr("<div class='$colsize'>

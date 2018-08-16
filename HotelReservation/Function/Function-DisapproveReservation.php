@@ -6,7 +6,7 @@ DBOpen();
 
 $ResID = $_POST['lblDispproved'];
 
-$rs = DBExecute(" UPDATE reservations SET Status = 'Disapproved' WHERE rowid = " .SQLs($ResID));
+$rs = DBExecute(" UPDATE reservations SET Status = 'Disapproved', CheckinDate = '', CheckoutDate = '', RoomNo = '' WHERE rowid = " .SQLs($ResID));
 
 DbClose();
 
