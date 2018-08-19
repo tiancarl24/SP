@@ -19,12 +19,30 @@ $CHILD = $_POST['children'];
 $PRICE = $_POST['price'];
 $DAYS = $_POST['days'];
 $TOTAL = $_POST['totalprice'];
+$DATES = $_POST['date'];
 
 $timestampIN = strtotime($CIN);
 $NEWCIN = date('Y-m-d', $timestampIN);
 
 $timestampOUT = strtotime($COUT);
 $NEWCOUT = date('Y-m-d', $timestampOUT);
+
+$x = $NEWCIN; 
+
+do 
+{
+	DBOpen();
+	$resdate = DBExecute(" INSERT INTO reservedate SET ReservationID = '$AppID',
+		reservationdate = '$maniladate',
+		checkin = '$x',
+		checkout = '$NEWCOUT',
+		roomno = '$ROOMNO',
+		roomtype = '$RTYPE' ");
+	DBClose();
+	$x++;
+}
+while ($x <= $NEWCOUT);
+
 
 // /dump($NEWCOUT);
 
@@ -76,6 +94,7 @@ $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
 	Email = '$EMAIL',
 	TotalPaid = '0',
 	ReservationID = '$AppID' ");
+
 //$update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '$ROOMNO' ");
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
@@ -130,6 +149,10 @@ $html =
 'ACCOUNT NAME: '.$bankinfo[0][2].''.
 '<br>'.
 'ACCOUNT NUMBER: '.$bankinfo[0][3].''.
+'<br>'.
+'<br>'.
+'<center>REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>'.
+'<center>Your reservation is pending.</center>'.
 '</body>'.
 '</html>';
 //instantiate and use the dompdf class

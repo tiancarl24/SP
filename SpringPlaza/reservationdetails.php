@@ -4,7 +4,14 @@ include 'utils.php';
 <?php 
 $RNo = json_decode($_GET['Data'],true);
 
-$TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
+if(intval($RNo['ADULT']) == 3)
+{
+	$TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']) + 650;	
+}
+else
+{
+	$TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -201,7 +208,6 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 							</div>
 						</div>	
 					</div>
-
 					<br>
 					<div class="row">
 						<div class="col-md-4">
@@ -211,8 +217,12 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 					<div class="col-md-4">
 						<button type="button" id="btnPaypal" name="btnPaypal" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;">PAY ONLINE</button>
 					</div>
+					<br>
+					<br>
+					<br>
+					<center style="color: orange">REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>
+					<br>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -227,6 +237,8 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 					</div>
 					<div class="modal-body form-contol">
 						<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
+						<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
+						<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
 						<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
 						<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
 						<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
@@ -241,8 +253,7 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 						<label style="display: none;">ZIPCODE :</label><input type="hidden" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" >
 						<label style="display: none;">PHONE :</label><input type="hidden" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>"  readonly>
 						
-						<label style="display: none">CHECK IN :</label><input type="hidden" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
-						<label style="display: none">CHECK OUT :</label><input type="hidden" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
+						
 						<label style="display: none">ADULT :</label><input type="hidden" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>"  readonly>
 						<label style="display: none">CHILDREN :</label><input type="hidden" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
 						<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
@@ -262,10 +273,10 @@ $TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
 					<div class="modal-footer">
 						<div class="col-md-12">
 							<div class="col-md-6">
-								<input type="submit" id="btnHalf" name="btnHalf" value="Half Payment">
+								<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnHalf" name="btnHalf" value="Half Payment">
 							</div>
 							<div class="col-md-6">
-								<input type="submit" id="btnFull" name="btnFull" value="Full Payment">
+								<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnFull" name="btnFull" value="Full Payment">
 							</div>
 						</div>
 					</div>

@@ -7,7 +7,22 @@ $getLastTrans = DBGetData(" SELECT MAX(reservationid) FROM reservations_temp ");
 	//dump($getLastTrans[0][0]);
 
 $TempData = DBGetData(" SELECT * FROM reservations_temp WHERE reservationid = " .SQLs($getLastTrans[0][0]));
-//dump($TempData);
+
+$x = $TempData[0][9]; 
+do 
+{
+	
+	$resdate = DBExecute(" INSERT INTO reservedate SET ReservationID = '".$TempData[0][22]."',
+		reservationdate = '$maniladate',
+		checkin = '$x',
+		checkout = '".$TempData[0][10]."',
+		roomno = '".$TempData[0][14]."',
+		roomtype = '".$TempData[0][13]."' ");
+	
+	$x++;
+}
+while ($x <= $TempData[0][10]);
+
 
 $SaveData = DBExecute(" INSERT INTO reservations SET firstname = '".$TempData[0][1]."',
 	lastname = '".$TempData[0][2]."',
@@ -83,6 +98,7 @@ $html =
 '</table>'.
 '<br>'.
 '<br>'.
+'<center>REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>'.
 '</body>'.
 '</html>';
 //instantiate and use the dompdf class

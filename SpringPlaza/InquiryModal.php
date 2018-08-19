@@ -85,8 +85,6 @@
                                             <option value="1">1 - Child</option>
                                             <option value="2">2 - Children</option>
                                             <option value="3">3 - Children</option>
-                                            <option value="4">4 - Children</option>
-                                            <option value="5">5 - Children</option>
                                         </select>
                                     </div>
                                 </div>
@@ -100,9 +98,6 @@
                                             <option value="1">1 - Adult</option>
                                             <option value="2">2 - Adult</option>
                                             <option value="3">3 - Adult</option>
-                                            <option value="4">4 - Adult</option>
-                                            <option value="5">5 - Adult</option>
-                                            <option value="6">6 - Adult</option>
                                         </select>
                                     </div>
                                 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2018 at 04:44 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Aug 19, 2018 at 04:29 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,7 +39,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `filename`, `Description`) VALUES
-(1, 'about-img.jpg', 'The Spring Plaza Hotel is a budget hotel located in the developed city of Dasmarinas City, Cavite. Conveniently located away from the hustle and bustle of the city but close to everything. Only 15 minutes away from Tagaytay and within easy access to two of the cities leading department stores, this is the ideal choice for those wanting for a quiet and private retreat without breaking the bank.We present travellers clean and amazingly affordable rooms. Guests will enjoy the laid back and serene environment of our location.');
+(1, '', 'The Spring Plaza Hotel is a budget hotel located in the developed city of Dasmarinas City, Cavite. Conveniently located away from the hustle and bustle of the city but close to everything. Only 15 minutes away from Tagaytay and within easy access to two of the cities leading department stores, this is the ideal choice for those wanting for a quiet and private retreat without breaking the bank.We present travellers clean and amazingly affordable rooms. Guests will enjoy the laid back and serene environment of our location.');
 
 -- --------------------------------------------------------
 
@@ -100,6 +100,7 @@ CREATE TABLE `carousel` (
 --
 
 INSERT INTO `carousel` (`id`, `filename`, `ImageName`) VALUES
+(1, 'spring.jpg', 'Slide1'),
 (2, 'stair.jpg', 'Slide2');
 
 -- --------------------------------------------------------
@@ -216,12 +217,7 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`) VALUES
-(3, 'mark angelo', 'guanez', '34234234', 'bacoor cavite', 1, 0, 10, '2018-07-29', '2018-08-01', '2018-08-11', '17:35:34', '17:35:34', 'Deluxe Room', '7', 'Paypal', 15000, 15000, 0, 'Approved', 'markangeloguanez@gmail.com', 15000, '201800000001'),
-(4, 'Gimson', 'Recilla', '234346345523', 'California', 3, 0, 4, '2018-07-29', '2018-08-01', '2018-08-05', '17:38:01', '17:38:01', 'Fan Room', '3', 'Paypal', 3600, 3600, 0, 'Approved', 'recillagimson@gmail.com', 3600, '201800000002'),
-(5, 'Mga', 'BIBE', '09168585154', 'asdasd', 2, 0, 8, '2018-08-09', '2018-08-10', '2018-08-18', '09:18:08', '09:18:08', 'Fan Room', '1', 'Pay in Bank', 0, 7200, 7200, 'Pending', 'markangeloguanez18548721@gmail.com', 0, '201800000003'),
-(6, 'asd', 'asd', '123123', 'asd', 1, 0, 7, '2018-08-09', '2018-08-23', '2018-08-30', '09:20:17', '09:20:17', 'Fan Room', '1', 'Pay in Bank', 0, 6300, 6300, 'Pending', 'admin@gmail.com', 0, '201800000004'),
-(7, 'Gimson', 'Recilla', '233123', 'Imus cavite', 1, 0, 3, '2018-08-09', '2018-08-15', '2018-08-18', '10:23:29', '10:23:29', 'Deluxe Room', '8', 'Pay in Bank', 0, 4500, 4500, 'Pending', 'admin@gmail.com', 0, '201800000005'),
-(8, 'asd', 'as', '123', 'as', 1, 0, 12, '2018-08-16', '2018-08-17', '2018-08-29', '10:28:33', '10:28:33', 'Fan Room', '2', 'Pay in Bank', 0, 10800, 10800, 'Pending', 'admin@gmail.com', 0, '201800000006');
+(39, 'asd', 'asd', '324234', 'asd', 1, 0, 3, '2018-08-18', '2018-08-19', '2018-08-22', '23:41:45', '23:41:45', 'Deluxe Room', '7', 'Paypal', 4500, 4500, 0, 'Approved', 'asd@gmail.com', 4500, '201800000001');
 
 -- --------------------------------------------------------
 
@@ -260,12 +256,33 @@ CREATE TABLE `reservations_temp` (
 --
 
 INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`) VALUES
-(12, 'mark angelo', 'guanez', '34234234', 'bacoor cavite', 1, 0, 10, '2018-07-29', '2018-08-01', '2018-08-11', '17:35:34', '17:35:34', 'Deluxe Room', '7', 'Paypal', 15000, 15000, 0, 'Approved', 'markangeloguanez@gmail.com', 15000, '201800000001'),
-(13, 'Gimson', 'Recilla', '234346345523', 'California', 3, 0, 4, '2018-07-29', '2018-08-01', '2018-08-05', '17:38:01', '17:38:01', 'Fan Room', '3', 'Paypal', 3600, 3600, 0, 'Approved', 'recillagimson@gmail.com', 3600, '201800000002'),
-(14, 'Mga', 'BIBE', '09168585154', 'asdasd', 2, 0, 8, '2018-08-09', '2018-08-10', '2018-08-18', '09:18:08', '09:18:08', 'Fan Room', '1', 'Pay in Bank', 0, 7200, 7200, 'Pending', 'markangeloguanez18548721@gmail.com', 0, '201800000003'),
-(15, 'asd', 'asd', '123123', 'asd', 1, 0, 7, '2018-08-09', '2018-08-23', '2018-08-30', '09:20:17', '09:20:17', 'Fan Room', '1', 'Pay in Bank', 0, 6300, 6300, 'Pending', 'admin@gmail.com', 0, '201800000004'),
-(16, 'Gimson', 'Recilla', '233123', 'Imus cavite', 1, 0, 3, '2018-08-09', '2018-08-15', '2018-08-18', '10:23:29', '10:23:29', 'Deluxe Room', '8', 'Pay in Bank', 0, 4500, 4500, 'Pending', 'admin@gmail.com', 0, '201800000005'),
-(17, 'asd', 'as', '123', 'as', 1, 0, 12, '2018-08-16', '2018-08-17', '2018-08-29', '10:28:33', '10:28:33', 'Fan Room', '2', 'Pay in Bank', 0, 10800, 10800, 'Pending', 'admin@gmail.com', 0, '201800000006');
+(48, 'asd', 'asd', '324234', 'asd', 1, 0, 3, '2018-08-18', '2018-08-19', '2018-08-22', '23:41:45', '23:41:45', 'Deluxe Room', '7', 'Paypal', 4500, 4500, 0, 'Approved', 'asd@gmail.com', 4500, '201800000001');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservedate`
+--
+
+CREATE TABLE `reservedate` (
+  `RowID` int(11) NOT NULL,
+  `reservationID` varchar(255) NOT NULL,
+  `ReservationDate` date NOT NULL,
+  `Checkin` varchar(255) NOT NULL,
+  `Checkout` date NOT NULL,
+  `Roomno` int(11) NOT NULL,
+  `Roomtype` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reservedate`
+--
+
+INSERT INTO `reservedate` (`RowID`, `reservationID`, `ReservationDate`, `Checkin`, `Checkout`, `Roomno`, `Roomtype`) VALUES
+(33416, '201800000001', '2018-08-18', '2018-08-19', '2018-08-22', 7, 'Deluxe Room'),
+(33417, '201800000001', '2018-08-18', '2018-08-20', '2018-08-22', 7, 'Deluxe Room'),
+(33418, '201800000001', '2018-08-18', '2018-08-21', '2018-08-22', 7, 'Deluxe Room'),
+(33419, '201800000001', '2018-08-18', '2018-08-22', '2018-08-22', 7, 'Deluxe Room');
 
 -- --------------------------------------------------------
 
@@ -285,10 +302,7 @@ CREATE TABLE `roomimage` (
 
 INSERT INTO `roomimage` (`id`, `RoomID`, `filename`) VALUES
 (5, 'A1', 'ac1.jpg'),
-(6, 'D2', 'deluxe1.jpg'),
-(7, 'FF1', ''),
-(8, '22', ''),
-(9, '324', '');
+(6, 'D2', 'deluxe1.jpg');
 
 -- --------------------------------------------------------
 
@@ -314,11 +328,11 @@ CREATE TABLE `roominformation` (
 INSERT INTO `roominformation` (`id`, `RoomID`, `RoomNo`, `RoomName`, `RoomType`, `RoomDescription`, `RoomPrice`, `RoomAvailability`) VALUES
 (19, 'A1', 1, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Available'),
 (20, 'A1', 2, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Available'),
-(21, 'A1', 3, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Not Available'),
+(21, 'A1', 3, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Available'),
 (22, 'A1', 4, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Available'),
 (23, 'A1', 5, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Available'),
 (24, 'A1', 6, 'Fan Room', 'Fan Room', 'FAAAAAAAAAAAN ROOOOOOOOOOOOOM', 900, 'Available'),
-(25, 'D2', 7, 'Deluxe Room', 'Deluxe Room', 'Deluxe ROOOOOOOOOOOOOM', 1500, 'Not Available'),
+(25, 'D2', 7, 'Deluxe Room', 'Deluxe Room', 'Deluxe ROOOOOOOOOOOOOM', 1500, 'Available'),
 (26, 'D2', 8, 'Deluxe Room', 'Deluxe Room', 'This room is deluxe ROOOOOOOOOOOOOM', 1500, 'Available'),
 (27, 'D2', 9, 'Deluxe Room', 'Deluxe Room', 'deluxe room', 1500, 'Available'),
 (28, 'D2', 10, 'Deluxe Room', 'Deluxe Room', 'room is deluxr', 1500, 'Available'),
@@ -420,6 +434,12 @@ ALTER TABLE `reservations_temp`
   ADD PRIMARY KEY (`RowID`);
 
 --
+-- Indexes for table `reservedate`
+--
+ALTER TABLE `reservedate`
+  ADD PRIMARY KEY (`RowID`);
+
+--
 -- Indexes for table `roomimage`
 --
 ALTER TABLE `roomimage`
@@ -493,19 +513,25 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `reservedate`
+--
+ALTER TABLE `reservedate`
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33420;
 
 --
 -- AUTO_INCREMENT for table `roomimage`
 --
 ALTER TABLE `roomimage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `roominformation`

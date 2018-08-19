@@ -131,7 +131,6 @@ include "utils.php";
 								$date2=date_create($NEWCOUT);
 								$DAYS=date_diff($date1,$date2);
 								$DAYS = $DAYS->format("%a");
-								//AAYUSIN PA YUNG DAYS SA IN AND OUT
 
 								wr("<input type='hidden' value='$CIN'>");
 								wr("<input type='hidden' value='$COUT'>");
@@ -150,16 +149,17 @@ include "utils.php";
 								DBOpen();
 
 								$count = DBGetData(" SELECT count(*) as count from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' ");
-							
+
 								DBClose();
-								//dump($count[0][0]);
+								
 
 								wr('<br>');
 								wr("<h3 class='hometext'>Select Available Room</h3>");
 								wr("<label style='font-size: 20px; color: orange;'>".$count[0][0]." Available Room(s)</label>");
 								DBOpen();
-								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
-								//dump($count);
+								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservedate where checkin between '$NEWCIN' AND '$NEWCOUT' or Checkout between '$NEWCIN' AND '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
+
+								//ORIGINAL.. $rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' AND '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
 
 
 								if(empty($rs))
@@ -170,58 +170,56 @@ include "utils.php";
 								else
 								{
 									wr(" <table id = 'tblSelectRoom' name = 'tblSelectRoom' class = 'table' style = 'font-size: 13px;'> ");
-								wr(" <thead style='color: orange; border: none;'> ");
-								wr("");
-								wr(" <tr> ");
-								wr(" <th> ROOM PIC </th> ");
-								wr(" <th> ROOM ID </th> ");
-								wr(" <th> ROOM TYPE </th> ");
-								wr(" <th> ROOM DESCRIPTION </th> ");
-								wr(" <th> PRICE </th> ");
-								wr(" <th> <center>ACTION</center> </th> ");			
-								wr(" </tr> ");
-								wr(" </thead> ");
-								wr(" <tbody style='color: orange; font-size: 20px;'> ");
-
-
-
-								foreach($rs as $rs)
-								{
-
-									$array1 = array(
-										'CIN' => $CIN,
-										'COUT' => $COUT,
-										'ADULT' => $ADULT,
-										'CHILD' => $CHILD,
-										'RTYPE' => $RTYPE,
-										'IMAGE' => $rs[0],
-										'DESCRIPTION'=> $rs[1],
-										'AMOUNT' => $rs[3],
-										'AVAILABILITY' => $rs[4],
-										'ROOMNO' => $rs[7],
-										'DAYS'	=>	$DAYS,
-										'FNAME'	=>	$FNAME,
-										'LNAME'	=>	$LNAME,
-										'ADDRESS'	=>	$ADDRESS,
-										'ZIPCODE'	=>	$ZIPCODE,
-										'CITY'	=>	$CITY,
-										'PHONE'	=>	$PHONE,
-										'EMAIL'	=>	$EMAIL,
-									);
-
-
-
+									wr(" <thead style='color: orange; border: none;'> ");
+									wr("");
 									wr(" <tr> ");
-									wr(" <td><img src='../HotelReservation/Function/RoomImages/$rs[0]' style='width: 50%; height:190px;'></td> ");
-									wr(" <td>$rs[7]</td> ");
-									wr(" <td>$rs[1]</td> ");
-									wr(" <td>$rs[2]</td> ");
-									wr(" <td>₱ $rs[3]</td> ");
-									wr(" <td style='text-align:center;'><a href ='reservationdetails.php?Data=".json_encode($array1)."'>BOOK NOW!!</a></td> ");						
+									wr(" <th> ROOM PIC </th> ");
+									wr(" <th> ROOM ID </th> ");
+									wr(" <th> ROOM TYPE </th> ");
+									wr(" <th> ROOM DESCRIPTION </th> ");
+									wr(" <th> PRICE </th> ");
+									wr(" <th> <center>ACTION</center> </th> ");			
 									wr(" </tr> ");
-								}
-								wr(" </tbody> ");
-								wr(" </table> ");
+									wr(" </thead> ");
+									wr(" <tbody style='color: orange; font-size: 20px;'> ");
+
+
+
+									foreach($rs as $rs)
+									{
+
+										$array1 = array(
+											'CIN' => $CIN,
+											'COUT' => $COUT,
+											'ADULT' => $ADULT,
+											'CHILD' => $CHILD,
+											'RTYPE' => $RTYPE,
+											'IMAGE' => $rs[0],
+											'DESCRIPTION'=> $rs[1],
+											'AMOUNT' => $rs[3],
+											'AVAILABILITY' => $rs[4],
+											'ROOMNO' => $rs[7],
+											'DAYS'	=>	$DAYS,
+											'FNAME'	=>	$FNAME,
+											'LNAME'	=>	$LNAME,
+											'ADDRESS'	=>	$ADDRESS,
+											'ZIPCODE'	=>	$ZIPCODE,
+											'CITY'	=>	$CITY,
+											'PHONE'	=>	$PHONE,
+											'EMAIL'	=>	$EMAIL,
+										);
+
+										wr(" <tr> ");
+										wr(" <td><img src='../HotelReservation/Function/RoomImages/$rs[0]' style='width: 50%; height:190px;'></td> ");
+										wr(" <td>$rs[7]</td> ");
+										wr(" <td>$rs[1]</td> ");
+										wr(" <td>$rs[2]</td> ");
+										wr(" <td>₱ $rs[3]</td> ");
+										wr(" <td style='text-align:center;'><a href ='reservationdetails.php?Data=".json_encode($array1)."'>BOOK NOW!!</a></td> ");						
+										wr(" </tr> ");
+									}
+									wr(" </tbody> ");
+									wr(" </table> ");
 								}
 								DBClose();
 								wr('<br>');
