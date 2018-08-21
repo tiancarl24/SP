@@ -119,8 +119,16 @@ include "utils.php";
 						<div class="col-lg-4">
 							<label>Floor: </label>
 							<select id="Floor" name="Floor" class="form-control">
-								<option value="First">First Floor</option>
-								<option value="Second">Second Floor</option>
+								<?php
+								DBOpen();
+								$fl = DBGetData(" SELECT * FROM floors GROUP BY floors ");
+								foreach($fl as $fl)
+								{
+									wr("<option value='$fl[1]'>$fl[1]</option>");
+								}
+								DBClose();
+								?>
+								
 							</select>
 						</div>
 					</div>

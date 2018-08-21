@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2018 at 04:29 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Aug 21, 2018 at 11:16 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -139,8 +139,8 @@ CREATE TABLE `floors` (
 --
 
 INSERT INTO `floors` (`id`, `floors`) VALUES
-(1, 'Second Floor'),
-(2, 'Third Floor');
+(1, 'Second'),
+(2, 'Third');
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ INSERT INTO `gallery` (`id`, `ImageName`, `filename`, `Floor`) VALUES
 (21, 'Hallway', 'hallway.jpg', 'First'),
 (22, 'Fan Room', 'ac1.jpg', 'First'),
 (23, 'Hall', 'hall.jpg', 'Second'),
-(24, 'Deluxe Room', 'deluxe1.jpg', 'Second');
+(24, 'Deluxe Room', 'deluxe1.jpg', 'Third');
 
 -- --------------------------------------------------------
 

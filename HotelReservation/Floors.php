@@ -88,8 +88,6 @@ include "utils.php";
 				}
 				DBClose();
 				wrBtn("button","btnNewItem","Add New Floor","col-sm-2 Right","bluegreen");
-				wrBtn("button","btnUpdateUser","Update User","col-sm-2 Right MR","orange");
-				wrBtn("button","btnDiscardUser","Discard User","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
@@ -110,7 +108,7 @@ include "utils.php";
 				<div class="modal-body">
 					<div class="row">
 						<?php
-						wrInput('var','txtFloor','Floor label (Ex: Second Floor)','col-lg-6');
+						wrInput('var','txtFloor','Floor label (Ex: Second)','col-lg-6');
 						?>
 					</div>
 				</div>
