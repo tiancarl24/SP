@@ -88,6 +88,7 @@ include "utils.php";
 				}
 				DBClose();
 				wrBtn("button","btnNewItem","Add New Floor","col-sm-2 Right","bluegreen");
+				wrBtn("button","btnDeleteItem","Delete Floor","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
@@ -123,57 +124,11 @@ include "utils.php";
 		</div>
 	</div>
 </form>
-
-<!--Update Item Modal-->
-<form method="POST" action="Function/Function-UpdateAccounts.php" enctype="multipart/form-data">
-	<div class="modal fade" id="UpdateAccountModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!--Modal header-->
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update User</h4>
-				</div>
-				<!--Modal body-->
-				<div class="modal-body">
-					<div class="row">
-						<?php
-						wrInput('text','txtRowID','RowID','col-lg-6');
-						wrInput('text','txtUpdateUsername','Username','col-lg-6');
-						?>
-					</div>
-					<br>
-					<div class="row">
-						<?php
-						wrInput('text','txtUpdateName','Fullname','col-lg-6');
-						wrInput('text','txtUpdateEmail','Email','col-lg-6');
-						?>
-					</div>
-					<br>	
-					<div class="row">
-						<?php
-						wrInput('text','txtUpdateAddress','Address','col-lg-6');
-						wrInput('date','txtUpdateBirthdate','Birthdate','col-lg-6');
-						?>
-					</div>
-				</div>
-				<br>
-				<br>
-				<!--Modal footer-->
-				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<input type="submit" id="btnYes" name="btnYes" class="btn btn-primary" value="Yes">
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
 <!-- Discard MODAL -->
-<form method="POST" action="Function/Function-DeleteUser.php">
+<form method="POST" action="Function/Function-DeleteFloor.php">
 	<div class="modal fade" id="DiscardItemModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
@@ -197,42 +152,6 @@ include "utils.php";
 	</div>
 </form>
 <!-- ------------ -->
-<script type="text/javascript">
-	var btnDiscardItem = document.getElementById('btnDiscardItem');
-	btnDiscardItem.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Please select item to Discard!',
-				container: 'floating',
-				timer: 1000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetIDDiscardItem.php",
-				cache: false,
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-				success: function(response)
-				{
-					var result = JSON.parse(response);
-					$('#DiscardItemModal').modal('show');
-					document.getElementById('GetIDDiscardItem').value = result[0][0];
-				},
-			});
-		}
-	}
-</script>
 <script type="text/javascript">
 	var ctr;
 	var ctr_ID;
@@ -284,11 +203,10 @@ include "utils.php";
 		});
 	}
 </script>
-<!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
+
 <script type="text/javascript">
-	
-	var btnUpdateUser = document.getElementById('btnUpdateUser');
-	btnUpdateUser.onclick = function()
+	var btnDeleteItem = document.getElementById('btnDeleteItem');
+	btnDeleteItem.onclick = function()
 	{
 		if(ctr_ID == null)
 		{
@@ -296,7 +214,7 @@ include "utils.php";
 			({
 				type: 'danger',
 				title: 'Invalid Action',
-				message: 'Select User!',
+				message: 'Select Floor!',
 				container: 'floating',
 				timer: 3000,
 			});
@@ -306,50 +224,7 @@ include "utils.php";
 			$.ajax(
 			{
 				type: "POST",
-				url: "Function/GetUpdateUser.php",
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-				success: function(response)
-				{
-					var res = JSON.parse(response);
-					$('#UpdateAccountModal').modal('show');
-					document.getElementById("txtRowID").value = res[0][0];
-					document.getElementById('txtUpdateUsername').value = res[0][1];
-					document.getElementById('txtUpdateName').value = res[0][2];
-					document.getElementById('txtUpdateEmail').value = res[0][3];
-					document.getElementById('txtUpdateAddress').value = res[0][4];
-					document.getElementById('txtUpdateBirthdate').value = res[0][5];
-				}
-			});
-		}
-	}
-</script>
-
-
-<script type="text/javascript">
-	
-	var btnDiscardUser = document.getElementById('btnDiscardUser');
-	btnDiscardUser.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Select User!',
-				container: 'floating',
-				timer: 3000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetDeleteUser.php",
+				url: "Function/GetDeleteFloor.php",
 				data:
 				{
 					ctr_ID: ctr_ID

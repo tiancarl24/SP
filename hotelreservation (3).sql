@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2018 at 11:16 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Aug 22, 2018 at 11:30 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -112,8 +112,8 @@ INSERT INTO `carousel` (`id`, `filename`, `ImageName`) VALUES
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
   `Address` varchar(255) NOT NULL,
-  `TelNo` int(15) NOT NULL,
-  `MobileNo` int(25) NOT NULL
+  `TelNo` varchar(255) NOT NULL,
+  `MobileNo` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -121,7 +121,7 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `Address`, `TelNo`, `MobileNo`) VALUES
-(1, 'Sampaloc, Dasmarinas, Cavite 2', 7811542, 123123);
+(1, 'Sampaloc, Dasmarinas, Cavite 2', '7811542', '123123');
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,8 @@ CREATE TABLE `floors` (
 
 INSERT INTO `floors` (`id`, `floors`) VALUES
 (1, 'Second'),
-(2, 'Third');
+(2, 'Third'),
+(4, 'First');
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,8 @@ INSERT INTO `gallery` (`id`, `ImageName`, `filename`, `Floor`) VALUES
 (21, 'Hallway', 'hallway.jpg', 'First'),
 (22, 'Fan Room', 'ac1.jpg', 'First'),
 (23, 'Hall', 'hall.jpg', 'Second'),
-(24, 'Deluxe Room', 'deluxe1.jpg', 'Third');
+(24, 'Deluxe Room', 'deluxe1.jpg', 'Third'),
+(27, 'testtest', 'beat.jpg', 'Second');
 
 -- --------------------------------------------------------
 
@@ -302,7 +304,9 @@ CREATE TABLE `roomimage` (
 
 INSERT INTO `roomimage` (`id`, `RoomID`, `filename`) VALUES
 (5, 'A1', 'ac1.jpg'),
-(6, 'D2', 'deluxe1.jpg');
+(6, 'D2', 'deluxe1.jpg'),
+(7, 'SX2', 'beat.jpg'),
+(8, 'SX2', 'beat.jpg');
 
 -- --------------------------------------------------------
 
@@ -337,7 +341,9 @@ INSERT INTO `roominformation` (`id`, `RoomID`, `RoomNo`, `RoomName`, `RoomType`,
 (27, 'D2', 9, 'Deluxe Room', 'Deluxe Room', 'deluxe room', 1500, 'Available'),
 (28, 'D2', 10, 'Deluxe Room', 'Deluxe Room', 'room is deluxr', 1500, 'Available'),
 (29, 'D2', 11, 'Deluxe Room', 'Deluxe Room', 'deluzx ', 1500, 'Available'),
-(30, 'D2', 12, 'Deluxe Room', 'Deluxe Room', 'sddasd', 1500, 'Available');
+(30, 'D2', 12, 'Deluxe Room', 'Deluxe Room', 'sddasd', 1500, 'Available'),
+(31, 'SX2', 501, 'Beat', 'Beat', 'asd sfdf qew', 201580, 'Available'),
+(32, 'SX2', 502, 'Beat', 'Beat', 'asdasdasd asd ', 635165165, 'Available');
 
 -- --------------------------------------------------------
 
@@ -495,13 +501,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -531,13 +537,13 @@ ALTER TABLE `reservedate`
 -- AUTO_INCREMENT for table `roomimage`
 --
 ALTER TABLE `roomimage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roominformation`
 --
 ALTER TABLE `roominformation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`

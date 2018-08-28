@@ -99,6 +99,7 @@ include "utils.php";
 					wr(" </tbody> ");
 					wr(" </table> ");
 				}
+				wrBtn("button","bntView","View","col-sm-2 Right","blue");
 				DBClose();
 				?>
 			</div>
@@ -107,61 +108,45 @@ include "utils.php";
 </div>
 </div>
 <!-- ------------ -->
-<!-- Update Room MODAL -->
-<form method="POST" action="Function/Function-ApproveReservation.php">
-	<div class="modal fade" id="ApproveResModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<form method="POST" action="Function/Function-DisapproveReservation.php">
+	<div class="modal fade" id="ViewResModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Approve Reservation</h4>
+					<h4 class="modal-title">View Reservation</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
-					<center><h1>Are you sure you want to approved this reservation? </h1></center>
-					<label style="font-size: 15px; color: black;"> Please enter deposit amount:</label>
 					<div class="row">
-						<div class="col-lg-4">
-							<input type="hidden" id="lblAmount" name="lblAmount">
-							<input type="number" class="form-control" id="txtDP" name="txtDP" required="">
-						</div>
-					</div>
-					<div class="row">`
 						<?php
-						wrInput('hidden','lblApproved','','col-lg-4');
+						wrInputRO('text','lblIDView','Room ID','col-lg-4');
+						wrInputRO('text','txtReservationDate','Reservation Date','col-lg-4 Right');
 						?>
 					</div>
-				</div>
-				<br>
-				<br>
-				<!--Modal footer-->
-				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<button class="btn btn-primary">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-
-<form method="POST" action="Function/Function-DisapproveReservation.php">
-	<div class="modal fade" id="DisapproveResModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!--Modal header-->
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Disapprove Reservation</h4>
-				</div>
-				<!--Modal body-->
-				<div class="modal-body">
-					<center><h1>Are you sure you want to disapprove this reservation? </h1></center>
+					<br>
 					<div class="row">
 						<?php
-						wrInput('text','lblDispproved','Room ID','col-lg-4');
+						wrInputRO('text','txtFullname','Fullname','col-lg-4');
+						wrInputRO('text','txtContactNo','Contact No.','col-lg-4');
+						wrInputRO('text','txtAddress','Address','col-lg-4');
+						?>
+					</div>
+					<div class="row">
+						<?php
+						wrInputRO('text','txtAdult','Adult','col-lg-2');
+						wrInputRO('text','txtChild','Child','col-lg-2');
+						wrInputRO('text','txtDays','Days','col-lg-2');
+						wrInputRO('text','txtCheckIn','Check In','col-lg-3');
+						wrInputRO('text','txtCheckOut','CheckOut','col-lg-3');
+						?>
+					</div>
+					<div class="row">
+						<?php
+						wrInputRO('text','txtTotalAmount','Total Amount','col-lg-4 Right');
+						wrInputRO('text','txtDownpayment','Downpayment','col-lg-4 Right');
 						?>
 					</div>
 				</div>
@@ -299,5 +284,51 @@ include "utils.php";
 		}
 	}
 </script>
+<script type="text/javascript">
+	var bntView = document.getElementById('bntView');
+	bntView.onclick = function()
+	{
+		if(ctr_ID == null)
+		{
+			$.niftyNoty
+			({
+				type: 'danger',
+				title: 'Invalid Action',
+				message: 'Please Select Reservation Details!',
+				container: 'floating',
+				timer: 1000,
+			});
+		}
+		else
+		{
+			$.ajax(
+			{
+				type: "POST",
+				url: "Function/GetIDViewRes.php",
+				data:
+				{
+					ctr_ID: ctr_ID
+				},
 
+				success: function(response)
+				{
+					var res = JSON.parse(response);
+					$('#ViewResModal').modal('show');
+					document.getElementById('lblIDView').value = res[0][0];
+					document.getElementById('txtReservationDate').value = res[0][8];
+					document.getElementById('txtFullname').value = res[0][1] + ' ' + res[0][2];
+					document.getElementById('txtContactNo').value = res[0][3];
+					document.getElementById('txtAddress').value = res[0][4];
+					document.getElementById('txtAdult').value = res[0][5];
+					document.getElementById('txtChild').value = res[0][6];
+					document.getElementById('txtDays').value = res[0][7];
+					document.getElementById('txtCheckIn').value = res[0][9];
+					document.getElementById('txtCheckOut').value = res[0][10];
+					document.getElementById('txtTotalAmount').value = res[0][17];
+					document.getElementById('txtDownpayment').value = res[0][16];
+				}
+			});
+		}
+	}
+</script>
 <?php include "incFoot.php" ?>

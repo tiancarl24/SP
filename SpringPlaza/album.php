@@ -74,7 +74,7 @@
                             wr("</div>");
                             wr("</div>");
                         }
-                        wr("</div>");    
+                        wr("</div>");
                     }
                     DBClose();
                     ?>

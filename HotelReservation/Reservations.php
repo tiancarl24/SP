@@ -187,7 +187,7 @@ include "utils.php";
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Disapprove Reservation</h4>
+					<h4 class="modal-title">View Reservation</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
