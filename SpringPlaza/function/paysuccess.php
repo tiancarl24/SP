@@ -63,44 +63,76 @@ use Dompdf\Dompdf;
 $html =
 '<html>'.
 '<body>'.
-'<table name="demo" id="demo" class="table table-striped table-bordered" cellspacing="0" width="100%">'.
-'<thead>'.
-'<tr style="">'.
-'<th>RESERVATION ID</th>'.
-'<th>CHECK IN</th>'.
-'<th>CHECK OUT</th>'. 
-'<th>ROOM NO</th>'.
-'<th>ROOM TYPE</th>'. 
-'<th>ADULT</th>'.
-'<th>CHILD</th>'. 
-'<th>DAYS</th>'.
-'<th>PAID</th>'.
-'<th>BALANCE</th>'.
-'<th>TOTAL FEE</th>'.    
-'</tr>'.
-'</thead>'.
-'<tbody>'.
-'<!--INSERT DATA HERE-->'.
-'<tr>'.
-'<td>'.$TempData[0][22].'</td>'.
-'<td>'.$TempData[0][9].'</td>'.
-'<td>'.$TempData[0][10].'</td>'.
-'<td>'.$TempData[0][14].'</td>'.
-'<td>'.$TempData[0][13].'</td>'.
-'<td>'.$TempData[0][5].'</td>'.
-'<td>'.$TempData[0][6].'</td>'.
-'<td>'.$TempData[0][7].'</td>'.
-'<td>'.number_format($TempData[0][21]).'</td>'.
-'<td>'.number_format($TempData[0][18]).'</td>'.
-'<td>'.number_format($TempData[0][17]).'</td>'. 
-'</tr>'.
-'</tbody>'.
-'</table>'.
+'<img src="SpringPlaza/img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block; width: 20%;">'.
 '<br>'.
+'<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
+'<p>Dear Guest,</p>'.
+'<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
+'<h3>Reservation Details</h3>'.
+'<p>Reservation No.:'.$TempData[0][22].'</p>'.
+'<p>Check-in Date:'.$TempData[0][9].'</p>'.
+'<p>Check-out Date:'.$TempData[0][10].'</p>'.
+'<p>Room Type:'.$TempData[0][13].'</p>'.
+'<p>Adult/s:'.$TempData[0][5].'</p>'.
+'<p>Child/s:'.$TempData[0][6].'</p>'.
+'<p>Day/s:'.$TempData[0][7].'</p>'.
+'<p>Paid:'.number_format($TempData[0][16]).'</p>'.
+'<p>Balance:'.number_format($TempData[0][18]).'</p>'.
+'<p>Total Fee:'number_format($TempData[0][17])'</p>'.
+'<h3>Guest Details:</h3>'.
+'<p>Full Name:'.$TempData[0][01] + $TempData[0][2].'</p>'.
+'<p>Contact No.:'.$TempData[0][3].'</p>'.
+'<p>Email Address:'.$TempData[0][20].'</p>'.
+'<hr>'.
+'<h3>Cancellation Policy</h3>'.
+'<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.
 '<br>'.
-'<center>REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>'.
+'<h4 style="text-align: right;">Thanks and Regards,</h4>'.
+'<p style="text-align: right;"><b>Mr. Sherwin Go</b></p>'.
+'<p style="text-align: right; font-size: 15px;">General Manager/Reservation Executive</p>'.
+'</div>'.
 '</body>'.
 '</html>';
+
+// ----
+
+// '<table name="demo" id="demo" class="table table-striped table-bordered" cellspacing="0" width="100%">'.
+// '<thead>'.
+// '<tr style="">'.
+// '<th>RESERVATION ID</th>'.
+// '<th>CHECK IN</th>'.
+// '<th>CHECK OUT</th>'. 
+// '<th>ROOM NO</th>'.
+// '<th>ROOM TYPE</th>'. 
+// '<th>ADULT</th>'.
+// '<th>CHILD</th>'. 
+// '<th>DAYS</th>'.
+// '<th>PAID</th>'.
+// '<th>BALANCE</th>'.
+// '<th>TOTAL FEE</th>'.    
+// '</tr>'.
+// '</thead>'.
+// '<tbody>'.
+// '<!--INSERT DATA HERE-->'.
+// '<tr>'.
+// '<td>'.$TempData[0][22].'</td>'.
+// '<td>'.$TempData[0][9].'</td>'.
+// '<td>'.$TempData[0][10].'</td>'.
+// '<td>'.$TempData[0][14].'</td>'.
+// '<td>'.$TempData[0][13].'</td>'.
+// '<td>'.$TempData[0][5].'</td>'.
+// '<td>'.$TempData[0][6].'</td>'.
+// '<td>'.$TempData[0][7].'</td>'.
+// '<td>'.number_format($TempData[0][21]).'</td>'.
+// '<td>'.number_format($TempData[0][18]).'</td>'.
+// '<td>'.number_format($TempData[0][17]).'</td>'. 
+// '</tr>'.
+// '</tbody>'.
+// '</table>'.
+// '<br>'.
+// '<br>'.
+// '<center>REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>'.
+
 //instantiate and use the dompdf class
 $dompdf = new Dompdf();
 $dompdf->loadHtml($html);

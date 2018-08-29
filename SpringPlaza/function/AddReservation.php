@@ -109,50 +109,37 @@ use Dompdf\Dompdf;
 $html =
 '<html>'.
 '<body>'.
-'Reservation Details'.
-'<table name="demo" id="demo" class="table table-striped table-bordered" cellspacing="0" width="100%">'.
-'<thead>'.
-'<tr style="">'.
-'<th>RESERVATION ID</th>'.
-'<th>CHECK IN</th>'.
-'<th>CHECK OUT</th>'. 
-'<th>ROOM NO</th>'.
-'<th>ROOM TYPE</th>'. 
-'<th>ADULT</th>'.
-'<th>CHILD</th>'. 
-'<th>DAYS</th>'.
-'<th>TOTAL FEE</th>'.    
-'</tr>'.
-'</thead>'.
-'<tbody>'.
-'<!--INSERT DATA HERE-->'.
-'<tr>'.
-'<td>'.$AppID.'</td>'.
-'<td>'.$NEWCIN.'</td>'.
-'<td>'.$NEWCOUT.'</td>'.
-'<td>'.$ROOMNO.'</td>'.
-'<td>'.$RTYPE.'</td>'.
-'<td>'.$ADULT.'</td>'.
-'<td>'.$CHILD.'</td>'.
-'<td>'.$DAYS.'</td>'.
-'<td>'.number_format($TOTAL).'</td>'. 
-'</tr>'.
-'</tbody>'.
-'</table>'.
+'<img src="../img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block;">'.
 '<br>'.
 '<br>'.
-'BANK DETAILS'.
 '<br>'.
 '<br>'.
-'BANK: '.$bankinfo[0][1].''.
+'<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
+'<p>Dear Guest,</p>'.
+'<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
+'<h3>Reservation Details</h3>'.
+'<p>Reservation No.:'.$AppID.'</p>'.
+'<p>Check-in Date:'.$CIN.'</p>'.
+'<p>Check-out Date:'.$COUT.'</p>'.
+'<p>Room Type:'.$RTYPE.'</p>'.
+'<p>Adult/s:'.$ADULT.'</p>'.
+'<p>Child/s:'.$CHILD.'</p>'.
+'<p>Day/s:'.$DAYS.'</p>'.
+'<p>Paid:'.number_format($TempData[0][16]).'</p>'.
+'<p>Balance:'.number_format($TempData[0][18]).'</p>'.
+'<p>Total Fee:'.number_format($TOTAL).'</p>'.
+'<h3>Guest Details:</h3>'.
+'<p>Full Name.:'.$FNAME . $LNAME.'</p>'.
+'<p>Contact No.:'.$PHONE.'</p>'.
+'<p>Email Address:'.$EMAIL.'</p>'.
+'<hr>'.
+'<h3>Cancellation Policy</h3>'.
+'<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.
 '<br>'.
-'ACCOUNT NAME: '.$bankinfo[0][2].''.
-'<br>'.
-'ACCOUNT NUMBER: '.$bankinfo[0][3].''.
-'<br>'.
-'<br>'.
-'<center>REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>'.
-'<center>Your reservation is pending.</center>'.
+'<h4 style="text-align: right;">Thanks and Regards,</h4>'.
+'<p style="text-align: right;"><b>Mr. Sherwin Go</b></p>'.
+'<p style="text-align: right; font-size: 15px;">General Manager/Reservation Executive</p>'.
+'</div>'.
 '</body>'.
 '</html>';
 //instantiate and use the dompdf class
