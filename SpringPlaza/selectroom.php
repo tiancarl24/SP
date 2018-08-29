@@ -148,7 +148,7 @@ include "utils.php";
 
 								DBOpen();
 
-								$count = DBGetData(" SELECT count(*) as count from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservedate where checkin between '$NEWCIN' AND '$NEWCOUT' or Checkout between '$NEWCIN' and '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' ");
+								$count = DBGetData(" SELECT count(*) as count from roominformation where roomno NOT IN (SELECT roomno from reservedate where checkin between '$NEWCIN' AND '$NEWCOUT' or Checkout between '$NEWCIN' and '$NEWCOUT') AND roomtype LIKE '%$RTYPE%' and roomavailability = 'Available' ");
 
 								DBClose();
 								

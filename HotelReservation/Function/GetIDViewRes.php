@@ -6,7 +6,7 @@ DBOpen();
 
 $ROWID = $_POST['ctr_ID'];
 
-$rs = DBGetData(" SELECT * from reservations WHERE rowid = " .SQLs($ROWID));
+$rs = DBGetData(" SELECT * from reservations WHERE reservationid = " .SQLs($ROWID));
 
 $rs = json_encode($rs);
 

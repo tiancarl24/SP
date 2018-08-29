@@ -21,6 +21,29 @@ include "utils.php";
 				<br>
 				FROM:<input type="date" id="dtFrom" name="dtFrom">
 				TO:<input type="date" id="dtTo" name="dtTo">
+				FILTER:
+				<select id="cboFilter" name="cboFilter">
+					<option></option>
+					<option>Daily</option>
+					<option>Weekly</option>
+					<option>Monthly</option>
+					<option>Yearly</option>
+				</select>
+				<select id="cboMonth" name="cboMonth" style="display: none;">
+					<option></option>
+					<option value="01">January</option>
+					<option value="02">February</option>
+					<option value="03">March</option>
+					<option value="04">April</option>
+					<option value="05">May</option>
+					<option value="06">June</option>
+					<option value="07">July</option>
+					<option value="08">August</option>
+					<option value="09">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select>
 				STATUS:
 				<select id="cboStatus" name="cboStatus">
 					<option></option>
@@ -138,6 +161,72 @@ include "utils.php";
 				}
 			});
 		}
+	}
+</script>
+
+<script type="text/javascript">
+	
+	var cboFilter = document.getElementById('cboFilter');
+	cboFilter.onchange = function()
+	{
+		if(cboFilter.value == 'Daily')
+		{
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+
+			if(dd<10) 
+			{
+				dd = '0'+dd
+			} 
+
+			if(mm<10) 
+			{
+				mm = '0'+mm
+			} 
+
+			today = yyyy + '-' + mm + '-' + dd;
+			document.getElementById('dtFrom').value = today;
+			document.getElementById('dtTo').value = today;
+		}
+		else if(cboFilter.value == 'Weekly')
+		{
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+
+			if(dd<10) 
+			{
+				dd = '0'+7+ dd
+			} 
+
+			if(mm<10) 
+			{
+				mm = '0'+mm
+			} 
+
+			today = yyyy + '-' + mm + '-' + dd;
+			document.getElementById('dtFrom').value = today;
+			document.getElementById('dtTo').value = today;
+		}
+		else if(cboFilter.value == 'Monthly')
+		{
+			cboMonth.style.display = 'block';
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	
+	var cboMonth = document.getElementById('cboMonth');
+	cboMonth.onchange = function()
+	{
+		var date = new Date();
+		var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+		var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+		alert(date);
 	}
 </script>
 

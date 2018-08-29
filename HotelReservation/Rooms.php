@@ -45,7 +45,7 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from roominformation GROUP BY roomid ");
+				$rs = DBGetData("SELECT * from roominformation where roomavailability = 'available' GROUP BY roomid ");
 				if(empty($rs))
 				{
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");

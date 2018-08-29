@@ -6,7 +6,8 @@ $RNo = json_decode($_GET['Data'],true);
 
 if(intval($RNo['ADULT']) == 3)
 {
-	$TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']) + 650;	
+	$DAY = intval($RNo['DAYS']) * 650;
+	$TOTAL = intval($RNo['AMOUNT'] * intval($RNo['DAYS']) + $DAY);	
 }
 else
 {

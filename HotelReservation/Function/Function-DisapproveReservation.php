@@ -5,8 +5,11 @@ include "../incSecure.php";
 DBOpen();
 
 $ResID = $_POST['lblDispproved'];
+$RESID = $_POST['lblResID'];
 
-$rs = DBExecute(" UPDATE reservations SET Status = 'Disapproved', CheckinDate = '', CheckoutDate = '', RoomNo = '' WHERE rowid = " .SQLs($ResID));
+$rs = DBExecute(" UPDATE reservations SET Status = 'Disapproved' WHERE rowid = " .SQLs($ResID));
+
+$delete = DBExecute(" DELETE FROM reservedate  WHERE reservationid = '$RESID' ");
 
 DbClose();
 

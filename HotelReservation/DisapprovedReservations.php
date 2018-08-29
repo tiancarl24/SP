@@ -88,7 +88,7 @@ include "utils.php";
 					foreach($rs as $rs)
 					{
 						wr(" <tr> ");
-						wr(" <td style='text-align: center';>$rs[0]</td> ");
+						wr(" <td style='text-align: center';>$rs[22]</td> ");
 						wr(" <td style='text-align: center';>$rs[14]</td> ");
 						wr(" <td style='text-align: center';>$rs[13]</td> ");
 						wr(" <td style='text-align: center';>$rs[1] $rs[2]</td> ");

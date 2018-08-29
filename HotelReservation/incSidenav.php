@@ -35,46 +35,37 @@
 
             <!--Menu list item-->
             <li class="">
-              <a href="Rooms.php">
-                <i class="fa fa-users"></i>
-                <span class="menu-title">
-                  <strong>Rooms</strong>
-                </span>
-              </a>
-            </li>  
-            <li class="">
-              <a href="Gallery.php">
-                <i class="fa fa-users"></i>
-                <span class="menu-title">
-                  <strong>Gallery</strong>
-                </span>
-              </a>
-            </li>  
-            <li class="">
-              <a href="Carousel.php">
-                <i class="fa fa-users"></i>
-                <span class="menu-title">
-                  <strong>Carousel</strong>
-                </span>
-              </a>
-            </li> 
-            <li class="">
-              <a href="Amenities.php">
-                <i class="fa fa-users"></i>
-                <span class="menu-title">
-                  <strong>Amenities</strong>
-                </span>
-              </a>
-            </li>
-            <li class="">
-              <a href="#">
-                <i class="fa fa-users"></i>
-                <span class="menu-title">
-                  <strong>Hotel Information</strong>
-                </span>
+              <a href="">
                 <i class="fa fa-sort-desc"></i>
+                <span class="menu-title">
+                  <strong>Content Management</strong>
+                </span>
               </a>
               <ul>
+                <li class="">
+                  <a href="Gallery.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Gallery</strong>
+                    </span>
+                  </a>
+                </li> 
+                <li class="">
+                  <a href="Carousel.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Carousel</strong>
+                    </span>
+                  </a>
+                </li> 
+                <li class="">
+                  <a href="Amenities.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Amenities</strong>
+                    </span>
+                  </a>
+                </li>
                 <li class="">
                   <a href="About.php">
                     <i class="fa fa-users"></i>
@@ -93,6 +84,15 @@
                 </li>
               </ul>
             </li>  
+
+            <li class="">
+              <a href="Rooms.php">
+                <i class="fa fa-users"></i>
+                <span class="menu-title">
+                  <strong>Rooms</strong>
+                </span>
+              </a>
+            </li> 
             <li class="">
               <a href="Floors.php">
                 <i class="fa fa-users"></i>

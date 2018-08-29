@@ -77,7 +77,7 @@ include "utils.php";
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 					wr(" <thead> ");
 					wr(" <tr> ");
-					wr(" <th><center>Reservation NO</center></th> ");
+					wr(" <th><center>Reservation ID</center></th> ");
 					wr(" <th><center>Room No</center></th> ");
 					wr(" <th><center>Room Type</center></th> ");
 					wr(" <th><center>Name</center></th> ");
@@ -88,7 +88,7 @@ include "utils.php";
 					foreach($rs as $rs)
 					{
 						wr(" <tr> ");
-						wr(" <td style='text-align: center';>$rs[0]</td> ");
+						wr(" <td style='text-align: center';>$rs[22]</td> ");
 						wr(" <td style='text-align: center';>$rs[14]</td> ");
 						wr(" <td style='text-align: center';>$rs[13]</td> ");
 						wr(" <td style='text-align: center';>$rs[1] $rs[2]</td> ");
@@ -164,7 +164,8 @@ include "utils.php";
 					<center><h1>Are you sure you want to disapprove this reservation? </h1></center>
 					<div class="row">
 						<?php
-						wrInput('text','lblDispproved','Room ID','col-lg-4');
+						wrInput('hidden','lblDispproved','','col-lg-4');
+						wrInput('hidden','lblResID','','col-lg-4');
 						?>
 					</div>
 				</div>
@@ -193,7 +194,7 @@ include "utils.php";
 				<div class="modal-body">
 					<div class="row">
 						<?php
-						wrInputRO('text','lblIDView','Room ID','col-lg-4');
+						wrInputRO('text','lblIDView','Reservation ID','col-lg-4');
 						wrInputRO('text','txtReservationDate','Reservation Date','col-lg-4 Right');
 						?>
 					</div>
@@ -349,6 +350,7 @@ include "utils.php";
 					var res = JSON.parse(response);
 					$('#DisapproveResModal').modal('show');
 					document.getElementById('lblDispproved').value = res[0][0];
+					document.getElementById('lblResID').value = res[0][22];
 				}
 			});
 		}
@@ -384,7 +386,7 @@ include "utils.php";
 				{
 					var res = JSON.parse(response);
 					$('#ViewResModal').modal('show');
-					document.getElementById('lblIDView').value = res[0][0];
+					document.getElementById('lblIDView').value = res[0][22];
 					document.getElementById('txtReservationDate').value = res[0][8];
 					document.getElementById('txtFullname').value = res[0][1] + ' ' + res[0][2];
 					document.getElementById('txtContactNo').value = res[0][3];
