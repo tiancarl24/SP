@@ -88,7 +88,7 @@ include "utils.php";
 					foreach($rs as $rs)
 					{
 						wr(" <tr> ");
-						wr(" <td style='text-align: center';>$rs[0]</td> ");
+						wr(" <td style='text-align: center';>$rs[22]</td> ");
 						wr(" <td style='text-align: center';>$rs[14]</td> ");
 						wr(" <td style='text-align: center';>$rs[13]</td> ");
 						wr(" <td style='text-align: center';>$rs[1] $rs[2]</td> ");
@@ -100,6 +100,7 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				wrBtn("button","bntView","View","col-sm-2 Right","blue");
+				wrBtn("button","btnCheckIN","Check in","col-sm-2 Right","greensuccess");
 				DBClose();
 				?>
 			</div>
@@ -161,6 +162,33 @@ include "utils.php";
 		</div>
 	</div>
 </form>
+
+<form method="POST" action="Function/checkin.php">
+	<div class="modal fade" id="CheckinModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!--Modal header-->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+					<h4 class="modal-title">Check-in</h4>
+				</div>
+				<!--Modal body-->
+				<div class="modal-body">
+					<input type="hidden" id="lblresid" name="lblresid">
+					<center><h1>Are you sure you want to check-in this guest? </h1></center>
+				</div>
+				<br>
+				<br>
+				<!--Modal footer-->
+				<div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+					<button class="btn btn-primary">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 <!-- ------------ -->
 <script type="text/javascript">
 	var ctr;
@@ -209,82 +237,6 @@ include "utils.php";
 </script>
 
 <script type="text/javascript">
-	
-	var btnApprove = document.getElementById('btnApprove');
-	btnApprove.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Please Select Reservation Details!',
-				container: 'floating',
-				timer: 1000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetApproveRes.php",
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-
-				success: function(response)
-				{
-					var res = JSON.parse(response);
-					$('#ApproveResModal').modal('show');
-					document.getElementById('lblApproved').value = res[0][0];
-					document.getElementById('lblAmount').value = res[0][17];
-				}
-			});
-		}
-	}
-</script>
-
-<script type="text/javascript">
-	
-	var btnDisapprove = document.getElementById('btnDisapprove');
-	btnDisapprove.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Please Select Reservation Details!',
-				container: 'floating',
-				timer: 1000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetApproveRes.php",
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-
-				success: function(response)
-				{
-					var res = JSON.parse(response);
-					$('#DisapproveResModal').modal('show');
-					document.getElementById('lblDispproved').value = res[0][0];
-				}
-			});
-		}
-	}
-</script>
-<script type="text/javascript">
 	var bntView = document.getElementById('bntView');
 	bntView.onclick = function()
 	{
@@ -314,7 +266,7 @@ include "utils.php";
 				{
 					var res = JSON.parse(response);
 					$('#ViewResModal').modal('show');
-					document.getElementById('lblIDView').value = res[0][0];
+					document.getElementById('lblIDView').value = res[0][22];
 					document.getElementById('txtReservationDate').value = res[0][8];
 					document.getElementById('txtFullname').value = res[0][1] + ' ' + res[0][2];
 					document.getElementById('txtContactNo').value = res[0][3];
@@ -326,6 +278,43 @@ include "utils.php";
 					document.getElementById('txtCheckOut').value = res[0][10];
 					document.getElementById('txtTotalAmount').value = res[0][17];
 					document.getElementById('txtDownpayment').value = res[0][16];
+				}
+			});
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	
+	var btnCheckIN = document.getElementById('btnCheckIN');
+	btnCheckIN.onclick = function()
+	{
+		if(ctr_ID == null)
+		{
+			$.niftyNoty
+			({
+				type: 'danger',
+				title: 'Invalid Action',
+				message: 'Please Select Reservation Details!',
+				container: 'floating',
+				timer: 1000,
+			});
+		}
+		else
+		{
+			$.ajax(
+			{
+				type: "POST",
+				url: "Function/GetCheckIN.php",
+				data:
+				{
+					ctr_ID: ctr_ID
+				},
+				success: function(response)
+				{
+					var rs = JSON.parse(response);
+					$('#CheckinModal').modal('show');
+					document.getElementById('lblresid').value = rs[0][22];
 				}
 			});
 		}

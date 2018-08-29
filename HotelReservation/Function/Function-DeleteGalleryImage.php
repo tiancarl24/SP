@@ -1,7 +1,8 @@
 <?php
 include "../utils.php";
 
-$id = $_POST["GetImageID"];
+$id = $_POST["GetGalleryImageID"];
+//dump($id);
 
 
 DBOpen();

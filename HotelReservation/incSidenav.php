@@ -20,9 +20,9 @@
               </a>
             </div>
             <div id="profile-nav" class="collapse list-group bg-trans">
-              <a href="#" class="list-group-item">
-                <i class="demo-pli-gear icon-lg icon-fw"></i> Settings
-              </a>
+              <!-- <a href="Function/Backup.php" class="list-group-item">
+                <i class="demo-pli-gear icon-lg icon-fw"></i> Backup Database
+              </a> -->
               <a href="logout.php" class="list-group-item">
                 <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
               </a>
@@ -139,6 +139,22 @@
                     <i class="fa fa-users"></i>
                     <span class="menu-title">
                       <strong>Disapproved</strong>
+                    </span>
+                  </a>
+                </li> 
+                <li class="">
+                  <a href="CheckinReservation.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Check-in</strong>
+                    </span>
+                  </a>
+                </li> 
+                <li class="">
+                  <a href="CheckoutReservation.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Check-out</strong>
                     </span>
                   </a>
                 </li> 

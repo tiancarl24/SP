@@ -10,14 +10,15 @@ $AMOUNT = $_POST['lblAmount'];
 $BAL = $AMOUNT - $DP;
 //dump($BAL);
 
-$rs = DBExecute(" UPDATE reservations SET Status = 'Approved', downpayment = '$DP', balance = '$BAL' WHERE rowid = " .SQLs($ResID));
+$rs = DBExecute(" UPDATE reservations SET Status = 'Approved', downpayment = '$DP', balance = '$BAL' WHERE Reservationid = " .SQLs($ResID));
 
 DbClose();
 
 DBOpen();
 
-$data = DBGetData(" SELECT * FROM reservations WHERE rowid = " .SQLs($ResID));
-//dump($data[0][20]);
+$data = DBGetData(" SELECT * FROM reservations WHERE Reservationid = " .SQLs($ResID));
+
+//dump($data[0][22]);
 $bankinfo = DBGetData(" SELECT * FROM bankinfo ");
 //dump($data[0][20]);
 require_once '../../SpringPlaza/vendor/autoload.php';

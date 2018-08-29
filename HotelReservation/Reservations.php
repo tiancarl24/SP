@@ -311,7 +311,7 @@ include "utils.php";
 				{
 					var res = JSON.parse(response);
 					$('#ApproveResModal').modal('show');
-					document.getElementById('lblApproved').value = res[0][0];
+					document.getElementById('lblApproved').value = res[0][22];
 					document.getElementById('lblAmount').value = res[0][17];
 				}
 			});

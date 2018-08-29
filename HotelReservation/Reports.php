@@ -21,14 +21,14 @@ include "utils.php";
 				<br>
 				FROM:<input type="date" id="dtFrom" name="dtFrom">
 				TO:<input type="date" id="dtTo" name="dtTo">
-				FILTER:
+				<!-- FILTER:
 				<select id="cboFilter" name="cboFilter">
 					<option></option>
 					<option>Daily</option>
 					<option>Weekly</option>
 					<option>Monthly</option>
 					<option>Yearly</option>
-				</select>
+				</select> -->
 				<select id="cboMonth" name="cboMonth" style="display: none;">
 					<option></option>
 					<option value="01">January</option>

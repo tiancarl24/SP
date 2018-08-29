@@ -15,4 +15,20 @@ include "incSidenav.php";
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+	var SuccessReturn = '<?php echo $_POST['msg'] ?>';
+	if(SuccessReturn)
+	{
+		$.niftyNoty
+		({
+			type: 'success',
+			title: '',
+			message: SuccessReturn,
+			container: 'floating',
+			timer: 3000,
+		});
+	}
+</script>
+
 <?php include "incFoot.php" ?>
