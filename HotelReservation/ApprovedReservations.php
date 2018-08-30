@@ -163,7 +163,7 @@ include "utils.php";
 	</div>
 </form>
 
-<form id="formcheckin" name="formcheckin" > <!-- method="POST" action="Function/checkin.php" -->
+<form id="formcheckin" name="formcheckin" method="POST" action="Function/checkin.php" >
 	<div class="modal fade" id="CheckinModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="modal-content">
