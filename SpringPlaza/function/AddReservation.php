@@ -95,8 +95,6 @@ $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
 	TotalPaid = '0',
 	ReservationID = '$AppID' ");
 
-$update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '$ROOMNO' ");
-
 $bankinfo = DBGetData("SELECT * from bankinfo");
 
 //>>PDF AND EMAIL
@@ -172,7 +170,6 @@ $mailer = new Swift_Mailer($transport);
 $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
 ->setFrom(['springplazahotel247@gmail.com' => 'HotelSpringPlaza'])
 ->setTo([$EMAIL => 'A name'])
-->attach(Swift_Attachment::fromPath('../pdf/'.$AppID.'.pdf'))
 ->setBody('Hi '.$FNAME.' '.$LNAME.'!
 	<br>
 	<br>

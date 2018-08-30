@@ -78,7 +78,7 @@ $html =
 '<p>Day/s:'.$TempData[0][7].'</p>'.
 '<p>Paid:'.number_format($TempData[0][16]).'</p>'.
 '<p>Balance:'.number_format($TempData[0][18]).'</p>'.
-'<p>Total Fee:'number_format($TempData[0][17])'</p>'.
+'<p>Total Fee:'.number_format($TempData[0][17]).'</p>'.
 '<h3>Guest Details:</h3>'.
 '<p>Full Name:'.$TempData[0][01] + $TempData[0][2].'</p>'.
 '<p>Contact No.:'.$TempData[0][3].'</p>'.
