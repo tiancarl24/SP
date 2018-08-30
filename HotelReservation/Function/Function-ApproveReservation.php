@@ -10,7 +10,7 @@ $AMOUNT = $_POST['lblAmount'];
 $BAL = $AMOUNT - $DP;
 //dump($BAL);
 
-$rs = DBExecute(" UPDATE reservations SET Status = 'Approved', downpayment = '$DP', balance = '$BAL' WHERE Reservationid = " .SQLs($ResID));
+$rs = DBExecute(" UPDATE reservations SET Status = 'Approved', downpayment = '$DP', balance = '$BAL', totalpaid = '$DP' WHERE Reservationid = " .SQLs($ResID));
 
 DbClose();
 

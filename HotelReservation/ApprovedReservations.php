@@ -330,7 +330,6 @@ include "utils.php";
 	var btncheckinyes = document.getElementById('btncheckinyes')
 	btncheckinyes.onclick = function()
 	{
-		alert(document.getElementById('lblbalance').innerHTML);
 		if(txtbalance.value !== lblbalance.innerHTML)
 		{
 			txtbalance.value = "";
