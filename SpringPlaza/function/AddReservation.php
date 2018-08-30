@@ -179,6 +179,12 @@ $message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
 	please settle atleast half of the total price of your bill to ensure your reservation.
 	<br>
 	<br>
+	Bank: BDO
+	<br>
+	Account Name: hotelreservation
+	<br>
+	Account Number: 124512520
+	<br>
 	<br>
 	Regards,',"text/html");
 	// Send the message
