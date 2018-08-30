@@ -49,7 +49,7 @@ include "utils.php";
 						wr(" <td style='text-align: center';>$rs[14]</td> ");
 						wr(" <td style='text-align: center';>$rs[13]</td> ");
 						wr(" <td style='text-align: center';>$rs[1] $rs[2]</td> ");
-						wr(" <td style='text-align: center';>$rs[19]</td> ");
+						wr(" <td style='text-align: center';>$rs[23]</td> ");
 							// wr(" <td>$rs[4]</td> ");
 						wr(" </tr> ");
 					}

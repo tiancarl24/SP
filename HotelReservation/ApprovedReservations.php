@@ -177,13 +177,16 @@ include "utils.php";
 				<div class="modal-body">
 					<input type="hidden" id="lblresid" name="lblresid">
 					<center><h1>Are you sure you want to check-in this guest? </h1></center>
+					<center>Reservation Balance: <label id="lblbalance"></label></center>
+					<center>Enter Amount</center>
+					<center><input type="number" id="txtbalance" name="txtbalance" style="font-size: 20px" required=""></center>
 				</div>
 				<br>
 				<br>
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<button class="btn btn-primary">Yes</button>
+					<button id="btncheckinyes" name="btncheckinyes" class="btn btn-primary">Yes</button>
 				</div>
 			</div>
 		</div>
@@ -315,8 +318,23 @@ include "utils.php";
 					var rs = JSON.parse(response);
 					$('#CheckinModal').modal('show');
 					document.getElementById('lblresid').value = rs[0][22];
+					document.getElementById('lblbalance').innerHTML = rs[0][18];
 				}
 			});
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	
+	var btncheckinyes = document.getElementById('btncheckinyes')
+	btncheckinyes.onclick = function()
+	{
+		alert(document.getElementById('lblbalance').innerHTML);
+		if(txtbalance.value !== lblbalance.innerHTML)
+		{
+			txtbalance.value = "";
+			alert('Invalid Amount');
 		}
 	}
 </script>
