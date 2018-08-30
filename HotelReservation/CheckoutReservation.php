@@ -56,7 +56,6 @@ include "utils.php";
 					wr(" </tbody> ");
 					wr(" </table> ");
 				wrBtn("button","bntView","View","col-sm-2 Right","blue");
-				wrBtn("button","btnCheckOUT","Check out","col-sm-2 Right","greensuccess");
 				DBClose();
 				?>
 			</div>

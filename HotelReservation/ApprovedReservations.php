@@ -163,8 +163,8 @@ include "utils.php";
 	</div>
 </form>
 
-<form method="POST" action="Function/checkin.php">
-	<div class="modal fade" id="CheckinModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<form id="formcheckin" name="formcheckin" > <!-- method="POST" action="Function/checkin.php" -->
+	<div class="modal fade" id="CheckinModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -178,14 +178,14 @@ include "utils.php";
 					<input type="hidden" id="lblresid" name="lblresid">
 					<center><h1>Are you sure you want to check-in this guest? </h1></center>
 					<center>Reservation Balance: <label id="lblbalance"></label></center>
-					<center>Enter Amount</center>
+					<center ><label id="lblenter">Enter Amount</label></center>
 					<center><input type="number" id="txtbalance" name="txtbalance" style="font-size: 20px" required=""></center>
 				</div>
 				<br>
 				<br>
 				<!--Modal footer-->
 				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+					<button id="btnNo" data-dismiss="modal" class="btn btn-default" type="button">No</button>
 					<button id="btncheckinyes" name="btncheckinyes" class="btn btn-primary">Yes</button>
 				</div>
 			</div>
@@ -316,9 +316,16 @@ include "utils.php";
 				success: function(response)
 				{
 					var rs = JSON.parse(response);
+					
 					$('#CheckinModal').modal('show');
 					document.getElementById('lblresid').value = rs[0][22];
 					document.getElementById('lblbalance').innerHTML = rs[0][18];
+					if(rs[0][18] == "0")
+					{
+						document.getElementById('txtbalance').value = '0';
+						document.getElementById('txtbalance').style.display = "none";
+						document.getElementById('lblenter').style.display = "none";
+					}
 				}
 			});
 		}
@@ -334,7 +341,16 @@ include "utils.php";
 		{
 			txtbalance.value = "";
 			alert('Invalid Amount');
+			
 		}
+	}
+</script>
+<script type="text/javascript">
+
+	var btnNo = document.getElementById('btnNo');
+	btnNo.onclick = function()
+	{
+		window.location.reload();
 	}
 </script>
 <?php include "incFoot.php" ?>
