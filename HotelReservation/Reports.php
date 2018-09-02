@@ -21,14 +21,21 @@ include "utils.php";
 				<br>
 				FROM:<input type="date" id="dtFrom" name="dtFrom">
 				TO:<input type="date" id="dtTo" name="dtTo">
-				<!-- FILTER:
+
+				STATUS:
+				<select id="cboStatus" name="cboStatus">
+					<option></option>
+					<option>Approved</option>
+					<option>Disapproved</option>
+					<option>Pending</option>
+				</select>
+				FILTER:
 				<select id="cboFilter" name="cboFilter">
 					<option></option>
 					<option>Daily</option>
-					<option>Weekly</option>
 					<option>Monthly</option>
 					<option>Yearly</option>
-				</select> -->
+				</select>
 				<select id="cboMonth" name="cboMonth" style="display: none;">
 					<option></option>
 					<option value="01">January</option>
@@ -43,13 +50,6 @@ include "utils.php";
 					<option value="10">October</option>
 					<option value="11">November</option>
 					<option value="12">December</option>
-				</select>
-				STATUS:
-				<select id="cboStatus" name="cboStatus">
-					<option></option>
-					<option>Approved</option>
-					<option>Disapproved</option>
-					<option>Pending</option>
 				</select>
 				<?php 
 				wrBtn("button","btnFilter","Filter","col-sm-2 Right MR","orange"); 
@@ -190,30 +190,35 @@ include "utils.php";
 			document.getElementById('dtFrom').value = today;
 			document.getElementById('dtTo').value = today;
 		}
-		else if(cboFilter.value == 'Weekly')
-		{
-			var today = new Date();
-			var dd = today.getDate();
-			var mm = today.getMonth()+1; //January is 0!
-			var yyyy = today.getFullYear();
-
-			if(dd<10) 
-			{
-				dd = '0'+7+ dd
-			} 
-
-			if(mm<10) 
-			{
-				mm = '0'+mm
-			} 
-
-			today = yyyy + '-' + mm + '-' + dd;
-			document.getElementById('dtFrom').value = today;
-			document.getElementById('dtTo').value = today;
-		}
 		else if(cboFilter.value == 'Monthly')
 		{
 			cboMonth.style.display = 'block';
+		}
+		else if (cboFilter.value == "Yearly")
+		{
+			//var dateFormat = require('dateformat');
+
+			cboMonth.style.display = 'none';
+			var today = new Date();
+			var Y = today.getFullYear();
+			var firstday = new Date(new Date().getFullYear(), 0, 1).toLocaleDateString();
+			var lastday = new Date(new Date().getFullYear(), 11, 31).toLocaleDateString();
+
+			var a = firstday.split('/')[0];
+			var b = firstday.split('/')[1];
+			var c = firstday.split('/')[2];
+
+			var x = lastday.split('/')[0];
+			var y = lastday.split('/')[1];
+			var z = lastday.split('/')[2];
+
+
+
+			document.getElementById('dtFrom').value = c + '-' + "0" + a + '-' + "0" + b;
+
+			document.getElementById('dtTo').value = z + '-' + x + '-' + y;
+			document.getElementById('lbldate').value = z + '-' + x + '-' + y;			
+
 		}
 	}
 </script>
@@ -223,10 +228,115 @@ include "utils.php";
 	var cboMonth = document.getElementById('cboMonth');
 	cboMonth.onchange = function()
 	{
-		var date = new Date();
-		var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-		var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-		alert(date);
+		if(cboMonth.value == "01")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+		if(cboMonth.value == "02")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-28";
+		}
+
+		if(cboMonth.value == "03")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+		if(cboMonth.value == "04")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-30";
+		}
+
+		if(cboMonth.value == "05")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+		if(cboMonth.value == "06")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-30";
+		}
+
+		if(cboMonth.value == "07")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+		if(cboMonth.value == "08")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+		if(cboMonth.value == "09")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-30";
+		}
+
+		if(cboMonth.value == "10")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+		if(cboMonth.value == "11")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-30";
+		}
+
+		if(cboMonth.value == "12")
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-" + cboMonth.value + "-01";
+			document.getElementById('dtTo').value = Y + "-" + cboMonth.value + "-31";
+		}
+
+
 	}
 </script>
 

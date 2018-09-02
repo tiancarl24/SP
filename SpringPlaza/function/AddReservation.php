@@ -29,6 +29,11 @@ $NEWCOUT = date('Y-m-d', $timestampOUT);
 
 $x = $NEWCIN; 
 
+$lastdate = $x;
+$lastdate = date("Y-m-t", strtotime($lastdate));
+$nextmonth = date("Y-m-d", strtotime(date('m', strtotime('+1 month')).'/01/'.date('Y').' 00:00:00'));
+//dump($nextmonth);
+
 do 
 {
 	DBOpen();
@@ -38,13 +43,23 @@ do
 		checkout = '$NEWCOUT',
 		roomno = '$ROOMNO',
 		roomtype = '$RTYPE' ");
+
 	DBClose();
-	$x++;
+	//$x++;
+	if($x == $lastdate)
+	{
+
+		$x = $nextmonth;
+		//dump($x);
+		//$x++;
+	}
+	else
+	{
+		$x++;
+	}
+
 }
 while ($x <= $NEWCOUT);
-
-
-// /dump($NEWCOUT);
 
 DBOpen();
 

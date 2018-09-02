@@ -155,8 +155,7 @@ include "utils.php";
 				<br>
 				<!--Modal footer-->
 				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<button class="btn btn-primary">Yes</button>
+					
 				</div>
 			</div>
 		</div>

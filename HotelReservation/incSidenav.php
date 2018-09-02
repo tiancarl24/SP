@@ -32,6 +32,14 @@
 
             <!--Category name-->
             <li class="list-header">Navigation</li>
+            <li class="">
+                  <a href="home.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Dashboard</strong>
+                    </span>
+                  </a>
+                </li> 
 
             <!--Menu list item-->
             <li class="">

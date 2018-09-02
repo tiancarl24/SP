@@ -9,6 +9,10 @@ $getLastTrans = DBGetData(" SELECT MAX(reservationid) FROM reservations_temp ");
 $TempData = DBGetData(" SELECT * FROM reservations_temp WHERE reservationid = " .SQLs($getLastTrans[0][0]));
 
 $x = $TempData[0][9]; 
+$lastdate = $x;
+$lastdate = date("Y-m-t", strtotime($lastdate));
+$nextmonth = date("Y-m-d", strtotime(date('m', strtotime('+1 month')).'/01/'.date('Y').' 00:00:00'));
+
 do 
 {
 	
@@ -19,7 +23,18 @@ do
 		roomno = '".$TempData[0][14]."',
 		roomtype = '".$TempData[0][13]."' ");
 	
-	$x++;
+	//$x++;
+	if($x == $lastdate)
+	{
+
+		$x = $nextmonth;
+		//dump($x);
+		//$x++;
+	}
+	else
+	{
+		$x++;
+	}
 }
 while ($x <= $TempData[0][10]);
 
@@ -72,20 +87,20 @@ $html =
 '<p>Dear Guest,</p>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
-'<p>Reservation No.:'.$data[0][23].'</p>'.
-'<p>Check-in Date:'.$data[0][10].'</p>'.
-'<p>Check-out Date:'.$data[0][11].'</p>'.
-'<p>Room Type:'.$data[0][14].'</p>'.
-'<p>Adult/s:'.$data[0][6].'</p>'.
-'<p>Child/s:'.$data[0][7].'</p>'.
-'<p>Day/s:'.$data[0][8].'</p>'.
-'<p>Paid:'.number_format($data[0][17]).'</p>'.
-'<p>Balance:'.number_format($data[0][19]).'</p>'.
-'<p>Total Fee:'.number_format($data[0][18]).'</p>'.
+'<p>Reservation No.:'.$TempData[0][22].'</p>'.
+'<p>Check-in Date:'.$TempData[0][9].'</p>'.
+'<p>Check-out Date:'.$TempData[0][10].'</p>'.
+'<p>Room Type:'.$TempData[0][13].'</p>'.
+'<p>Adult/s:'.$TempData[0][5].'</p>'.
+'<p>Child/s:'.$TempData[0][6].'</p>'.
+'<p>Day/s:'.$TempData[0][7].'</p>'.
+'<p>Paid:'.number_format($TempData[0][16]).'</p>'.
+'<p>Balance:'.number_format($TempData[0][18]).'</p>'.
+'<p>Total Fee:'.number_format($TempData[0][17]).'</p>'.
 '<h3>Guest Details:</h3>'.
-'<p>Full Name.:'.$data[0][1] . $data[0][2].'</p>'.
-'<p>Contact No.:'.$data[0][3].'</p>'.
-'<p>Email Address:'.$data[0][20].'</p>'.
+'<p>Full Name.:'.$TempData[0][1] . $TempData[0][2].'</p>'.
+'<p>Contact No.:'.$TempData[0][3].'</p>'.
+'<p>Email Address:'.$TempData[0][20].'</p>'.
 '<hr>'.
 '<h3>Cancellation Policy</h3>'.
 '<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.
@@ -98,43 +113,6 @@ $html =
 '</html>';
 
 // ----
-
-// '<table name="demo" id="demo" class="table table-striped table-bordered" cellspacing="0" width="100%">'.
-// '<thead>'.
-// '<tr style="">'.
-// '<th>RESERVATION ID</th>'.
-// '<th>CHECK IN</th>'.
-// '<th>CHECK OUT</th>'. 
-// '<th>ROOM NO</th>'.
-// '<th>ROOM TYPE</th>'. 
-// '<th>ADULT</th>'.
-// '<th>CHILD</th>'. 
-// '<th>DAYS</th>'.
-// '<th>PAID</th>'.
-// '<th>BALANCE</th>'.
-// '<th>TOTAL FEE</th>'.    
-// '</tr>'.
-// '</thead>'.
-// '<tbody>'.
-// '<!--INSERT DATA HERE-->'.
-// '<tr>'.
-// '<td>'.$TempData[0][22].'</td>'.
-// '<td>'.$TempData[0][9].'</td>'.
-// '<td>'.$TempData[0][10].'</td>'.
-// '<td>'.$TempData[0][14].'</td>'.
-// '<td>'.$TempData[0][13].'</td>'.
-// '<td>'.$TempData[0][5].'</td>'.
-// '<td>'.$TempData[0][6].'</td>'.
-// '<td>'.$TempData[0][7].'</td>'.
-// '<td>'.number_format($TempData[0][21]).'</td>'.
-// '<td>'.number_format($TempData[0][18]).'</td>'.
-// '<td>'.number_format($TempData[0][17]).'</td>'. 
-// '</tr>'.
-// '</tbody>'.
-// '</table>'.
-// '<br>'.
-// '<br>'.
-// '<center>REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>'.
 
 //instantiate and use the dompdf class
 $dompdf = new Dompdf();
