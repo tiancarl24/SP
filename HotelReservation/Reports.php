@@ -74,6 +74,10 @@ include "utils.php";
 				wr(" </tbody> ");
 				wr(" </table> ");
 				?>
+				<div class="col-sm-2 pull-right">
+					<label>TOTAL:</label>
+					<input type="text" id="lbltotal" name="lbltotal">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -142,11 +146,11 @@ include "utils.php";
 				success: function(response)
 				{
 					//alert(response);
-					var result = JSON.parse(response);
+					//var result = JSON.parse(response);
 					var t = $('#tblMembership').DataTable();
 
 					t.clear().draw();
-					$.each(result,function(i,index)
+					$.each(response['query'],function(i,index)
 					{
 						t.row.add([
 							index.RoomNo,
@@ -158,6 +162,8 @@ include "utils.php";
 							index.TotalPaid,
 							]).draw();
 					});
+
+					document.getElementById('lbltotal').value = parseInt(response["sum"]).toLocaleString() + ".00";
 				}
 			});
 		}

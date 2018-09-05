@@ -11,9 +11,17 @@ DBOpen();
 
 $rs = DBGetData2("SELECT * FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' ");
 
-//dump($rs);
+$total = DBGetData2("SELECT SUM(totalpaid) as totalpaid FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' ");
 
-$rs = json_encode($rs);
+
+$sumtotal = $total[0]["totalpaid"];
+
+$response = array("query"	=>	$rs,	"sum"	=>	$sumtotal);
+
+
+$rs = json_encode($response);
+
+header("Content-Type: application/json");
 
 echo $rs;
 
