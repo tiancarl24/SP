@@ -51,14 +51,6 @@
               </a>
               <ul>
                 <li class="">
-                  <a href="Gallery.php">
-                    <i class="fa fa-users"></i>
-                    <span class="menu-title">
-                      <strong>Gallery</strong>
-                    </span>
-                  </a>
-                </li> 
-                <li class="">
                   <a href="Carousel.php">
                     <i class="fa fa-users"></i>
                     <span class="menu-title">
@@ -71,6 +63,14 @@
                     <i class="fa fa-users"></i>
                     <span class="menu-title">
                       <strong>Amenities</strong>
+                    </span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="Gallery.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Gallery</strong>
                     </span>
                   </a>
                 </li>
