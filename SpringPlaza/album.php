@@ -4,85 +4,63 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>Album Gallery</h2>
-                </div>
-                <div class="col-md-12">
-                    <div class="row room-tabs-info">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <!--Room Tabs Nav start -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#1floor" aria-controls="1floor" role="tab" data-toggle="tab">First Floor</a></li>
+                    <div class="row">
                         <?php
                         DBOpen();
-                        $nav = DBGetData(" SELECT * FROM gallery WHERE Floor <> 'First' GROUP BY floor");
-                        foreach($nav as $nav)
+                        $floor = DBGetData("SELECT * FROM floors GROUP BY floors");
+                        foreach($floor as $floor)
                         {
-                            wr("<li role='presentation'><a href='#$nav[3]' aria-controls='$nav[3]' role='tab' data-toggle='tab'>$nav[3]</a></li>");
+                            wr("<div id='AlbumGallery' class='col-lg-4 AlbumGallery' style='height: 200px; border: solid 1px white; cursor: pointer; background-color: #f68345; color: white;'>");
+                            wr("<h4 style='margin-top: 75px;'><center>$floor[1] Floor</center></h4>");
+                            wr("<br>");
+                            wr(" <h4><center>Album</center></h4>");
+                            wr(" <h4><center><i>Click to preview the images</i></center></h4>");
+                            wr("</div>");
                         }
-                        
                         DBClose();
                         ?>
-                    </ul>
-                    <!--Room Tabs Nav end -->
-
-                    <!-- Tabs start -->
-                    <div class="tab-content">
-                        <!--Room Tab 1 start-->
-                        <div role="tabpanel" class="tab-pane fade in active" id="1floor">
-                            <div class="row">
-                               <?php  
-                               DBOpen();
-                               $firstfloor = DBGetData("SELECT * from gallery WHERE Floor = 'First'");
-                               foreach($firstfloor as $firstfloor)
-                               {
-                                wr("<div class='col-md-3'>");
-                                wr("<div class='room-tabs-gallery'>");
-                                wr("<div class='room-tabs-gallery-thumbnails'>");
-                                wr("<a class='room-tabs-gallery-thumb room-tabs-gallery-preview-container' href='#1floor'>");
-                                wr("<img class='img-responsive' src='../HotelReservation/Gallery/$firstfloor[2]' style='height: 200px;' alt='Gallery Thumbnail' title='The Image Title1'/>");
-                                wr("</a>");
-                                wr("</div>");
-                                wr("<div class='clearfix'></div>");
-                                wr("</div>");
-                                wr("</div>");
-                            }
-                            DBClose();
-                            ?>
-                        </div>
                     </div>
-                    <!--Room Tab 1 end-->
-                    <!--Room Tab 1 start-->
-                    <?php
-                    DBOpen();
-                    $floor = DBGetData("SELECT * FROM gallery WHERE Floor <> 'First'");
-                    foreach($floor as $floor)
-                    {
-                        wr("<div role='tabpanel' class='tab-pane fade in' id='$floor[3]'");
-                        $asd = DBGetData("SELECT * FROM gallery where Floor = '$floor[3]'");
-                        foreach($asd as $asd)
-                        {
-                            wr("<div class='row'>");
-                            wr("<div class='col-md-3'>");
-                            wr("<div class='room-tabs-gallery'>");
-                            wr("<div class='room-tabs-gallery-thumbnails'>");
-                            wr("<a class='room-tabs-gallery-thumb room-tabs-gallery-preview-container' href='#1floor'>");
-                            wr("<img class='img-responsive' src='../HotelReservation/Gallery/$asd[2]' style='height: 200px;' alt='Gallery Thumbnail' title='The Image Title1'/>");
-                            wr("</a>");
-                            wr("</div>");
-                            wr("<div class='clearfix'></div>");
-                            wr("</div>");
-                            wr("</div>");
-                        }
-                        wr("</div>");
-                    }
-                    DBClose();
-                    ?>
-                    <!--Room Tab 1 end-->
                 </div>
-                <!-- Tabs end -->
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    <form method="POST" action="Function/Function-DeleteUser.php">
+        <div class="modal fade AlbumModal" id="AlbumModal" role="dialog" tabindex="-1" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!--Modal header-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                        <h4 class="modal-title">Discard User</h4>
+                    </div>
+
+                    <!--Modal body-->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <a class="room-tabs-gallery-preview-container" href="#">
+                                    <img src="../HotelReservation/Gallery/ac1.jpg" style="width: 100%; height: 200px;" class="room-tabs-gallery-preview">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <!--Modal footer-->
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+                        <input type="submit" id="btnYes" name="btnYes" class="btn btn-danger" value="Yes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        var AlbumGallery = document.getElementById('AlbumGallery');
+        AlbumGallery.onclick = function()
+        {
+            $("#AlbumModal").modal('show');
+        }
+    </script>
     <!--Room Tabs start-->

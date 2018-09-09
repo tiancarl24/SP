@@ -556,10 +556,6 @@ h6 {
   display: block;
   margin-top: 6px;
 }
-.modal-backdrop.in {
-  opacity: 0.9;
-  background-color: #213437;
-}
 #roomTabsGalleryPreviewModal .modal-dialog {
   z-index: 100;
   min-width: 300px;

@@ -59,6 +59,20 @@ include "utils.php";
 <link rel="shortcut icon" href="img/ico/favicon.png">
 
 </head>
+<style type="text/css">
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-color: #000;
+}
+.modal-dialog{
+    margin-top: 190px;
+}
+</style>
 <body>
     <div id="page-top"></div>
 
