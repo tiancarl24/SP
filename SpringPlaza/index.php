@@ -87,25 +87,25 @@ include "incAmenities.php";
             $Contact = DBGetData(" SELECT * FROM contact ");
             foreach($Contact as $Contact)
             {
-             wr("<div class='row'>");
-             wr("<div class='col-md-12'>");
-             wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
-             wr("<address>$Contact[1]</address>");
-             wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
-             wr("<ul class='phones'>");
-             wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
-             wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
-             wr("</ul>");
-             wr("</div>"); 
-         }
-         DBClose();
-         ?>
-     </div>
- </section>
- <!--Address end-->
+               wr("<div class='row'>");
+               wr("<div class='col-md-12'>");
+               wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
+               wr("<address>$Contact[1]</address>");
+               wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
+               wr("<ul class='phones'>");
+               wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
+               wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
+               wr("</ul>");
+               wr("</div>"); 
+           }
+           DBClose();
+           ?>
+       </div>
+   </section>
+   <!--Address end-->
 
- <!--Footer start-->
- <footer class="footer" id="sc-footer">
+   <!--Footer start-->
+   <footer class="footer" id="sc-footer">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -172,6 +172,24 @@ aria-hidden="true">
         });
     });
 </script>
+<script type="text/javascript">
 
+    $(".AlbumGallery").on('click',function()
+    {
+        $.ajax(
+        {
+            type: "POST",
+            url: "GetImageFloors.php",
+            data:
+            {
+                divID: $('.AlbumGallery').val(),
+            },
+            success: function(response)
+            {
+                alert($('.AlbumGallery').val());
+            }
+        });
+    });
+</script>
 </body>
 </html>

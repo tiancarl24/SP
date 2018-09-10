@@ -28,7 +28,7 @@ use Dompdf\Dompdf;
 $html =
 '<html>'.
 '<body>'.
-'<img src="../../SpringPlaza/img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block;">'.
+'<img src="../../SpringPlaza/img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block; width: 80%; Height: 80px; margin-left: 70px;">'.
 '<br>'.
 '<br>'.
 '<br>'.
@@ -67,7 +67,7 @@ $dompdf->loadHtml($html);
 
 
 // (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4', 'landscape');
+$dompdf->setPaper('A4', 'portrait');
 
 
 // Render the HTML as PDF

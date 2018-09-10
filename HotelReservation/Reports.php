@@ -36,6 +36,19 @@ include "utils.php";
 					<option>Monthly</option>
 					<option>Yearly</option>
 				</select>
+				Room Type:
+				<select id="cboRoomType" name="cboRoomType">
+					<option></option>
+					<?php
+					DBOpen();
+					$RT = DBGetData("SELECT DISTINCT RoomType FROM roominformation");
+					foreach($RT as $RT)
+					{
+						wr("<option value='$RT[0]'>$RT[0]</option>");
+					}
+					DBClose();
+					?>
+				</select>
 				<select id="cboMonth" name="cboMonth" style="display: none;">
 					<option></option>
 					<option value="01">January</option>
@@ -142,6 +155,7 @@ include "utils.php";
 					FROM: dtFrom.value,
 					TO: dtTo.value,
 					STATUS: cboStatus.value,
+					RTYPE: cboRoomType.value
 				},
 				success: function(response)
 				{
@@ -159,7 +173,7 @@ include "utils.php";
 							index.DownPayment,
 							index.TotalAmount,
 							index.Balance,
-							index.TotalPaid,
+							parseInt(index.TotalPaid).toLocaleString() + ".00",
 							]).draw();
 					});
 
