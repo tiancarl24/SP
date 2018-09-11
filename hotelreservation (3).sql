@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2018 at 08:32 AM
+-- Generation Time: Sep 11, 2018 at 03:23 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -139,9 +139,10 @@ CREATE TABLE `floors` (
 --
 
 INSERT INTO `floors` (`id`, `floors`) VALUES
-(1, 'Second'),
-(2, 'Third'),
-(3, 'First');
+(3, 'First'),
+(5, 'Second'),
+(6, 'Third'),
+(7, 'Fourth');
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,7 @@ INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Addr
 (3, 'Gimson', 'Recilla', '09168585045', 'Imus', 1, 0, 1, '2018-08-30', '2018-08-30', '2018-08-31', '09:03:54', '09:03:54', 'Fan Room', '1', 'Pay in Bank', 0, 900, 400, 'Pending', 'recillagimson@gmail.com', 0, '201800000004', ''),
 (4, 'Gimson', 'Recilla', '324234', 'Imus', 1, 0, 1, '2018-08-30', '2018-09-09', '2018-09-10', '09:14:22', '09:14:22', 'Deluxe Room', '201', 'Pay in Bank', 0, 1500, 1500, 'Pending', 'recillagimson@gmail.com', 1500, '201800000006', ''),
 (5, 'asd', 'asd', '123123', 'asd', 1, 0, 1, '2018-08-30', '2018-08-30', '2018-08-31', '09:51:54', '09:51:54', 'Fan Room', '2', 'Pay in Bank', 500, 900, 0, 'Approved', 'recillagimson@gmail.com', 900, '201800000007', 'Checkin'),
-(6, 'a', 'a', '1', 'a', 1, 0, 2, '2018-09-10', '2018-09-11', '2018-09-13', '14:22:21', '14:22:21', 'Fan Room', '2', 'Pay in Bank', 1, 1800, 1799, 'Approved', 'recillagimson@gmail.com', 1, '201800000008', '');
+(6, 'a', 'a', '1', 'a', 1, 0, 2, '2018-09-10', '2018-09-11', '2018-09-13', '14:22:21', '14:22:21', 'Fan Room', '2', 'Pay in Bank', 500, 1800, 1300, 'Approved', 'recillagimson@gmail.com', 500, '201800000008', '');
 
 -- --------------------------------------------------------
 
@@ -270,7 +271,8 @@ INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, 
 (5, 'Gimson', 'Recilla', '09168585045', 'Imus', 1, 0, 1, '2018-08-30', '2018-08-30', '2018-08-31', '09:05:34', '09:05:34', 'Fan Room', '1', 'Paypal', 900, 900, 0, 'Approved', 'recillagimson@gmail.com', 900, '201800000005'),
 (6, 'Gimson', 'Recilla', '324234', 'Imus', 1, 0, 1, '2018-08-30', '2018-09-09', '2018-09-10', '09:14:22', '09:14:22', 'Deluxe Room', '201', 'Pay in Bank', 0, 1500, 1500, 'Pending', 'recillagimson@gmail.com', 0, '201800000006'),
 (7, 'asd', 'asd', '123123', 'asd', 1, 0, 1, '2018-08-30', '2018-08-30', '2018-08-31', '09:51:54', '09:51:54', 'Fan Room', '2', 'Pay in Bank', 0, 900, 900, 'Pending', 'recillagimson@gmail.com', 0, '201800000007'),
-(8, 'a', 'a', '1', 'a', 1, 0, 2, '2018-09-10', '2018-09-11', '2018-09-13', '14:22:21', '14:22:21', 'Fan Room', '2', 'Pay in Bank', 0, 1800, 1800, 'Pending', 'recillagimson@gmail.com', 0, '201800000008');
+(8, 'a', 'a', '1', 'a', 1, 0, 2, '2018-09-10', '2018-09-11', '2018-09-13', '14:22:21', '14:22:21', 'Fan Room', '2', 'Pay in Bank', 0, 1800, 1800, 'Pending', 'recillagimson@gmail.com', 0, '201800000008'),
+(9, 'zxc', 'zxc', '123', 'zxc', 2, 0, 2, '2018-09-11', '2018-09-19', '2018-09-21', '09:13:07', '09:13:07', 'Fan Room', '2', 'Paypal', 1800, 1800, 0, 'Approved', 'recillagimson@gmail.com', 1800, '201800000009');
 
 -- --------------------------------------------------------
 
@@ -519,7 +521,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -543,7 +545,7 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reservedate`

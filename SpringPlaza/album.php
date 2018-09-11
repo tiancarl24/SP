@@ -7,7 +7,7 @@
                     <div class="row">
                         <?php
                         DBOpen();
-                        $floor = DBGetData("SELECT * FROM Floors GROUP BY floors");
+                        $floor = DBGetData("SELECT * FROM Floors GROUP BY id");
                         foreach($floor as $floor)
                         {
                             wr("<div id='AlbumGalleryID' class='col-lg-4' style='height: auto; border: solid 1px white; padding-bottom: 20px;  background-color: #f68345; color: white;'>");

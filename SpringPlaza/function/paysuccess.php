@@ -78,7 +78,7 @@ use Dompdf\Dompdf;
 $html =
 '<html>'.
 '<body>'.
-'<img src="../../SpringPlaza/img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block;">'.
+'<img src="../../SpringPlaza/img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block; margin-left: 230px;">'.
 '<br>'.
 '<br>'.
 '<br>'.
@@ -87,20 +87,20 @@ $html =
 '<p>Dear Guest,</p>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
-'<p>Reservation No.:'.$TempData[0][22].'</p>'.
-'<p>Check-in Date:'.$TempData[0][9].'</p>'.
-'<p>Check-out Date:'.$TempData[0][10].'</p>'.
-'<p>Room Type:'.$TempData[0][13].'</p>'.
-'<p>Adult/s:'.$TempData[0][5].'</p>'.
-'<p>Child/s:'.$TempData[0][6].'</p>'.
-'<p>Day/s:'.$TempData[0][7].'</p>'.
-'<p>Paid:'.number_format($TempData[0][16]).'</p>'.
-'<p>Balance:'.number_format($TempData[0][18]).'</p>'.
-'<p>Total Fee:'.number_format($TempData[0][17]).'</p>'.
+'<p>Reservation No.:'.$data[0][22].'</p>'.
+'<p>Check-in Date:'.$data[0][9].'</p>'.
+'<p>Check-out Date:'.$data[0][10].'</p>'.
+'<p>Room Type:'.$data[0][13].'</p>'.
+'<p>Adult/s:'.$data[0][5].'</p>'.
+'<p>Child/s:'.$data[0][6].'</p>'.
+'<p>Day/s:'.$data[0][7].'</p>'.
+'<p>Paid:'.number_format($data[0][16]).'</p>'.
+'<p>Balance:'.number_format($data[0][18]).'</p>'.
+'<p>Total Fee:'.number_format($data[0][17]).'</p>'.
 '<h3>Guest Details:</h3>'.
-'<p>Full Name.:'.$TempData[0][1] . $TempData[0][2].'</p>'.
-'<p>Contact No.:'.$TempData[0][3].'</p>'.
-'<p>Email Address:'.$TempData[0][20].'</p>'.
+'<p>Full Name.:'.$data[0][1] . $data[0][2].'</p>'.
+'<p>Contact No.:'.$data[0][3].'</p>'.
+'<p>Email Address:'.$data[0][20].'</p>'.
 '<hr>'.
 '<h3>Cancellation Policy</h3>'.
 '<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.

@@ -33,7 +33,7 @@ include 'utils.php';
 						DBClose();
 						 ?>
 						<p class="text-2x mar-no text-semibold"><i class="fa fa-user"></i>&nbsp<span><?php echo $rs[0][0]; ?></span></p>
-						<p class="mar-no">Guest Checkout today</p>
+						<p class="mar-no">Guest Checkout this day</p>
 					</div>
 				</div>
 			</div>

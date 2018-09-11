@@ -177,14 +177,7 @@ include "utils.php";
 							]).draw();
 					});
 
-					if(response["sum"] == null)
-					{
-						document.getElementById('lbltotal').value = "0.00"
-					}
-					else
-					{
-						document.getElementById('lbltotal').value = parseInt(response["sum"]).toLocaleString() + ".00";
-					}
+					document.getElementById('lbltotal').value = parseInt(response["sum"]).toLocaleString() + ".00";
 				}
 			});
 		}
