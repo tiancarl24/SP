@@ -34,6 +34,7 @@ include "utils.php";
 					<option></option>
 					<option>Daily</option>
 					<option>Monthly</option>
+					<option>Quarterly</option>
 					<option>Yearly</option>
 				</select>
 				Room Type:
@@ -48,6 +49,13 @@ include "utils.php";
 					}
 					DBClose();
 					?>
+				</select>
+				<select id="cboQuarter" name="cboQuarter" style="display: none;">
+					<option></option>
+					<option value="First">First Quarter</option>
+					<option value="Second">Second Quarter</option>
+					<option value="Third">Third Quarter</option>
+					<option value="Fourth">Fourth Quarter</option>
 				</select>
 				<select id="cboMonth" name="cboMonth" style="display: none;">
 					<option></option>
@@ -177,7 +185,14 @@ include "utils.php";
 							]).draw();
 					});
 
-					document.getElementById('lbltotal').value = parseInt(response["sum"]).toLocaleString() + ".00";
+					if(response["sum"] == null)
+					{
+						document.getElementById('lbltotal').value = "0.00";
+					}
+					else
+					{
+						document.getElementById('lbltotal').value = parseInt(response["sum"]).toLocaleString() + ".00";
+					}
 				}
 			});
 		}
@@ -213,6 +228,12 @@ include "utils.php";
 		else if(cboFilter.value == 'Monthly')
 		{
 			cboMonth.style.display = 'block';
+			cboQuarter.style.display = 'none';
+		}
+		else if(cboFilter.value == 'Quarterly')
+		{
+			cboQuarter.style.display = 'block';
+			cboMonth.style.display = 'none';
 		}
 		else if (cboFilter.value == "Yearly")
 		{
@@ -357,6 +378,46 @@ include "utils.php";
 		}
 
 
+	}
+</script>
+
+<script type="text/javascript">
+	
+	var cboQuarter = document.getElementById('cboQuarter');
+	cboQuarter.onchange = function()
+	{
+		if(cboQuarter.value == 'First')
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-01" + "-01";
+			document.getElementById('dtTo').value = Y + "-03" + "-31";
+		}
+		else if(cboQuarter.value == 'Second')
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-04" + "-01";
+			document.getElementById('dtTo').value = Y + "-06" + "-30";
+		}
+		else if(cboQuarter.value == 'Third')
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-07" + "-01";
+			document.getElementById('dtTo').value = Y + "-09" + "-30";
+		}
+		else
+		{
+			var today = new Date();
+			var Y = today.getFullYear();
+
+			document.getElementById('dtFrom').value = Y + "-10" + "-01";
+			document.getElementById('dtTo').value = Y + "-12" + "-31";
+		}
 	}
 </script>
 
