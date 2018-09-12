@@ -122,7 +122,7 @@ use Dompdf\Dompdf;
 $html =
 '<html>'.
 '<body>'.
-'<img src="../img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block;">'.
+'<img src="../../SpringPlaza/img/pdflogo.png" style="margin-right: auto; margin-left: auto; display: block; margin-left: 230px;">'.
 '<br>'.
 '<br>'.
 '<br>'.
