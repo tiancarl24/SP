@@ -138,7 +138,7 @@ include "utils.php";
 				<!--Modal body-->
 				<div class="modal-body">
 					<center><h3 class="text-semibold text-main">Are you sure you want to DISCARD this User?</h3></center>
-					<?php wrInput("text","lblDeleteRowID","","col-lg-4"); ?>
+					<?php wrInput("hidden","lblDeleteRowID","","col-lg-4"); ?>
 				</div>
 				<br>
 				<br>

@@ -12,6 +12,9 @@ $BAL = $AMOUNT - $DP;
 
 $rs = DBExecute(" UPDATE reservations SET Status = 'Approved', downpayment = '$DP', balance = '$BAL', totalpaid = '$DP' WHERE Reservationid = " .SQLs($ResID));
 
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Approve Reservation: $ResID', auditdate = '$maniladate', audittime = '$manilatime' ");
+
 DbClose();
 
 DBOpen();

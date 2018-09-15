@@ -104,7 +104,7 @@ include "utils.php";
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update Amenities</h4>
+					<h4 class="modal-title">Update About</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
@@ -138,7 +138,7 @@ include "utils.php";
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update Amenities</h4>
+					<h4 class="modal-title">Update About</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
@@ -276,7 +276,6 @@ include "utils.php";
 				success: function(response)
 				{
 					var res = JSON.parse(response);
-					alert(res);
 					$('#UpdateAccountModal').modal('show');
 					document.getElementById("txtRowID").value = res[0][0];
 					document.getElementById('txtUpdateAboutDescription').value = res[0][1];

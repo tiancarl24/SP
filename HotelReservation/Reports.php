@@ -40,6 +40,7 @@ include "utils.php";
 				Room Type:
 				<select id="cboRoomType" name="cboRoomType">
 					<option></option>
+					<option value="All">All</option>
 					<?php
 					DBOpen();
 					$RT = DBGetData("SELECT DISTINCT RoomType FROM roominformation");

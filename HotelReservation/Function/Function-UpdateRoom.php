@@ -1,5 +1,6 @@
 <?php
 include "../utils.php";
+include '../incSecure.php';
 
 $RoomID = $_POST["UpdateRoomID"];
 $RoomName = $_POST["UpdateRoomName"];
@@ -16,6 +17,9 @@ DBOpen();
 
 $AddRoom = DBExecute(" UPDATE roominformation SET RoomID = '$RoomID', RoomName = '$RoomName', RoomType = '$RoomType', RoomPrice = '$RoomPrice', 
 	RoomDescription = '$RoomDescription' WHERE RoomID = '$RoomID'");
+
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Update Room: $RoomID', auditdate = '$maniladate', audittime = '$manilatime' ");
 
 
 DBClose();

@@ -146,7 +146,7 @@ include "utils.php";
 </form>
 
 <!--Update Item Modal-->
-<form method="POST" action="Function/Function-UpdateAccounts.php" enctype="multipart/form-data">
+<form method="POST" action="Function/updateaccounts.php" enctype="multipart/form-data">
 	<div class="modal fade" id="UpdateAccountModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -204,7 +204,7 @@ include "utils.php";
 				<!--Modal body-->
 				<div class="modal-body">
 					<center><h3 class="text-semibold text-main">Are you sure you want to DISCARD this User?</h3></center>
-					<?php wrInput("text","lblDeleteRowID","","col-lg-4"); ?>
+					<?php wrInput("hidden","lblDeleteRowID","","col-lg-4"); ?>
 				</div>
 				<br>
 				<br>

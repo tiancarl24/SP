@@ -1,14 +1,17 @@
 <?php 
-	include "../utils.php"; 
-	include "../incSecure.php";
+include "../utils.php"; 
+include "../incSecure.php";
 
-	$RESID = $_POST['lblresid'];
+$RESID = $_POST['lblresid'];
 
-	DBOpen();
+DBOpen();
 
-	$rs = DBExecute(" UPDATE reservations set checkinstatus = 'checkout' where reservationid = " .SQLs($RESID));
+$rs = DBExecute(" UPDATE reservations set checkinstatus = 'checkout' where reservationid = " .SQLs($RESID));
 
-	DBClose();
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Checkout: $RESID', auditdate = '$maniladate', audittime = '$manilatime' ");
 
-	redirMsg('../CheckinReservation.php','Guest Successfully Check-out');
- ?>
+DBClose();
+
+redirMsg('../CheckinReservation.php','Guest Successfully Check-out');
+?>

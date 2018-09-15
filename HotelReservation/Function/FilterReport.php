@@ -6,13 +6,23 @@ $FROM = $_POST['FROM'];
 $TO = $_POST['TO'];
 $STATUS = $_POST['STATUS'];
 $RTYPE = $_POST['RTYPE'];
+
+
 //dump($FROM);
 
 DBOpen();
 
-$rs = DBGetData2("SELECT * FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' AND roomtype = '$RTYPE' ");
+if($RTYPE == 'All')
+{
+	$rs = DBGetData2("SELECT * FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' ");
+	$total = DBGetData2("SELECT SUM(totalpaid) as totalpaid FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' ");
+}
+else
+{
+	$rs = DBGetData2("SELECT * FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' AND roomtype = '$RTYPE' ");
 
-$total = DBGetData2("SELECT SUM(totalpaid) as totalpaid FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' AND roomtype = '$RTYPE' ");
+	$total = DBGetData2("SELECT SUM(totalpaid) as totalpaid FROM reservations WHERE checkindate BETWEEN '$FROM' and '$TO' AND status = '$STATUS' AND roomtype = '$RTYPE' ");
+}
 
 
 $sumtotal = $total[0]["totalpaid"];

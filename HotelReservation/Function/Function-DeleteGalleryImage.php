@@ -1,5 +1,6 @@
 <?php
 include "../utils.php";
+include '../incSecure.php';
 
 $id = $_POST["GetGalleryImageID"];
 //dump($id);
@@ -8,6 +9,9 @@ $id = $_POST["GetGalleryImageID"];
 DBOpen();
 
 $AddRoom = DBExecute(" DELETE FROM gallery WHERE id = '$id'");
+
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Delete image gallery: $id', auditdate = '$maniladate', audittime = '$manilatime' ");
 
 DBClose();
 

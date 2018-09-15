@@ -204,7 +204,7 @@ include "utils.php";
 					<center><h1>Are you sure you want to delete </h1></center>
 					<div class="row">
 						<?php
-						wrInput('text','GetRoomID','Room ID','col-lg-4');
+						wrInput('hidden','GetRoomID','','col-lg-4');
 						?>
 					</div>
 				</div>

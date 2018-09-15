@@ -1,6 +1,6 @@
 <?php
 include "../utils.php";
-// include "../incSecure.php";
+include "../incSecure.php";
 
 
 // dump($birthday);
@@ -23,6 +23,9 @@ $rs = DBExecute(" INSERT INTO users SET
 	address = '$address',
 	birthday = '$birthday'
 	");
+
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Add user: $username', auditdate = '$maniladate', audittime = '$manilatime' ");
 
 DBClose();
 

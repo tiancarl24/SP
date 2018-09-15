@@ -18,6 +18,9 @@ move_uploaded_file($filetmp, $target_file);
 DBOpen();
 $rs = DBExecute(" UPDATE about SET filename = '$filename' WHERE id = " .SQLs($RowID));
 
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Update About: $imagename', auditdate = '$maniladate', audittime = '$manilatime' ");
+
 DbClose();
 
 redirMsg('../About.php','Hotel Information Successfully Updated!');

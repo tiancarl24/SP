@@ -90,7 +90,7 @@ include "utils.php";
 				}
 				DBClose();
 				wrBtn("button","btnNewRoom","Add New Image","col-sm-2 Right","bluegreen");
-				wrBtn("button","btnDeleteRoom","Discard Room","col-sm-2 Right MR","red");
+				wrBtn("button","btnDeleteRoom","Discard Image","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
@@ -143,7 +143,7 @@ include "utils.php";
 					<center><h1>Are you sure you want to delete </h1></center>
 					<div class="row">
 						<?php
-						wrInput('text','GetImageID','Image ID','col-lg-4');
+						wrInput('hidden','GetImageID','','col-lg-4');
 						?>
 					</div>
 				</div>

@@ -1,5 +1,6 @@
 <?php 
 include '../utils.php';
+include '../incSecure.php';
 
 DBOpen();
 
@@ -63,7 +64,9 @@ $SaveData = DBExecute(" INSERT INTO reservations SET firstname = '".$TempData[0]
 	TotalPaid = '".$TempData[0][21]."',
 	ReservationID = '".$TempData[0][22]."' ");
 
-// $update = DBExecute(" UPDATE roominformation set roomavailability = 'Not Available' where roomno = '".$TempData[0][14]."' ");
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Add Reservation: ".$TempData[0][22]."', auditdate = '$maniladate', audittime = '$manilatime' ");
+
 DBClose();
 
 DBOpen();

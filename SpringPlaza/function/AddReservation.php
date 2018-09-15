@@ -1,5 +1,6 @@
 <?php 
 include '../utils.php';
+include '../incSecure.php';
 
 $AppID = $_POST['resID1'];
 $FNAME = $_POST['fname'];
@@ -109,6 +110,9 @@ $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
 	Email = '$EMAIL',
 	TotalPaid = '0',
 	ReservationID = '$AppID' ");
+
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Add Reservation: $AppID', auditdate = '$maniladate', audittime = '$manilatime' ");
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
 
