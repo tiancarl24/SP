@@ -18,7 +18,6 @@ include "utils.php";
 		<!--===================================================-->
 		<div class="panel">
 			<div class="panel-heading">
-				
 			</div>
 			<div class="panel-body">
 				<div class="col-sm-4">
@@ -49,8 +48,6 @@ include "utils.php";
 					$conn = mysqli_connect("localhost", "root", "", "hotelreservation");
 					if (! empty($_FILES)) 
 					{
-						
-
     // Validating SQL file type by extensions
 						if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
 							"sql"
@@ -73,24 +70,36 @@ include "utils.php";
 
 					function restoreMysqlDB($filePath, $conn)
 					{
+						DBOpen();
+
+						$rs = DBExecute(" DROP SCHEMA hotelreservation ");
+						$rs2 = DBExecute(" CREATE SCHEMA hotelreservation ");
+
+						DBClose();
+
 						$sql = '';
 						$error = '';
 
-						if (file_exists($filePath)) {
+						if (file_exists($filePath)) 
+						{
 							$lines = file($filePath);
 
-							foreach ($lines as $line) {
+							foreach ($lines as $line) 
+							{
 
             // Ignoring comments from the SQL script
-								if (substr($line, 0, 2) == '--' || $line == '') {
+								if (substr($line, 0, 2) == '--' || $line == '') 
+								{
 									continue;
 								}
 
 								$sql .= $line;
 
-								if (substr(trim($line), - 1, 1) == ';') {
+								if (substr(trim($line), - 1, 1) == ';') 
+								{
 									$result = mysqli_query($conn, $sql);
-									if (! $result) {
+									if (! $result) 
+									{
 										$error .= mysqli_error($conn) . "\n";
 									}
 									$sql = '';
