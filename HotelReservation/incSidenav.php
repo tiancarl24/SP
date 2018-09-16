@@ -20,8 +20,8 @@
               </a>
             </div>
             <div id="profile-nav" class="collapse list-group bg-trans">
-              <!-- <a href="Function/Backup.php" class="list-group-item">
-                <i class="demo-pli-gear icon-lg icon-fw"></i> Backup Database
+              <!-- <a href="BackupAndRestore.php" class="list-group-item">
+                <i class="fa fa-database"></i> Backup Database
               </a> -->
               <a href="logout.php" class="list-group-item">
                 <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
