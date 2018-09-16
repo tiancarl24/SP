@@ -20,9 +20,12 @@
               </a>
             </div>
             <div id="profile-nav" class="collapse list-group bg-trans">
-              <a href="BackupAndRestore.php" class="list-group-item">
-                <i class="fa fa-database"></i> Backup Database
-              </a>
+              <!-- <a href="BackupAndRestore.php" class="list-group-item">
+                <i class="fa fa-database"></i> Backup And Restore
+              </a> -->
+              <!-- <a href="Audit.php" class="list-group-item">
+                <i class="fa fa-list"></i> Audit Trail
+              </a> -->
               <a href="logout.php" class="list-group-item">
                 <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
               </a>
