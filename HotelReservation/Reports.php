@@ -4,6 +4,20 @@ include "incHeader.php";
 include "incSidenav.php";
 include "utils.php";
 ?>
+<style type="text/css">
+.print {
+	display: none;
+}
+
+@media print {
+	.screen {
+		display: none;
+	}
+	.print {
+		display: inline-block;
+	}
+}
+</style>
 <div class="boxed">
 
 	<!--CONTENT CONTAINER-->
@@ -19,26 +33,26 @@ include "utils.php";
 		<div class="panel">
 			<div class="panel-heading">
 				<br>
-				FROM:<input type="date" id="dtFrom" name="dtFrom">
-				TO:<input type="date" id="dtTo" name="dtTo">
+				<label class="screen">FROM:</label><input type="date" id="dtFrom" name="dtFrom" class="screen">
+				<label class="screen">TO:</label><input type="date" id="dtTo" name="dtTo" class="screen">
 
-				STATUS:
-				<select id="cboStatus" name="cboStatus">
+				<label class="screen">STATUS:</label>
+				<select id="cboStatus" name="cboStatus" class="screen">
 					<option></option>
 					<option>Approved</option>
 					<option>Disapproved</option>
 					<option>Pending</option>
 				</select>
-				FILTER:
-				<select id="cboFilter" name="cboFilter">
+				<label class="screen">FILTER:</label>
+				<select id="cboFilter" name="cboFilter" class="screen">
 					<option></option>
 					<option>Daily</option>
 					<option>Monthly</option>
 					<option>Quarterly</option>
 					<option>Yearly</option>
 				</select>
-				Room Type:
-				<select id="cboRoomType" name="cboRoomType">
+				<label class="screen">Room Type:</label>
+				<select id="cboRoomType" name="cboRoomType" class="screen">
 					<option></option>
 					<option value="All">All</option>
 					<?php
@@ -51,14 +65,14 @@ include "utils.php";
 					DBClose();
 					?>
 				</select>
-				<select id="cboQuarter" name="cboQuarter" style="display: none;">
+				<select id="cboQuarter" name="cboQuarter" style="display: none;" class="screen">
 					<option></option>
 					<option value="First">First Quarter</option>
 					<option value="Second">Second Quarter</option>
 					<option value="Third">Third Quarter</option>
 					<option value="Fourth">Fourth Quarter</option>
 				</select>
-				<select id="cboMonth" name="cboMonth" style="display: none;">
+				<select id="cboMonth" name="cboMonth" style="display: none;" class="screen">
 					<option></option>
 					<option value="01">January</option>
 					<option value="02">February</option>
@@ -74,7 +88,7 @@ include "utils.php";
 					<option value="12">December</option>
 				</select>
 				<?php 
-				wrBtn("button","btnFilter","Filter","col-sm-2 Right MR","orange"); 
+				wrBtn("button","btnFilter","Filter","col-sm-2 Right MR screen","orange"); 
 				?>
 			</div>
 			<div class="panel-body">
@@ -96,6 +110,10 @@ include "utils.php";
 				wr(" </tbody> ");
 				wr(" </table> ");
 				?>
+				<div class="row">
+					<a href="PrintSales.php" class="screen"><button class="col-sm-2 Right btn btn-warning screen" onclick="window.print()">Print</button></a>
+				</div>
+				<br>
 				<div class="col-sm-2 pull-right">
 					<label>TOTAL:</label>
 					<input type="text" id="lbltotal" name="lbltotal">
@@ -421,6 +439,5 @@ include "utils.php";
 		}
 	}
 </script>
-
 <!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
 <?php include "incFoot.php" ?>

@@ -7,7 +7,7 @@
   <title>Home - Hotel Spring Plaza</title>
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-  <link rel="icon" type="image" href="Library/images/favicon.png">
+  <link rel="icon" type="image" href="../SpringPlaza/img/favicon.png">
   <link href="Library/css/bootstrap.css" rel="stylesheet">
 
   <link href="Library/css/nifty.css" rel="stylesheet">
@@ -85,9 +85,9 @@ tr.row_selected{
         <!--================================-->
         <div class="navbar-header">
           <a href="index.html" class="navbar-brand">
-            <img src="Library/images/favicon.png" alt="Nifty Logo" class="brand-icon">
+            <img src="../SpringPlaza/img/favicon.png" alt="Nifty Logo" class="brand-icon">
             <div class="brand-title">
-              <span class="brand-text">Coop Suite</span>
+              <span class="brand-text">Spring Plaza</span>
             </div>
           </a>
         </div>
@@ -104,7 +104,7 @@ tr.row_selected{
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <li class="tgl-menu-btn">
               <a class="mainnav-toggle" href="#">
-                <i class="demo-pli-view-list"></i>
+                <i class="demo-pli-view-list screen"></i>
               </a>
             </li>
             <!--End Navigation toogle button-->
@@ -116,7 +116,7 @@ tr.row_selected{
               <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                 <span class="pull-right">
                   <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
-                  <i class="demo-pli-male ic-user"></i>
+                  <i class="demo-pli-male ic-user screen"></i>
                 </span>
                 <div class="username hidden-xs"><?php echo $_SESSION['HotelReservation.name'] ?></div>
               </a>
