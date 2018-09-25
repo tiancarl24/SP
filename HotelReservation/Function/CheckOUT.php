@@ -2,7 +2,7 @@
 include "../utils.php"; 
 include "../incSecure.php";
 
-$RESID = $_POST['lblresid'];
+$RESID = $_POST['lblresidout'];
 
 DBOpen();
 

@@ -1,16 +1,16 @@
 <?php 
-	include "../utils.php"; 
-	include "../incSecure.php";
+include "../utils.php"; 
+include "../incSecure.php";
 
-	$RESID = $_POST['ctr_ID'];
+$RESID = $_POST['ctr_ID'];
 
-	DBOpen();
+DBOpen();
 
-	$rs = DBGetData("SELECT * FROM reservations WHERE reservationid = " .SQLs($RESID));
+$rs = DBGetData("SELECT * FROM reservations WHERE reservationid = " .SQLs($RESID));
 
-	$rs = json_encode($rs);
+$rs = json_encode($rs);
 
-	echo $rs;
+echo $rs;
 
-	DBClose();
- ?>
+DBClose();
+?>

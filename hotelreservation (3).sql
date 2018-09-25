@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2018 at 09:12 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Sep 25, 2018 at 10:24 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -76,6 +76,28 @@ CREATE TABLE `audit` (
   `AuditDate` date NOT NULL,
   `AuditTime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `audit`
+--
+
+INSERT INTO `audit` (`RowID`, `User`, `Action`, `AuditDate`, `AuditTime`) VALUES
+(1, 'gimson', 'Add Room: asd', '2018-09-20', '09:31:46'),
+(2, 'gimson', 'Add Room: 11', '2018-09-25', '10:32:24'),
+(3, 'gimson', 'Add Room: 01', '2018-09-25', '10:32:57'),
+(4, 'gimson', 'Add Room: 123', '2018-09-25', '10:33:12'),
+(5, 'gimson', 'Add Room: 01', '2018-09-25', '10:39:12'),
+(6, '', 'Add Reservation: 201800000001', '2018-09-25', '13:39:55'),
+(7, 'gimson', 'Approve Reservation: 201800000001', '2018-09-25', '13:40:58'),
+(8, 'gimson', 'Approve Reservation: 201800000001', '2018-09-25', '13:40:59'),
+(9, 'gimson', 'Approve Reservation: 201800000001', '2018-09-25', '14:24:35'),
+(10, 'gimson', 'Checkin: ', '2018-09-25', '14:26:12'),
+(11, 'gimson', 'Checkin: 201800000001', '2018-09-25', '14:44:10'),
+(12, 'gimson', 'Checkin: 201800000001', '2018-09-25', '14:47:00'),
+(13, 'gimson', 'Checkout: ', '2018-09-25', '14:51:32'),
+(14, 'gimson', 'Checkout: ', '2018-09-25', '14:54:55'),
+(15, 'gimson', 'Checkout: 201800000001', '2018-09-25', '14:56:55'),
+(16, 'gimson', 'Checkin: 201800000001', '2018-09-25', '15:06:19');
 
 -- --------------------------------------------------------
 
@@ -226,6 +248,15 @@ CREATE TABLE `reservations` (
   `CheckinStatus` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `reservations`
+--
+
+INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`, `CheckinStatus`) VALUES
+(1, 'Mark', 'Angelo', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-25', '13:39:55', '13:39:55', 'Deluxe', '1', 'Pay in Bank', 500, 123, 0, 'Approved', 'markangeloguanez@gmail.com', 500, '201800000001', 'Checkin'),
+(2, 'Mark', 'Angelo', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-25', '13:39:55', '13:39:55', 'Fan Room', '1', 'Pay in Bank', 500, 123, 0, 'Approved', 'markangeloguanez@gmail.com', 500, '201800000001', 'Checkin'),
+(3, 'Gimson', 'Recilla', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-25', '13:39:55', '13:39:55', 'Fan Room', '3', 'Pay in Bank', 500, 123, 0, 'Approved', 'markangeloguanez@gmail.com', 500, '201800000002', 'Checkin');
+
 -- --------------------------------------------------------
 
 --
@@ -258,6 +289,13 @@ CREATE TABLE `reservations_temp` (
   `ReservationID` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `reservations_temp`
+--
+
+INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`) VALUES
+(1, 'Mark', 'Angelo', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-26', '13:39:55', '13:39:55', 'Deluxe', '1', 'Pay in Bank', 0, 123, 123, 'Pending', 'markangeloguanez@gmail.com', 0, '201800000001');
+
 -- --------------------------------------------------------
 
 --
@@ -274,6 +312,15 @@ CREATE TABLE `reservedate` (
   `Roomtype` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `reservedate`
+--
+
+INSERT INTO `reservedate` (`RowID`, `reservationID`, `ReservationDate`, `Checkin`, `Checkout`, `Roomno`, `Roomtype`) VALUES
+(1, '201800000001', '2018-09-25', '2018-09-25', '2018-09-25', 0, 'deluxe'),
+(2, '201800000001', '2018-09-25', '2018-09-25', '2018-09-26', 1, 'Deluxe'),
+(3, '201800000001', '2018-09-25', '2018-09-26', '2018-09-26', 1, 'Deluxe');
+
 -- --------------------------------------------------------
 
 --
@@ -285,6 +332,17 @@ CREATE TABLE `roomimage` (
   `RoomID` varchar(55) NOT NULL,
   `filename` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roomimage`
+--
+
+INSERT INTO `roomimage` (`id`, `RoomID`, `filename`) VALUES
+(1, '12', 'Picture2.png'),
+(2, '12', 'E-commerce-banner-1400x466.jpg'),
+(3, '13', ''),
+(4, '14', ''),
+(5, '13', '');
 
 -- --------------------------------------------------------
 
@@ -302,6 +360,17 @@ CREATE TABLE `roominformation` (
   `RoomPrice` double NOT NULL,
   `RoomAvailability` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roominformation`
+--
+
+INSERT INTO `roominformation` (`id`, `RoomID`, `RoomNo`, `RoomName`, `RoomType`, `RoomDescription`, `RoomPrice`, `RoomAvailability`) VALUES
+(1, '12', 0, 'asd', 'asd', 'asdasd', 123, 'Available'),
+(2, '12', 11, 'asd', 'asd', 'asdasd', 123123, 'Available'),
+(3, '13', 1, 'Deluxe', 'Deluxe', 'azsasd\r\n', 123, 'Available'),
+(4, '14', 123, 'Fan Room', 'Fan Room', 'asasd\r\n', 2222, 'Available'),
+(5, '13', 1, 'Deluxe', 'Deluxe', 'asdadasd', 312, 'Available');
 
 -- --------------------------------------------------------
 
@@ -447,7 +516,7 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `bankinfo`
@@ -459,7 +528,7 @@ ALTER TABLE `bankinfo`
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -471,13 +540,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `floors`
 --
 ALTER TABLE `floors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -489,37 +558,37 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `reservedate`
 --
 ALTER TABLE `reservedate`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roomimage`
 --
 ALTER TABLE `roomimage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `roominformation`
 --
 ALTER TABLE `roominformation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

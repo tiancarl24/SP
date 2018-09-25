@@ -11,7 +11,8 @@
   <link href="Library/css/bootstrap.css" rel="stylesheet">
 
   <link href="Library/css/nifty.css" rel="stylesheet">
-
+  <!--Premium Line Icons [ OPTIONAL ]-->
+  <link href="Library/premium/icon-sets/icons/line-icons/premium-line-icons.css" rel="stylesheet">
   <link href="Library/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
   <link href="Library/css/demo/nifty-demo.min.css" rel="stylesheet">
@@ -57,6 +58,9 @@
   <script src="Library/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
   <script src="Library/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
+  <!--Flot Chart [ OPTIONAL ]-->
+  <script src="plugins/flot-charts/jquery.flot.min.js"></script>
+  <script src="plugins/flot-charts/jquery.flot.resize.min.js"></script>
 
   <!--DataTables Sample [ SAMPLE ]-->
   <script src="Library/js/demo/tables-datatables.js"></script>
