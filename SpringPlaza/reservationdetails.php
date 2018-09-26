@@ -114,9 +114,6 @@ else
 			<div class="row">
 				<br>
 				<br>
-				<br>
-				<br>
-				<br>
 				<div id="divpersonalinfo" name = "divpersonalinfo" style="width: 80%; height: auto; border: solid 2px orange; margin-right: auto; margin-left: auto; display: block">
 					<div style="padding: 10px; color: orange; font-size: 20px;">
 						<input type="hidden" id="lblValidate" name="lblValidate">

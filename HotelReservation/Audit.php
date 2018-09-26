@@ -45,12 +45,13 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from audit");
-				
+				$rs = DBGetData("SELECT * from audit ORDER BY RowID DESC");
+				DBClose();
 				wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 				wr(" <thead> ");
 				wr(" <tr> ");
-				wr(" <th><center>User</center></th> ");
+				wr(" <th><center>ID</center></th> ");
+				wr(" <th><center>Name</center></th> ");
 				wr(" <th><center>Action</center></th> ");
 				wr(" <th><center>Date / Time</center></th> ");
 				wr(" </tr> ");
@@ -60,6 +61,7 @@ include "utils.php";
 				{
 					wr(" <tr> ");
 					wr(" <td style='text-align: center';>$rs[0]</td> ");
+					wr(" <td style='text-align: center';>$rs[1]</td> ");
 					wr(" <td style='text-align: center';>$rs[2]</td> ");
 					wr(" <td style='text-align: center';>$rs[3] / $rs[4] </td> ");
 							// wr(" <td>$rs[4]</td> ");
@@ -67,7 +69,7 @@ include "utils.php";
 				}
 				wr(" </tbody> ");
 				wr(" </table> ");
-				DBClose();
+				
 				?>
 			</div>
 		</div>

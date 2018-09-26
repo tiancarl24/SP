@@ -84,11 +84,11 @@ include "utils.php";
                 <!-- Nav-Links start -->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="scroll-to" href="#sc-features">Amenities</a></li>
-                    <li><a class="scroll-to" href="#sc-rooms">Rooms & Facilities</a></li>
-                    <li><a class="scroll-to" href="#MapLocation">Map Location</a></li>
-                    <li><a class="scroll-to" href="#Gallery">Album Gallery</a></li>
-                    <li><a class="scroll-to" href="#About">About</a></li>
-                    <li><a class="scroll-to" href="#Contact">Contact</a></li>
+                    <li><a class="scroll-to" href="#sc-rooms">Rooms</a></li>
+                    <li><a class="scroll-to" href="#MapLocation">Location</a></li>
+                    <li><a class="scroll-to" href="#Gallery">Gallery</a></li>
+                    <li><a class="scroll-to" href="#About">About Us</a></li>
+                    <li><a class="scroll-to" href="#Contact">Contact Us</a></li>
                     <li>
                     </li>
                 </ul>
