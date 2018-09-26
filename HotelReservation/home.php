@@ -403,55 +403,55 @@ DBClose();
 					<!--Modal body-->
 					<div class="modal-body">
 						<?php
-						DBOpen();
+						// DBOpen();
 
-						$CRAT2 = DBGetData(" SELECT COUNT(*) as count from roominformation where roomno NOT IN (SELECT roomno from reservedate where checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND roomavailability = 'Available' GROUP BY RoomID ");
-						var_dump($CRAT2[0][0]);
-						if(empty($RAT2))
-						{
-							wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
-							wr(" <thead> ");
-							wr("  <tr> ");
-							wr(" <th><center>Room ID</center></th> ");
-							wr(" <th><center>Room Type</center></th> ");
-							wr(" <th><center>Room Available</center></th> ");
-							wr(" </tr> ");
-							wr(" </thead> ");
-							wr(" <tbody> ");
-							wr(" <tr> ");
-							wr(" <td style='color: red;'>No data available in table</td>");
-							wr(" <td></td>");
-							wr(" <td></td>");
-							wr(" </tr> ");
-							wr(" </tbody> ");
-							wr(" </table> ");
-							wr("No data available in table");
-							wr("<br>");
-						}
-						else
-						{
-							wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
-							wr(" <thead> ");
-							wr(" <tr> ");
-							wr(" <th><center>Room ID</center></th> ");
-							wr(" <th><center>Room Type</center></th> ");
-							wr(" <th><center>Room Available</center></th> ");
-							wr(" </tr> ");
-							wr(" </thead> ");
-							wr(" <tbody> ");
-							foreach($RAT2 as $RAT2)
-							{
-								wr(" <tr> ");
-								wr(" <td style='text-align: center';>$RAT2[1]</td> ");
-								wr(" <td style='text-align: center';>$RAT2[4]</td> ");
-								wr(" <td style='text-align: center';>".$CRAT2[0]."</td> ");
-								wr(" </tr> ");
-							}
-							wr(" </tbody> ");
-							wr(" </table> ");
-							wr(" <span>".$CRAT2[0][0]."</span> ");
-						}
-						DBClose();
+						// $CRAT2 = DBGetData(" SELECT COUNT(*) as count from roominformation where roomno NOT IN (SELECT roomno from reservedate where checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND roomavailability = 'Available' GROUP BY RoomID ");
+						// var_dump($CRAT2[0][0]);
+						// if(empty($RAT2))
+						// {
+						// 	wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
+						// 	wr(" <thead> ");
+						// 	wr("  <tr> ");
+						// 	wr(" <th><center>Room ID</center></th> ");
+						// 	wr(" <th><center>Room Type</center></th> ");
+						// 	wr(" <th><center>Room Available</center></th> ");
+						// 	wr(" </tr> ");
+						// 	wr(" </thead> ");
+						// 	wr(" <tbody> ");
+						// 	wr(" <tr> ");
+						// 	wr(" <td style='color: red;'>No data available in table</td>");
+						// 	wr(" <td></td>");
+						// 	wr(" <td></td>");
+						// 	wr(" </tr> ");
+						// 	wr(" </tbody> ");
+						// 	wr(" </table> ");
+						// 	wr("No data available in table");
+						// 	wr("<br>");
+						// }
+						// else
+						// {
+						// 	wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
+						// 	wr(" <thead> ");
+						// 	wr(" <tr> ");
+						// 	wr(" <th><center>Room ID</center></th> ");
+						// 	wr(" <th><center>Room Type</center></th> ");
+						// 	wr(" <th><center>Room Available</center></th> ");
+						// 	wr(" </tr> ");
+						// 	wr(" </thead> ");
+						// 	wr(" <tbody> ");
+						// 	foreach($RAT2 as $RAT2)
+						// 	{
+						// 		wr(" <tr> ");
+						// 		wr(" <td style='text-align: center';>$RAT2[1]</td> ");
+						// 		wr(" <td style='text-align: center';>$RAT2[4]</td> ");
+						// 		wr(" <td style='text-align: center';>".$CRAT2[0]."</td> ");
+						// 		wr(" </tr> ");
+						// 	}
+						// 	wr(" </tbody> ");
+						// 	wr(" </table> ");
+						// 	wr(" <span>".$CRAT2[0][0]."</span> ");
+						// }
+						// DBClose();
 						?>
 					</div>
 					<br>
@@ -681,9 +681,9 @@ DBClose();
 </script>
 <script type="text/javascript">
 	document.getElementById('AvailableRooms').onclick = function()
-	{
-		$('#ModalRoomAvailable').modal('show');
-	}
+	// {
+	// 	$('#ModalRoomAvailable').modal('show');
+	// }
 	document.getElementById('TodaySales').onclick = function()
 	{
 		$('#ModalTotalSales').modal('show');
