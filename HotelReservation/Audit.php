@@ -45,31 +45,30 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from audit ORDER BY RowID DESC");
-				DBClose();
+				$rs = DBGetData2("SELECT * FROM audit ORDER BY RowID DESC");
+
 				wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 				wr(" <thead> ");
 				wr(" <tr> ");
-				wr(" <th><center>ID</center></th> ");
-				wr(" <th><center>Name</center></th> ");
-				wr(" <th><center>Action</center></th> ");
-				wr(" <th><center>Date / Time</center></th> ");
+				wr(" <th>ID</th> ");
+				wr(" <th>Name</th> ");
+				wr(" <th>Action</th> ");
+				wr(" <th>Date / Time</th> ");
 				wr(" </tr> ");
 				wr(" </thead> ");
 				wr(" <tbody> ");
 				foreach($rs as $rs)
 				{
 					wr(" <tr> ");
-					wr(" <td style='text-align: center';>$rs[0]</td> ");
-					wr(" <td style='text-align: center';>$rs[1]</td> ");
-					wr(" <td style='text-align: center';>$rs[2]</td> ");
-					wr(" <td style='text-align: center';>$rs[3] / $rs[4] </td> ");
-							// wr(" <td>$rs[4]</td> ");
+					wr(" <td>$rs[RowID]</td> ");
+					wr(" <td>$rs[User]</td> ");
+					wr(" <td>$rs[Action]</td> ");
+					wr(" <td>$rs[AuditDate] / $rs[AuditTime] </td> ");
 					wr(" </tr> ");
 				}
 				wr(" </tbody> ");
 				wr(" </table> ");
-				
+				DBClose();
 				?>
 			</div>
 		</div>
