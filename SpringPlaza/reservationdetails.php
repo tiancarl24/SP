@@ -207,81 +207,85 @@ else
 						</div>	
 					</div>
 					<br>
-					<div class="row">
+					<div style="margin-right: auto; margin-left: auto; display: block;">
+						<div class="row">
+							<div class="col-lg-2 col-md-2"></div>
+							<div class="col-md-4">
+								<input type="submit" id="btnPayinbank" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;" name="btnPayinbank" value="PAY IN BANK">
+							</form>
+						</div>
 						<div class="col-md-4">
-							<input type="submit" id="btnPayinbank" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;" name="btnPayinbank" value="PAY IN BANK">
-						</form>
+							<button type="button" id="btnPaypal" name="btnPaypal" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;">PAY ONLINE</button>
+						</div>
 					</div>
-					<div class="col-md-4">
-						<button type="button" id="btnPaypal" name="btnPaypal" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;">PAY ONLINE</button>
-					</div>
-					<br>
-					<br>
-					<br>
-					<center style="color: orange">REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>
-					<br>
 				</div>
+				<br>
+				<br>
+				<br>
+				<center style="color: orange">REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>
+				<br>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<form class="paypal" action="function/payments.php" method="post" id="paypal_form">
-		<div id="PaymentModal" class="modal fade" role="dialog" data-backdrop="dynamic">
-			<div class="modal-dialog" style="width: 25%">
-				<div class="modal-content">
-					<div class="modal-header bg-mint">
-						<h4 class="modal-title" style="color: white"> </h4>
-						<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
-					</div>
-					<div class="modal-body form-contol">
-						<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
-						<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
-						<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
-						<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
-						<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
-						<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
-						<br>
-						<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
+<form class="paypal" action="function/payments.php" method="post" id="paypal_form">
+	<div id="PaymentModal" class="modal fade" role="dialog" data-backdrop="dynamic">
+		<div class="modal-dialog" style="width: 25%">
+			<div class="modal-content">
+				<div class="modal-header bg-mint">
+					<h4 class="modal-title" style="color: white"> </h4>
+					<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
+				</div>
+				<div class="modal-body form-contol">
+					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
+					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
+					<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
+					<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
+					<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
+					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
+					<br>
+					<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
 
-						<!-- -------------------------------------------------- -->
-						<label style="display: none;">FNAME :</label><input type="hidden" class="LabelInput" id="fname" name="fname" value="<?php echo $RNo['FNAME'] ?>"  readonly>
-						<label style="display: none;">LNAME :</label><input type="hidden" class="LabelInput" id="lname" name="lname" value="<?php echo $RNo['LNAME'] ?>"  readonly>
-						<label style="display: none;">ADDRESS :</label><input type="hidden" class="LabelInput" id="address" name="address" value="<?php echo $RNo['ADDRESS'] ?>"  readonly>
-						<label style="display: none;">CITY :</label><input type="hidden" class="LabelInput" id="city" name="city" value="<?php echo $RNo['CITY'] ?>"  readonly>
-						<label style="display: none;">ZIPCODE :</label><input type="hidden" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" >
-						<label style="display: none;">PHONE :</label><input type="hidden" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>"  readonly>
-						
-						
-						<label style="display: none">ADULT :</label><input type="hidden" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>"  readonly>
-						<label style="display: none">CHILDREN :</label><input type="hidden" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
-						<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
-						<label style="display: none">TOTAL DAYS :</label><input type="hidden" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
-						<!-- -------------------------------------------------- -->
+					<!-- -------------------------------------------------- -->
+					<label style="display: none;">FNAME :</label><input type="hidden" class="LabelInput" id="fname" name="fname" value="<?php echo $RNo['FNAME'] ?>"  readonly>
+					<label style="display: none;">LNAME :</label><input type="hidden" class="LabelInput" id="lname" name="lname" value="<?php echo $RNo['LNAME'] ?>"  readonly>
+					<label style="display: none;">ADDRESS :</label><input type="hidden" class="LabelInput" id="address" name="address" value="<?php echo $RNo['ADDRESS'] ?>"  readonly>
+					<label style="display: none;">CITY :</label><input type="hidden" class="LabelInput" id="city" name="city" value="<?php echo $RNo['CITY'] ?>"  readonly>
+					<label style="display: none;">ZIPCODE :</label><input type="hidden" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" >
+					<label style="display: none;">PHONE :</label><input type="hidden" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>"  readonly>
 
-						<input type="hidden" name="cmd" value="_xclick" />
-						<input type="hidden" name="no_note" value="1" />
-						<input type="hidden" name="lc" value="UK" />
-						<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
-						<input type="hidden" name="first_name" value="Customer's First Name" />
-						<input type="hidden" name="last_name" value="Customer's Last Name" />
-						<input type="hidden" name="payer_email" value="customer@example.com" />
-						<input type="hidden" name="item_number" value="<?php echo $AppID ?>" / >
-						<input type="hidden" name="txtOption" value="" class="OPT" / >
-					</div>
-					<div class="modal-footer">
-						<div class="col-md-12">
-							<div class="col-md-6">
-								<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnHalf" name="btnHalf" value="Half Payment">
-							</div>
-							<div class="col-md-6">
-								<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnFull" name="btnFull" value="Full Payment">
-							</div>
+
+					<label style="display: none">ADULT :</label><input type="hidden" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>"  readonly>
+					<label style="display: none">CHILDREN :</label><input type="hidden" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
+					<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
+					<label style="display: none">TOTAL DAYS :</label><input type="hidden" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
+					<!-- -------------------------------------------------- -->
+
+					<input type="hidden" name="cmd" value="_xclick" />
+					<input type="hidden" name="no_note" value="1" />
+					<input type="hidden" name="lc" value="UK" />
+					<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+					<input type="hidden" name="first_name" value="Customer's First Name" />
+					<input type="hidden" name="last_name" value="Customer's Last Name" />
+					<input type="hidden" name="payer_email" value="customer@example.com" />
+					<input type="hidden" name="item_number" value="<?php echo $AppID ?>" / >
+					<input type="hidden" name="txtOption" value="" class="OPT" / >
+				</div>
+				<div class="modal-footer">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnHalf" name="btnHalf" value="Half Payment">
+						</div>
+						<div class="col-md-6">
+							<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnFull" name="btnFull" value="Full Payment">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
+</form>
 	<!-- <script type="text/javascript">
 		var btnPaypal = document.getElementById('btnPaypal');
 		btnPaypal.onclick = function()

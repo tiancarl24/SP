@@ -12,7 +12,7 @@
                         {
                             wr("<div id='AlbumGalleryID' class='col-lg-4' style='height: auto; border: solid 1px white; padding-bottom: 20px;  background-color: #f68345; color: white;'>");
                             wr("<br>");
-                            wr("<h4><center>$floor[1] Floor</center></h4>");
+                            wr("<h4><center>$floor[1]</center></h4>");
                             wr("<br>");
                             $image = DBGetData("SELECT * FROM gallery WHERE Floor = '$floor[1]'");
                             foreach($image as $image)
