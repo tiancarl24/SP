@@ -100,7 +100,7 @@ DBClose();
 							<?php
 							DBOpen();
 
-							$CI = DBGetData("SELECT * FROM reservations WHERE CheckinDate = '$maniladate' AND CheckinStatus = ''");
+							$CI = DBGetData("SELECT * FROM reservations WHERE CheckinDate = '$maniladate' AND CheckinStatus = '' AND status = 'Approved' ");
 							if($CI == null)
 							{
 								wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
@@ -506,7 +506,7 @@ DBClose();
 					</div>
 					<!--Modal body-->
 					<div class="modal-body">
-						<input type="text" id="lblresidout" name="lblresidout">
+						<input type="hidden" id="lblresidout" name="lblresidout">
 						<center><h1>Are you sure you want to check-out this guest? </h1></center>
 					</div>
 					<br>
