@@ -1,10 +1,10 @@
 <?php
 include '../utils.php';
     //ENTER THE RELEVANT INFO BELOW
-$mysqlUserName      = "root";
-$mysqlPassword      = "";
+$mysqlUserName      = "springplaza_root";
+$mysqlPassword      = "springplaza123";
 $mysqlHostName      = "localhost";
-$DbName             = "HotelReservation";
+$DbName             = "springplaza_hotelreservation";
 $backup_name        = "HotelReservationBackup.sql";
 $tables             = array("about", "amenities", "audit", "bankinfo", "carousel", "contact", "floors","gallery","payments","reservations","reservations_temp","reservedate","roomimage","roominformation","users");
 

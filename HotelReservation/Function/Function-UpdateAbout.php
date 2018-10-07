@@ -4,10 +4,8 @@ include "../incSecure.php";
 
 DBOpen();
 
-$RowID = $_POST['txtRowID'];
+$RowID = $_POST['updatetxtRowID'];
 $Description = $_POST['txtUpdateAboutDescription'];
-$imagename = $_POST['txtImageFile'];
-dump($imagename);
 
 $rs = DBExecute(" UPDATE about SET Description = '$Description' WHERE id = " .SQLs($RowID));
 

@@ -5,9 +5,9 @@ $enableSandbox = true;
 
 // Database settings. Change these for your database configuration.
 $dbConfig = [
-    'host' => 'localhost',
-    'username' => 'root',
-    'password' => '',
+    'host' => 'http://springplazahotel247.com/SP/SpringPlaza/',
+    'username' => 'springplaza_root',
+    'password' => 'springplaza123',
     'name' => 'hotelreservation'
 ];
 
@@ -15,9 +15,9 @@ $dbConfig = [
 // for your site.
 $paypalConfig = [
     'email' => 'dianebhe09@gmail.com',
-    'return_url' => 'http://localhost/sp/springplaza/pay.php',
-    'cancel_url' => 'http://localhost/sp/springplaza/index.php',
-    'notify_url' => 'http://localhost/sp/springplaza/index.php'
+    'return_url' => 'http://springplazahotel247.com/SP/SpringPlaza/pay.php',
+    'cancel_url' => 'http://springplazahotel247.com/SP/SpringPlaza/index.php',
+    'notify_url' => 'http://springplazahotel247.com/SP/SpringPlaza/index.php'
 ];
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';

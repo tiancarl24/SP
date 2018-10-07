@@ -116,7 +116,7 @@ include "utils.php";
 				<br>
 				<div class="col-sm-2 pull-right">
 					<label>TOTAL:</label>
-					<input type="text" id="lbltotal" name="lbltotal">
+					<input type="text" id="lbltotal" name="lbltotal" readonly>
 				</div>
 			</div>
 		</div>

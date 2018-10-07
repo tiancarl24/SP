@@ -115,6 +115,7 @@ $user = $_SESSION['HotelReservation.name'];
 $audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Add Reservation: $AppID', auditdate = '$maniladate', audittime = '$manilatime' ");
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
+//dump($EMAIL);
 
 //>>PDF AND EMAIL
 
@@ -178,16 +179,16 @@ file_put_contents("../pdf/".$AppID.".pdf",$dompdf->output($AppID));
 
 // EMAIL
 	// Create the Transport
-$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'SSL'))
 ->setUsername('springplazahotel247@gmail.com')
-->setPassword('spring123');
+->setPassword("spring123");
 
 	// Create the Mailer using your created Transport
 $mailer = new Swift_Mailer($transport);
 
 	// Create a message
-$message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
-->setFrom(['springplazahotel247@gmail.com' => 'HotelSpringPlaza'])
+$message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
+->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
 ->setTo([$EMAIL => 'A name'])
 ->setBody('Hi '.$FNAME.' '.$LNAME.'!
 	<br>

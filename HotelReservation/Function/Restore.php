@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "hotelreservation");
+$conn = mysqli_connect("localhost", "springplaza_root", "springplaza123", "springplaza_hotelreservation");
 if (! empty($_FILES)) {
     // Validating SQL file type by extensions
     if (! in_array(strtolower(pathinfo($_FILES["backup_file"]["name"], PATHINFO_EXTENSION)), array(
@@ -19,6 +19,14 @@ if (! empty($_FILES)) {
 
 function restoreMysqlDB($filePath, $conn)
 {
+    
+    DBOpen();
+
+    $rs = DBExecute(" DROP SCHEMA hotelreservation ");
+    $rs2 = DBExecute(" CREATE SCHEMA hotelreservation ");
+
+    DBClose();
+    
     $sql = '';
     $error = '';
     

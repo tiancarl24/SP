@@ -78,7 +78,7 @@ include "utils.php";
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
-					<input type="hidden" id="lblresid" name="lblresid">
+					<input type="hidden" id="lblresidout" name="lblresidout">
 					<center><h1>Are you sure you want to check-out this guest? </h1></center>
 				</div>
 				<br>
@@ -224,7 +224,7 @@ include "utils.php";
 				{
 					var rs = JSON.parse(response);
 					$('#CheckoutModal').modal('show');
-					document.getElementById('lblresid').value = rs[0][22];
+					document.getElementById('lblresidout').value = rs[0][22];
 				}
 			});
 		}

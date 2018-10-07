@@ -136,18 +136,17 @@ $dompdf->render();
 file_put_contents("../pdf/".$TempData[0][22].".pdf",$dompdf->output($TempData[0][22]));  
 
 // EMAIL
-
 	// Create the Transport
-$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'SSL'))
 ->setUsername('springplazahotel247@gmail.com')
-->setPassword('spring123');
+->setPassword("spring123");
 
 	// Create the Mailer using your created Transport
 $mailer = new Swift_Mailer($transport);
 
 	// Create a message
-$message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
-->setFrom(['springplazahotel247@gmail.com' => 'HotelSpringPlaza'])
+$message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
+->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
 ->setTo([$TempData[0][20] => 'A name'])
 ->attach(Swift_Attachment::fromPath('../pdf/'.$TempData[0][22].'.pdf'))
 ->setBody('Hi '.$TempData[0][1].' '.$TempData[0][2].'!

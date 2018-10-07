@@ -19,7 +19,7 @@ DbClose();
 
 DBOpen();
 
-$data = DBGetData(" SELECT * FROM reservations WHERE Reservationid = " .SQLs($ResID));
+$data = DBGetData(" SELECT * FROM reservations WHERE ReservationID = " .SQLs($ResID));
 
 //dump($data[0][22]);
 $bankinfo = DBGetData(" SELECT * FROM bankinfo ");
@@ -82,16 +82,16 @@ $dompdf->render();
 file_put_contents("../../SpringPlaza/pdf/".$AppID.".pdf",$dompdf->output($AppID));  
 
 	// Create the Transport
-$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'SSL'))
 ->setUsername('springplazahotel247@gmail.com')
-->setPassword('spring123');
+->setPassword("spring123");
 
 	// Create the Mailer using your created Transport
 $mailer = new Swift_Mailer($transport);
 
 	// Create a message
-$message = (new Swift_Message('Reservation from HOTEL SPRING PLAZA'))
-->setFrom(['springplazahotel247@gmail.com' => 'Hotel Spring Plaza'])
+$message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
+->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
 ->setTo([$data[0][20] => 'A name'])
 ->attach(Swift_Attachment::fromPath('../../SpringPlaza/pdf/'.$AppID.'.pdf'))
 ->setBody('Hi '.$data[0][1].' '.$data[0][2].'!

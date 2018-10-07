@@ -15,6 +15,8 @@ include 'utils.php';
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/owncss.css">
+	<link rel="shortcut icon" href="img/ico/favicon.png">
+
 
 </head>
 <div class="header">

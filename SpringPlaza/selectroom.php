@@ -9,7 +9,7 @@ include "utils.php";
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Hotel Spring Plaza</title>
+	<title>Spring Plaza Hotel</title>
 	<meta name="description"
 	content="Accomodation is developed for hotels, motels, guest house and accommodation planning like Vacation Rentals, Homes, Apartments & Rooms and much more.">
 	<meta name="author" content="Themeinjection.com">
@@ -187,7 +187,6 @@ include "utils.php";
 
 									foreach($rs as $rs)
 									{
-
 										$array1 = array(
 											'CIN' => $CIN,
 											'COUT' => $COUT,
@@ -278,6 +277,6 @@ include "utils.php";
 				.$difference->m.' months, ' 
 				.$difference->d.' days';
 
-				alert($difference);
+				// alert($difference);
 			});
 		</script>

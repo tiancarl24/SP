@@ -15,8 +15,8 @@ else
 		redirMsg("index.php","Invalid Password!");
 
 
-
-	// $Audit = DBExecute(" INSERT INTO Audit_trail(User, Operation, AuditDate, AuditTime) VALUES(" .SQLs($rs[0][1]) . c . SQLs('Logged in') . c . SQLs($maniladate) . c . SQLs($manilatime) . ")");
+$user = $_SESSION['HotelReservation.name'];
+$audit = DBExecute(" INSERT INTO audit SET user = '".$rs[0][2]."', action = 'Login', auditdate = '$maniladate', audittime = '$manilatime' ");
 
 	DBClose();
 	

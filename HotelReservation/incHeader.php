@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Hotel Spring Plaza</title>
+  <title>Home - Spring Plaza Hotel</title>
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image" href="../SpringPlaza/img/favicon.png">
@@ -91,7 +91,7 @@ tr.row_selected{
           <a href="index.html" class="navbar-brand">
             <img src="../SpringPlaza/img/favicon.png" alt="Nifty Logo" class="brand-icon">
             <div class="brand-title">
-              <span class="brand-text">Spring Plaza</span>
+              <span class="brand-text">Spring Plaza Hotel</span>
             </div>
           </a>
         </div>

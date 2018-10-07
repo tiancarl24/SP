@@ -110,7 +110,7 @@ include "utils.php";
 				<div class="modal-body">
 					<div class="row">
 						<?php
-						wrInput('hidden','updatetxtRowID','','col-lg-6');
+						wrInput('text','updatetxtRowID','','col-lg-6');
 						?>
 					</div>
 					<br>
@@ -165,43 +165,6 @@ include "utils.php";
 		</div>
 	</div>
 </form>
-<!-- ------------ -->
-<script type="text/javascript">
-	var btnDiscardItem = document.getElementById('btnDiscardItem');
-	btnDiscardItem.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Please select item to Discard!',
-				container: 'floating',
-				timer: 1000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetIDDiscardItem.php",
-				cache: false,
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-				success: function(response)
-				{
-					var result = JSON.parse(response);
-					$('#DiscardItemModal').modal('show');
-					document.getElementById('GetIDDiscardItem').value = result[0][0];
-				},
-			});
-		}
-	}
-</script>
 <script type="text/javascript">
 	var ctr;
 	var ctr_ID;
@@ -277,8 +240,8 @@ include "utils.php";
 				{
 					var res = JSON.parse(response);
 					$('#UpdateAccountModal').modal('show');
-					document.getElementById("txtRowID").value = res[0][0];
-					document.getElementById('txtUpdateAboutDescription').value = res[0][1];
+					document.getElementById("updatetxtRowID").value = res[0][0];
+					document.getElementById('txtUpdateAboutDescription').value = res[0][2];
 				}
 			});
 		}

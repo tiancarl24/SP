@@ -6,15 +6,17 @@ include 'utils.php';
 ?>
 <?php
 DBOpen();
-$RAT = DBGetData(" SELECT * from roominformation where roomno NOT IN (SELECT roomno from reservedate where checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND roomavailability = 'Available' ");
+$RAT = DBGetData(" SELECT * from roominformation where RoomNo NOT IN (SELECT RoomNo from reservedate where Checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND RoomAvailability = 'Available' ");
 
-$CRAT = DBGetData(" SELECT COUNT(*) from roominformation where roomno NOT IN (SELECT roomno from reservedate where checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND roomavailability = 'Available' ");
+$CRAT = DBGetData(" SELECT COUNT(*) from roominformation where RoomNo NOT IN (SELECT RoomNo from reservedate where Checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND RoomAvailability = 'Available' ");
 
-$RAT2 = DBGetData(" SELECT * from roominformation where roomno NOT IN (SELECT roomno from reservedate where checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND roomavailability = 'Available' GROUP BY RoomID");
+$RAT2 = DBGetData(" SELECT * from roominformation where RoomNo NOT IN (SELECT RoomNo from reservedate where Checkin between '$maniladate' AND '$maniladate' or Checkout between '$maniladate' and '$maniladate') AND RoomAvailability = 'Available' GROUP BY RoomID");
 
 $PR = DBGetData(" SELECT COUNT(*) FROM reservations WHERE Status = 'Pending' ");
 
 $TS = DBGetData(" SELECT SUM(TotalPaid) FROM reservations ");
+
+$RT = DBGetData(" SELECT COUNT(*) FROM reservations WHERE ReservationDate = '$maniladate' ");
 DBClose();
 ?>
 <div class="boxed">
@@ -77,7 +79,7 @@ DBClose();
 									<i class="demo-pli-male icon-3x icon-fw"></i>
 								</div>
 								<div class="media-body">
-									<p class="h3 text-light mar-no media-heading"><?=$PR[0][0]?></p>
+									<p class="h3 text-light mar-no media-heading"><?=$RT[0][0]?></p>
 									<span id="">Person Reserve Today</span>
 								</div>
 							</div>
@@ -245,7 +247,7 @@ DBClose();
 						<?php
 						DBOpen();
 
-						$RESE = DBGetData("SELECT * FROM reservations WHERE CheckoutDate = '$maniladate'");
+						$RESE = DBGetData("SELECT * FROM reservations WHERE ReservationDate = '$maniladate'");
 						if($RESE == null)
 						{
 							wr(" <table id = 'tblCheckOut' name = 'tblCheckOut' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
@@ -309,8 +311,6 @@ DBClose();
 					<br>
 					<!--Modal footer-->
 					<div class="modal-footer">
-						<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-						<input type="submit" id="btnYes" name="btnYes" class="btn btn-danger" value="Yes">
 					</div>
 				</div>
 			</div>
@@ -381,8 +381,6 @@ DBClose();
 					<br>
 					<!--Modal footer-->
 					<div class="modal-footer">
-						<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-						<input type="submit" id="btnYes" name="btnYes" class="btn btn-danger" value="Yes">
 					</div>
 				</div>
 			</div>
@@ -465,7 +463,7 @@ DBClose();
 			</div>
 		</div>
 	</form>
-	<form id="formcheckin" name="formcheckin" method="POST" action="Function/checkin.php" >
+	<form id="formcheckin" name="formcheckin" method="POST" action="Function/checkin.php"  onsubmit="return toSubmit();">
 		<div class="modal fade" id="CheckinModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true" data-backdrop="static">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -477,7 +475,7 @@ DBClose();
 					</div>
 					<!--Modal body-->
 					<div class="modal-body">
-						<input type="text" id="lblresid" name="lblresid">
+						<input type="hidden" id="lblresid" name="lblresid">
 						<center><h1>Are you sure you want to check-in this guest? </h1></center>
 						<center>Reservation Balance: <label id="lblbalance"></label></center>
 						<center ><label id="lblenter">Enter Amount</label></center>
@@ -680,10 +678,6 @@ DBClose();
 	};
 </script>
 <script type="text/javascript">
-	document.getElementById('AvailableRooms').onclick = function()
-	// {
-	// 	$('#ModalRoomAvailable').modal('show');
-	// }
 	document.getElementById('TodaySales').onclick = function()
 	{
 		$('#ModalTotalSales').modal('show');
@@ -693,4 +687,25 @@ DBClose();
 		$('#ModalTodayReserved').modal('show');
 	}
 </script>
+
+<script>
+	
+	function toSubmit()
+	{
+		var bal = document.getElementById('txtbalance').value;
+		var amt = document.getElementById('lblbalance').innerHTML;
+		if(bal !== amt)
+		{
+			alert('You have enter invalid amount!');
+			return false;
+		}
+		else
+		{
+			
+		}
+	}
+</script>
+
+
+
 <?php include "incFoot.php" ?>

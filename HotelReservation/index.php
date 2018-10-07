@@ -9,7 +9,7 @@ include 'utils.php';
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login page | Nifty - Admin Template</title>
+	<title>Login page | Spring Plaza Hotel</title>
 
 	<!--STYLESHEET-->
 	<!--Open Sans Font [ OPTIONAL ]-->
@@ -48,7 +48,7 @@ include 'utils.php';
 			<div class="cls-content-sm panel">
 				<div class="panel-body">
 					<div class="mar-ver pad-btm">
-						<h3 class="h4 mar-no">Hotel Spring Plaza</h3>
+						<h3 class="h4 mar-no">Spring Plaza Hotel</h3>
 						<p class="text-muted">Sign In to your account</p>
 					</div>
 					<form action="login.php" method="POST">
@@ -67,10 +67,7 @@ include 'utils.php';
 					</form>
 				</div>
 
-				<div class="pad-all">
-					<a href="pages-password-reminder.html" class="btn-link mar-rgt">Forgot password ?</a>
-					<a href="pages-register.html" class="btn-link mar-lft">Create a new account</a>
-				</div>
+				
 			</div>
 		</div>	
 	</div>

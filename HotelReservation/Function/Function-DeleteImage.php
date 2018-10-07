@@ -14,6 +14,6 @@ $audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Delete imag
 
 DBClose();
 
-redirMsg('../carousel.php','Delete Image Carousel Successfully!!')
+redirMsg('../Carousel.php','Delete Image Carousel Successfully!!')
 
 ?>

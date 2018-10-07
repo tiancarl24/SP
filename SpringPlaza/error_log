@@ -1,0 +1,132 @@
+[29-Sep-2018 10:32:47 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 10:54:17 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:08:31 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:09:37 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:13:50 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:14:13 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:14:18 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:15:46 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:16:05 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 15:16:34 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 16:08:04 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 23:43:14 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 23:43:19 UTC] PHP Fatal error:  Call to a member function query() on null in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 23:58:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[29-Sep-2018 23:58:54 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 00:13:24 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 00:15:33 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 00:43:13 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 01:34:31 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 01:35:56 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 01:37:48 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 02:03:56 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/album.php(10): DBGetData('SELECT * FROM F...')
+#2 /home/springplaza/public_html/SP/SpringPlaza/index.php(56): include('/home/springpla...')
+#3 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 02:06:54 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/index.php(65): DBGetData('SELECT * FROM F...')
+#2 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 02:09:44 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/index.php(65): DBGetData('SELECT * FROM F...')
+#2 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 02:10:03 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/index.php(65): DBGetData('SELECT * FROM F...')
+#2 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 02:10:07 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/index.php(65): DBGetData('SELECT * FROM F...')
+#2 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 02:11:51 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'springplaza_hotelreservation.Floors' doesn't exist' in /home/springplaza/public_html/SP/SpringPlaza/utils.php:146
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/utils.php(146): PDO->query('SELECT * FROM F...')
+#1 /home/springplaza/public_html/SP/SpringPlaza/index.php(65): DBGetData('SELECT * FROM F...')
+#2 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/utils.php on line 146
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 3
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 4
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 5
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 6
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 7
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 8
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 9
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 10
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 11
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 12
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 13
+[30-Sep-2018 06:57:20 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 14
+[30-Sep-2018 06:57:20 UTC] PHP Fatal error:  Call to undefined function dbopen() in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 41
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 3
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 4
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 5
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 6
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 7
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 8
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 9
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 10
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 11
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 12
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 13
+[30-Sep-2018 07:00:46 UTC] PHP Notice:  Undefined variable: _SESSION in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 14
+[30-Sep-2018 07:00:46 UTC] PHP Fatal error:  Call to undefined function dbopen() in /home/springplaza/public_html/SP/SpringPlaza/InquiryModal.php on line 41

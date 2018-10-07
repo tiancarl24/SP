@@ -1,0 +1,124 @@
+[30-Sep-2018 07:40:48 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[30-Sep-2018 07:58:27 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[30-Sep-2018 08:21:32 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[30-Sep-2018 14:36:13 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 00:49:21 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 00:57:42 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 00:58:30 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 00:58:36 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 00:58:37 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 01:35:20 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 01:35:51 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php on line 213
+[01-Oct-2018 02:53:19 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Failed to authenticate on SMTP server with username "springplazahotel247@gmail.com" using 3 possible authenticators. Authenticator LOGIN returned Swift_TransportException: Expected response code 235 but got code "534", with message "534-5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbsk
+534-5.7.14 S0PUi7h7V49041G4_w2N8yRy_htlJ226k7vZ5T86CEJutaMOQX4Kik0_VUCWwhaKN-z2z9
+534-5.7.14 feJDbo_sCpYD55e9sRnIUnxhaDY1BXj_4IXx-140LsIVKrKZHUQ-cmd10q8QwQ4rb5vLBu
+534-5.7.14 CKgXNgnmaE7Vb0e5KdnW_Yk4V8e9fIgUCXoFs_5OI-Gw3lT_77zZEyZBH6PJnocC7BrEJc
+534-5.7.14 VVZtP9DsFKx0ZgRX36eafe0-OhroYdYbGeXu4F4482xaB1JDzEddMoY3sZ_x97O7M1E7Ar
+534-5.7.14 MCpf6VWLjIQFT1PoJ701b94kvvraomg7sspy8dTMPm8wTi9Zj8GQZ0AsouXxRgPO0dRqRS
+534-5.7.14 _8yhJVffWmyKvdi_c3JojlKRF0fFVVffndA0Opg-HulXpSCysGda3IzRMj484zZiMAwUc1
+534-5.7.14 rhT31Y66PEILRgnEUCE6_HKuITSWwpus055NAjoJbaDa0kHWMR1UgKaEcMP-o3BJQCW0GZ
+534-5.7.14 GKEbk> Please log in via your web browser and then try again.
+534-5.7.14  Learn  in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/AuthHandler.php on line 191
+[01-Oct-2018 03:28:09 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 03:47:42 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('localhost', 'root', '', 'HotelReservatio...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 07:16:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('localhost', 'root', '', 'HotelReservatio...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 08:06:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('localhost', 'root', '', 'HotelReservatio...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 08:08:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('springplaza_hot...', 'springplaza_roo...', 'springplaza123', 'HotelReservatio...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 08:09:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('springplaza_hot...', 'springplaza_roo...', 'springplaza123', 'HotelReservatio...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 08:10:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('http://springpl...', 'springplaza_roo...', 'springplaza123', 'HotelReservatio...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 08:12:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('http://springpl...', 'springplaza_roo...', 'springplaza123', 'springplaza_hot...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 08:12:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_row() on null in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php:22
+Stack trace:
+#0 /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php(13): Export_Database('http://springpl...', 'springplaza_roo...', 'springplaza123', 'springplaza_hot...', false, false)
+#1 {main}
+  thrown in /home/springplaza/public_html/SP/HotelReservation/Function/Backup.php on line 22
+[01-Oct-2018 09:21:53 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 09:22:03 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 13:26:21 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 13:50:38 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 15:58:48 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 15:58:50 UTC] PHP Fatal error:  Uncaught Swift_TransportException: Connection could not be established with host smtp.gmail.com [Network is unreachable #101] in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php:269
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php(58): Swift_Transport_StreamBuffer->establishSocketConnection()
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php(143): Swift_Transport_StreamBuffer->initialize(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php(64): Swift_Transport_AbstractSmtpTransport->start()
+#3 /home/springplaza/public_html/SP/HotelReservation/Function/Function-ApproveReservation.php(111): Swift_Mailer->send(Object(Swift_Message))
+#4 {main}
+  thrown in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php on line 269
+[01-Oct-2018 15:59:01 UTC] PHP Fatal error:  Uncaught Swift_RfcComplianceException: Address in mailbox given [] does not comply with RFC 2822, 3.6.2. in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php:355
+Stack trace:
+#0 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php(272): Swift_Mime_Headers_MailboxHeader->assertValidAddress('')
+#1 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php(117): Swift_Mime_Headers_MailboxHeader->normalizeMailboxes(Array)
+#2 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php(74): Swift_Mime_Headers_MailboxHeader->setNameAddresses(Array)
+#3 /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleHeaderFactory.php(58): Swift_Mime_Headers_MailboxHeader->setFieldBodyModel(Array)
+#4 /home in /home/springplaza/public_html/SP/SpringPlaza/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php on line 355
