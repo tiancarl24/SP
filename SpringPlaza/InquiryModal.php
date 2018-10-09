@@ -35,23 +35,6 @@
                         <!-- Inquiry Room and Date start -->
                         <div class="room-and-date">
                             <div class="alert hidden" id="inquiry-form-msg"></div>
-                            <div class="room-select">
-                                <div class="input-group">
-                                    <?php 
-                                    DBOpen();
-
-                                    $rooms = DBGetData(" SELECT distinct roomtype from roominformation where roomavailability = 'Available' ");
-                                    DBClose();
-                                    wr('<select name="cboRoom" id="cboRoom" class="form-control" required>');
-                                    wr('<option value="">Select a Room Type!</option>');
-                                    foreach($rooms as $rooms)
-                                    {
-                                        wr('<option value="'.$rooms[0].'">'.$rooms[0].'</option>');
-                                    }
-                                    wr('</select>');
-                                    ?>
-                                </div>
-                            </div>
                             <div class="inquiry-check-in">
                                 <div class="date-select">
                                     <label for="inquiry-date-check-in">CHECK-IN - When will you come?</label>
@@ -110,7 +93,7 @@
 
                         <!-- Appointment Personal Information start -->
                         <div class="personal-information">
-                            <h2>Personal Information</h2>
+                            <!-- <h2>Personal Information</h2>
 
                             <div class="form-group first-name-group">
                                 <label for="txtFirstname">First Name</label>
@@ -143,7 +126,7 @@
                                 <label for="txtEmail">Email</label>
                                 <input type="email" name="txtEmail" class="form-control" id="txtEmail" placeholder="Enter your email"  required="">
                             </div>
-                            <div class="clearfix"></div>
+                            <div class="clearfix"></div> -->
                         <!-- <div class="newsletter-checkbox">
                             <input type="checkbox" id="newsletter-cb" name="newsletter" value="Yes, Please send me latest news and updates!">
                             <label for="newsletter-cb">Please send me latest news and updates!</label>

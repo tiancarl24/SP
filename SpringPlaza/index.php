@@ -254,7 +254,7 @@ include "incAmenities.php";
     <script type="text/javascript">
         $(document).ready(function(){
             $("#CancelRes").click(function(){
-                $("#inquiryModal").modal();
+                $("#inquiryModal2").modal();
             });
         });
     </script>
