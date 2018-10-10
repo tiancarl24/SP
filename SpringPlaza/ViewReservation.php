@@ -87,8 +87,8 @@ include 'utils.php';
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<!-- Nav-Links start -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="scroll-to" href="#Contact">Home</a></li>
-					<li><a id="CancelRes" class="btn btn-color1 call-to-action-button show-inquiry-modal ShowModal" href="ViewReservation.php">View Reservation</a></li>
+					<li><a class="scroll-to" href="index.php">Home</a></li>
+					<!-- <li><a id="CancelRes" class="btn btn-color1 call-to-action-button show-inquiry-modal ShowModal" href="ViewReservation.php">View Reservation</a></li> -->
 					<li>
 					</li>
 				</ul>
@@ -100,225 +100,195 @@ include 'utils.php';
 <!--Navigation Top end-->
 <div class="wrapper">
 	<div class="container">
-		<form method="POST" action="function/AddReservation.php">
-			<?php 
-			wr('<textarea name="data" style="visibility: hidden">'.json_encode($RNo).'</textarea>');
-			wr('<input type="hidden" id="fname" name="fname" value="'.$RNo['FNAME'].'" >');
-			wr('<input type="hidden" id="fname" name="lname" value="'.$RNo['LNAME'].'" >');	
-			?>
-			<div class="row">
-				<br>
-				<br>
-				<div id="divpersonalinfo" name = "divpersonalinfo" style="width: 80%; height: auto; border: solid 2px orange; margin-right: auto; margin-left: auto; display: block">
-					<!-- RESERVATION -->
-					<div style="padding: 10px; color: orange; font-size: 20px;">
-						<h2 class="hometext"><center>Reservation Details</center></h2>
-						<br>
-						<div class="row">
-							<div class="col-md-6">
-								<label>RESERVATION ID : </label><input type="text" class="" id="resID1" name="resID1" value="<?php echo $AppID ?>" >
-							</div>
-							<div class="col-md-2">
-								<input class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white; height: 35px; "type="submit" id="btnCancelReservation" name="btnCancelReservation" value="Enter">
-							</div>
-							<br>
-							<br>
-							<div class="col-md-6">
-								<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin1" name="cin1" value="<?php echo $RNo['CIN'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno1" name="roomno1" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype1" name="roomtype1" value="<?php echo $RNo['RTYPE'] ?>" readonly >
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>ADULT :</label><input type="text" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>" readonly >
-							</div>
-							<div class="col-md-6">
-								<label>CHILDREN :</label><input type="text" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>PRICE :</label><input type="text" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>TOTAL DAYS :</label><input type="text" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6"></div>
-							<div class="col-md-6">
-								<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
-							</div>
-						</div>	
-					</div>
-					<div style="padding: 10px; color: orange; font-size: 20px;">
-						<input type="hidden" id="lblValidate" name="lblValidate">
+		<div class="row">
+			<br>
+			<br>
+			<div id="divpersonalinfo" name = "divpersonalinfo" style="width: 80%; height: auto; border: solid 2px orange; margin-right: auto; margin-left: auto; display: block">
+				<!-- RESERVATION -->
+				<div style="padding: 10px; color: orange; font-size: 20px;">
+					<h2 class="hometext"><center>Reservation Details</center></h2>
+					<?php 
+					$RESID = $_GET['txtResID'];
+					DBOpen();
+					$rs = DBGetData(" SELECT * FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
+					$count = DBGetData(" SELECT COUNT(*) FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
 
-						<h2 class="hometext"><center>Personal Details</center></h2>
+					DBClose();
+					?>
+					<br>
+					<div id="divres" style="text-align: center; font-size: 30px; display: none">No Reservation Found.</div>
+					<input type="hidden" id="txtcount" name="txtcount" value="<?php echo $count[0][0] ?>">
+					<div class="row">
+						<div class="col-md-6">
+							<label>RESERVATION ID : </label><input type="text" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>" style="border: none" readonly>
+						</div>
 						<br>
-						<div class="row">
-							<div class="col-md-6">
-								<label>NAME :</label><input type="text" class="LabelInput" id="name" name="name" value="<?php echo $RNo['FNAME'] ?> <?php echo $RNo['LNAME'] ?>" readonly>
-							</div>
-							<div class="col-md-6">
-								<label>ADDRESS :</label><input type="text" class="LabelInput" id="address" name="address" value="<?php echo $RNo['ADDRESS'] ?>"  readonly>
-							</div>
+						<br>
+						<div class="col-md-6">
+							<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin1" name="cin1" value="<?php echo $rs[0][9] ?>"  readonly>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>CITY :</label><input type="text" class="LabelInput" id="city" name="city" value="<?php echo $RNo['CITY'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>ZIPCODE :</label><input type="text" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>PHONE :</label><input type="text" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>EMAIL :</label><input type="text" class="LabelInput" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
-							</div>
+						<div class="col-md-6">
+							<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $rs[0][10] ?>"  readonly>
 						</div>
 					</div>
-					<br>
-					<div style="margin-right: auto; margin-left: auto; display: block;">
-						<div class="row">
-							<div class="col-lg-2 col-md-2"></div>
-							<div class="col-md-4">
-								<input type="submit" id="UploadDepoSlip" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;" name="UploadDepoSlip" value="Upload Deposit Slip">
-							</form>
+					<div class="row">
+						<div class="col-md-6">
+							<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno1" name="roomno1" value="<?php echo $rs[0][14] ?>"  readonly>
 						</div>
-						<div class="col-md-4">
-							<input class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white; width: 100%" type="submit" id="btnCancelReservation" name="btnCancelReservation" value="Cancel Reservation">
+						<div class="col-md-6">
+							<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype1" name="roomtype1" value="<?php echo $rs[0][13] ?>" readonly >
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label>ADULT :</label><input type="text" class="LabelInput" id="adult" name="adult" value="<?php echo $rs[0][5] ?>" readonly >
+						</div>
+						<div class="col-md-6">
+							<label>CHILDREN :</label><input type="text" class="LabelInput" id="children" name="children" value="<?php echo $rs[0][6] ?>"  readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label>TOTAL PRICE :</label><input type="text" class="LabelInput" id="price" name="price" value="₱ <?php echo $rs[0][17] ?>"  readonly>
+						</div>
+						<div class="col-md-6">
+							<label>TOTAL NIGHTS :</label><input type="text" class="LabelInput" id="days" name="days" value="<?php echo $rs[0][7] ?>"  readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+							<label>TOTAL PAID :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="₱ <?php echo $rs[0][21] ?>"  readonly>
+						</div>
+					</div>	
+				</div>
+				<div style="padding: 10px; color: orange; font-size: 20px;">
+					<input type="hidden" id="lblValidate" name="lblValidate">
+
+					<h2 class="hometext"><center>Personal Details</center></h2>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							<label>NAME :</label><input type="text" class="LabelInput" id="name" name="name" value="<?php echo $rs[0][1] ?> <?php echo $RNo['LNAME'] ?>" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<label>PHONE :</label><input type="text" class="LabelInput" id="phone" name="phone" value="<?php echo $rs[0][3] ?>"  readonly>
+						</div>
+						<div class="col-md-6">
+							<label>EMAIL :</label><input type="text" class="LabelInput" id="email" name="email" value="<?php echo $rs[0][20] ?>"  readonly>
 						</div>
 					</div>
 				</div>
 				<br>
-
-				<center style="color: orange">REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>
-
+				<div style="margin-right: auto; margin-left: auto; display: block;">
+					<div class="row">
+						<div class="col-lg-2 col-md-2"></div>
+						<div class="col-md-4">
+							<input type="submit" id="UploadDepoSlip" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;" name="UploadDepoSlip" value="Upload Deposit Slip">
+						</div>
+						<div class="col-md-4">
+							<input class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white; width: 100%" type="button" id="btnCancelReservation" name="btnCancelReservation" value="Cancel Reservation">
+						</div>
+					</div>
+				</div>
+				<br>
 			</div>
 		</div>
 	</div>
 </div>
 
-<form class="paypal" action="function/payments.php" method="post" id="paypal_form">
-	<div id="PaymentModal" class="modal fade" role="dialog" data-backdrop="dynamic">
-		<div class="modal-dialog" style="width: 25%">
+
+<form method="POST" action="function/CancelReservation.php">
+	<div class="modal fade" id="CancelModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header bg-mint">
-					<h4 class="modal-title" style="color: white"> </h4>
-					<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
+				<!--Modal header-->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+					<h4 class="modal-title"></h4>
 				</div>
-				<div class="modal-body form-contol">
-					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
-					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
-					<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
-					<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
-					<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
-					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
-					<br>
-					<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
-
-					<!-- -------------------------------------------------- -->
-					<label style="display: none;">FNAME :</label><input type="hidden" class="LabelInput" id="fname" name="fname" value="<?php echo $RNo['FNAME'] ?>"  readonly>
-					<label style="display: none;">LNAME :</label><input type="hidden" class="LabelInput" id="lname" name="lname" value="<?php echo $RNo['LNAME'] ?>"  readonly>
-					<label style="display: none;">ADDRESS :</label><input type="hidden" class="LabelInput" id="address" name="address" value="<?php echo $RNo['ADDRESS'] ?>"  readonly>
-					<label style="display: none;">CITY :</label><input type="hidden" class="LabelInput" id="city" name="city" value="<?php echo $RNo['CITY'] ?>"  readonly>
-					<label style="display: none;">ZIPCODE :</label><input type="hidden" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" >
-					<label style="display: none;">PHONE :</label><input type="hidden" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>"  readonly>
-
-
-					<label style="display: none">ADULT :</label><input type="hidden" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>"  readonly>
-					<label style="display: none">CHILDREN :</label><input type="hidden" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
-					<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
-					<label style="display: none">TOTAL DAYS :</label><input type="hidden" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
-					<!-- -------------------------------------------------- -->
-
-					<input type="hidden" name="cmd" value="_xclick" />
-					<input type="hidden" name="no_note" value="1" />
-					<input type="hidden" name="lc" value="UK" />
-					<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
-					<input type="hidden" name="first_name" value="Customer's First Name" />
-					<input type="hidden" name="last_name" value="Customer's Last Name" />
-					<input type="hidden" name="payer_email" value="customer@example.com" />
-					<input type="hidden" name="item_number" value="<?php echo $AppID ?>" / >
-					<input type="hidden" name="txtOption" value="" class="OPT" / >
+				<!--Modal body-->
+				<div class="modal-body">
+					<input type="hidden" id="reserveid" name="reserveid">
+					<label style="font-size: 20px">Do you want to cancel this reservation?</label>
 				</div>
+				<!--Modal footer-->
 				<div class="modal-footer">
-					<div class="col-md-12">
-						<div class="col-md-6">
-							<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnHalf" name="btnHalf" value="Half Payment">
-						</div>
-						<div class="col-md-6">
-							<input style="background-color: orange; color: white; width: 100%" type="submit" id="btnCancel" name="btnCancel" value="Full Payment">
-						</div>
-					</div>
+					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+					<button id="btncancelyes" name="btncancelyes" class="btn btn-primary">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-	<!-- <script type="text/javascript">
-		var btnPaypal = document.getElementById('btnPaypal');
-		btnPaypal.onclick = function()
+
+<script type="text/javascript">
+	
+	var btnCancelReservation = document.getElementById('btnCancelReservation');
+	btnCancelReservation.onclick = function()
+	{
+		$.ajax(
 		{
-			$('#PaymentModal').modal('show');
+			type: "POST",
+			url: "function/GetResID.php",
+			data:
+			{
+				viewresid: viewresid.value
+			},
+			success: function(response)
+			{
+				var rs = JSON.parse(response);
+				$('#CancelModal').modal();
+				document.getElementById('reserveid').value = rs[0][0];
+			}
+		});
+	}
+</script>
+
+<script src="bower_components/jquery-animatenumber/jquery.animateNumber.min.js"></script>
+<script type="text/javascript">
+	var ctr;
+	var ctr_ID;
+	var tableForAudit = $('#tblResDetails').DataTable();
+	$('#tblResDetails').on( 'click', 'tr', function () 
+	{
+		var tblBudget = $('#tblResDetails').DataTable();
+		if ( $(this).hasClass('selected') )
+		{
+			$(this).removeClass('selected');
+			ctr_ID = null;
 		}
-	</script> -->
-	<script src="bower_components/jquery-animatenumber/jquery.animateNumber.min.js"></script>
-	<script type="text/javascript">
-		var ctr;
-		var ctr_ID;
-		var tableForAudit = $('#tblResDetails').DataTable();
-		$('#tblResDetails').on( 'click', 'tr', function () 
+		else 
 		{
-			var tblBudget = $('#tblResDetails').DataTable();
-			if ( $(this).hasClass('selected') )
-			{
-				$(this).removeClass('selected');
-				ctr_ID = null;
-			}
-			else 
-			{
-				tableForAudit.$('tr.selected').removeClass('selected');
-				$(this).addClass('selected');
-				ctr = tableForAudit.row(this).data();
-				ctr_ID = ctr[0];
+			tableForAudit.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+			ctr = tableForAudit.row(this).data();
+			ctr_ID = ctr[0];
 
-			}
-		}); 
-	</script>
+		}
+	}); 
+</script>
 
-	<script type="text/javascript">
-		
-		$(document).ready(function()
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#btnHalf").click(function()
 		{
-			$("#btnHalf").click(function()
-			{
-				$(".OPT").val("Half");
-			});
+			$(".OPT").val("Half");
 		});
+	});
 
-		$(document).ready(function()
+	$(document).ready(function()
+	{
+		$("#btnFull").click(function()
 		{
-			$("#btnFull").click(function()
-			{
-				$(".OPT").val("Full");
-			});
+			$(".OPT").val("Full");
 		});
-	</script>
+	});
+</script>
 </div>
 </div>
 </div>
@@ -348,14 +318,18 @@ include 'utils.php';
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#btnPaypal").click(function(){
-			$("#PaymentModal").modal();
-		});
-	});
-</script>
 
+if(txtcount.value == "0")
+{
+	document.getElementById('divres').style.display = "block";
+}
+else
+{
+	document.getElementById('divres').style.display = "none";
+}
+</script>
 
 </body>
 </html>
+
 

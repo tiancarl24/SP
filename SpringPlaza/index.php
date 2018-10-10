@@ -219,6 +219,7 @@ include "incAmenities.php";
     </div>
     <!--Room Tabs Gallery Preview Modal start-->
     <?php include "InquiryModal.php"; ?>
+    <?php include 'ResModal.php'; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -241,6 +242,15 @@ include "incAmenities.php";
         $(document).ready(function(){
             $("#ShowModal").click(function(){
                 $("#inquiryModal").modal();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $("#btnviewres").click(function()
+            {
+                $("#ResModal").modal('show');
             });
         });
     </script>

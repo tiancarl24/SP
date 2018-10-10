@@ -3,7 +3,7 @@ include '../utils.php';
 include '../incSecure.php';
 
 $AppID = $_POST['resID1'];
-$FNAME = $_POST['fname'];
+$FNAME = $_POST['name'];
 $LNAME = $_POST['lname'];
 $NAME = $_POST['name'];
 $ADDRESS = $_POST['address'];
@@ -21,6 +21,7 @@ $PRICE = $_POST['price'];
 $DAYS = $_POST['days'];
 $TOTAL = $_POST['totalprice'];
 $DATES = $_POST['date'];
+//dump($FNAME);
 
 $timestampIN = strtotime($CIN);
 $NEWCIN = date('Y-m-d', $timestampIN);

@@ -90,7 +90,7 @@ include "utils.php";
                     <li><a class="scroll-to" href="#MapLocation">Terms and Conditions</a></li>
                     <li><a class="scroll-to" href="#About">About Us</a></li>
                     <li><a class="scroll-to" href="#Contact">Contact Us</a></li>
-                    <li><a id="CancelRes" class="btn btn-color1 call-to-action-button show-inquiry-modal ShowModal" href="ViewReservation.php">View Reservation</a></li>
+                    <li><a id="btnviewres" name="btnviewres" class="btn btn-color1 call-to-action-button show-inquiry-modal ShowModal">View Reservation</a></li>
                     <li>
                     </li>
                 </ul>
@@ -157,3 +157,4 @@ include "utils.php";
             </div>
         </div>
     </section>
+

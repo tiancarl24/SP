@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2018 at 10:24 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Oct 10, 2018 at 04:44 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -97,7 +97,19 @@ INSERT INTO `audit` (`RowID`, `User`, `Action`, `AuditDate`, `AuditTime`) VALUES
 (13, 'gimson', 'Checkout: ', '2018-09-25', '14:51:32'),
 (14, 'gimson', 'Checkout: ', '2018-09-25', '14:54:55'),
 (15, 'gimson', 'Checkout: 201800000001', '2018-09-25', '14:56:55'),
-(16, 'gimson', 'Checkin: 201800000001', '2018-09-25', '15:06:19');
+(16, 'gimson', 'Checkin: 201800000001', '2018-09-25', '15:06:19'),
+(17, 'gimson', 'Approve Reservation: 201800000001', '2018-09-29', '16:09:59'),
+(18, 'gimson', 'Checkin: 201800000001', '2018-09-29', '16:11:15'),
+(19, 'gimson', 'Checkout: 201800000001', '2018-09-29', '16:12:46'),
+(20, '', 'Add Reservation: 201800000001', '2018-10-10', '19:18:24'),
+(21, '', 'Add Reservation: ', '2018-10-10', '19:21:04'),
+(22, '', 'Add Reservation: ', '2018-10-10', '19:25:19'),
+(23, '', 'Add Reservation: ', '2018-10-10', '19:25:39'),
+(24, '', 'Add Reservation: 201800000001', '2018-10-10', '19:53:34'),
+(25, '', 'Add Reservation: 201800000002', '2018-10-10', '22:00:44'),
+(26, '', 'Add Reservation: 201800000003', '2018-10-10', '22:05:38'),
+(27, 'gimson', 'Login', '2018-10-10', '22:17:42'),
+(28, 'gimson', 'Approve Reservation: 201800000003', '2018-10-10', '22:18:03');
 
 -- --------------------------------------------------------
 
@@ -253,9 +265,9 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`, `CheckinStatus`) VALUES
-(1, 'Mark', 'Angelo', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-25', '13:39:55', '13:39:55', 'Deluxe', '1', 'Pay in Bank', 500, 123, 0, 'Approved', 'markangeloguanez@gmail.com', 500, '201800000001', 'Checkin'),
-(2, 'Mark', 'Angelo', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-25', '13:39:55', '13:39:55', 'Fan Room', '1', 'Pay in Bank', 500, 123, 0, 'Approved', 'markangeloguanez@gmail.com', 500, '201800000001', 'Checkin'),
-(3, 'Gimson', 'Recilla', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-25', '13:39:55', '13:39:55', 'Fan Room', '3', 'Pay in Bank', 500, 123, 0, 'Approved', 'markangeloguanez@gmail.com', 500, '201800000002', 'Checkin');
+(1, '', '', '32423423423423', 'bacoor', 1, 0, 1, '2018-10-10', '2018-10-10', '2018-10-11', '19:53:34', '19:53:34', 'Deluxe', '1', 'Pay in Bank', 0, 123, 123, 'Pending', 'guanezm@yahoo.com', 0, '201800000001', ''),
+(2, 'mark angelo guanez', '', '3423423', 'bacoor', 1, 0, 1, '2018-10-10', '2018-11-05', '2018-11-06', '22:00:44', '22:00:44', 'asd', '0', 'Pay in Bank', 0, 123, 123, 'Pending', 'guanezm@yahoo.com', 0, '201800000002', ''),
+(3, 'mark angelo guanez', '', '34234', 'bacoor', 1, 0, 1, '2018-10-10', '2018-11-09', '2018-11-10', '22:05:38', '22:05:38', 'asd', '0', 'Pay in Bank', 100, 123, 23, 'Cancelled', 'guanezm@yahoo.com', 50, '201800000003', '');
 
 -- --------------------------------------------------------
 
@@ -294,7 +306,10 @@ CREATE TABLE `reservations_temp` (
 --
 
 INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`) VALUES
-(1, 'Mark', 'Angelo', '09168285045', 'Imus', 1, 0, 1, '2018-09-25', '2018-09-25', '2018-09-26', '13:39:55', '13:39:55', 'Deluxe', '1', 'Pay in Bank', 0, 123, 123, 'Pending', 'markangeloguanez@gmail.com', 0, '201800000001');
+(1, '', '', '32423423423423', 'bacoor', 1, 0, 1, '2018-10-10', '2018-10-10', '2018-10-11', '19:53:34', '19:53:34', 'Deluxe', '1', 'Pay in Bank', 0, 123, 123, 'Pending', 'guanezm@yahoo.com', 0, '201800000001'),
+(2, 'mark angelo guanez', '', '3423423', 'bacoor', 1, 0, 1, '2018-10-10', '2018-11-05', '2018-11-06', '22:00:44', '22:00:44', 'asd', '0', 'Pay in Bank', 0, 123, 123, 'Pending', 'guanezm@yahoo.com', 0, '201800000002'),
+(3, 'mark angelo guanez', '', '34234', 'bacoor', 1, 0, 1, '2018-10-10', '2018-11-09', '2018-11-10', '22:05:38', '22:05:38', 'asd', '0', 'Pay in Bank', 0, 123, 123, 'Pending', 'guanezm@yahoo.com', 0, '201800000003'),
+(4, '', '', '', '', 1, 0, 1, '2018-10-10', '2018-10-10', '2018-10-11', '22:29:58', '22:29:58', 'asd', '0', 'Paypal', 123, 123, 0, 'Approved', '', 123, '201800000004');
 
 -- --------------------------------------------------------
 
@@ -317,9 +332,12 @@ CREATE TABLE `reservedate` (
 --
 
 INSERT INTO `reservedate` (`RowID`, `reservationID`, `ReservationDate`, `Checkin`, `Checkout`, `Roomno`, `Roomtype`) VALUES
-(1, '201800000001', '2018-09-25', '2018-09-25', '2018-09-25', 0, 'deluxe'),
-(2, '201800000001', '2018-09-25', '2018-09-25', '2018-09-26', 1, 'Deluxe'),
-(3, '201800000001', '2018-09-25', '2018-09-26', '2018-09-26', 1, 'Deluxe');
+(1, '201800000001', '2018-10-10', '2018-10-10', '2018-10-11', 1, 'Deluxe'),
+(2, '201800000001', '2018-10-10', '2018-10-11', '2018-10-11', 1, 'Deluxe'),
+(3, '201800000002', '2018-10-10', '2018-11-05', '2018-11-06', 0, 'asd'),
+(4, '201800000002', '2018-10-10', '2018-11-06', '2018-11-06', 0, 'asd'),
+(5, '201800000003', '2018-10-10', '2018-11-09', '2018-11-10', 0, 'asd'),
+(6, '201800000003', '2018-10-10', '2018-11-10', '2018-11-10', 0, 'asd');
 
 -- --------------------------------------------------------
 
@@ -516,7 +534,7 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `bankinfo`
@@ -564,13 +582,13 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reservedate`
 --
 ALTER TABLE `reservedate`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `roomimage`

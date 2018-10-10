@@ -122,26 +122,26 @@ else
 						<br>
 						<div class="row">
 							<div class="col-md-6">
-								<label>NAME :</label><input type="text" class="LabelInput" id="name" name="name" value="<?php echo $RNo['FNAME'] ?> <?php echo $RNo['LNAME'] ?>" readonly>
+								<label>NAME :</label><input type="text" id="name" name="name" value="" required="">
 							</div>
 							<div class="col-md-6">
-								<label>ADDRESS :</label><input type="text" class="LabelInput" id="address" name="address" value="<?php echo $RNo['ADDRESS'] ?>"  readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>CITY :</label><input type="text" class="LabelInput" id="city" name="city" value="<?php echo $RNo['CITY'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>ZIPCODE :</label><input type="text" class="LabelInput" id="zipcode" name="zipcode" value="<?php echo $RNo['ZIPCODE'] ?>" readonly>
+								<label>ADDRESS :</label><input type="text" id="address" name="address" value=""  required="">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>PHONE :</label><input type="text" class="LabelInput" id="phone" name="phone" value="<?php echo $RNo['PHONE'] ?>"  readonly>
+								<label>CITY :</label><input type="text" id="city" name="city" value=""  required="">
 							</div>
 							<div class="col-md-6">
-								<label>EMAIL :</label><input type="text" class="LabelInput" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
+								<label>ZIPCODE :</label><input type="text" id="zipcode" name="zipcode" value="">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<label>PHONE :</label><input type="number" id="phone" name="phone" value=""  required="">
+							</div>
+							<div class="col-md-6">
+								<label>EMAIL :</label><input type="text" id="email" name="email" value=""  required="">
 							</div>
 						</div>
 					</div>
@@ -193,16 +193,16 @@ else
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>PRICE :</label><input type="text" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
+								<label>PRICE :</label><input type="text" class="LabelInput" id="price" name="price" value="₱ <?php echo $RNo['AMOUNT'] ?>"  readonly>
 							</div>
 							<div class="col-md-6">
-								<label>TOTAL DAYS :</label><input type="text" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
+								<label>TOTAL NIGHTS :</label><input type="text" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6"></div>
 							<div class="col-md-6">
-								<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
+								<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="₱ <?php echo $TOTAL ?>"  readonly>
 							</div>
 						</div>	
 					</div>
@@ -242,7 +242,7 @@ else
 					<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
 					<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
 					<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
-					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
+					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="₱ <?php echo $TOTAL ?>"  readonly>
 					<br>
 					<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
 
@@ -257,8 +257,8 @@ else
 
 					<label style="display: none">ADULT :</label><input type="hidden" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>"  readonly>
 					<label style="display: none">CHILDREN :</label><input type="hidden" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
-					<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="<?php echo $RNo['AMOUNT'] ?>"  readonly>
-					<label style="display: none">TOTAL DAYS :</label><input type="hidden" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
+					<label style="display: none">PRICE :</label><input type="hidden" class="LabelInput" id="price" name="price" value="₱ <?php echo $RNo['AMOUNT'] ?>"  readonly>
+					<label style="display: none">TOTAL NIGHTS :</label><input type="hidden" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
 					<!-- -------------------------------------------------- -->
 
 					<input type="hidden" name="cmd" value="_xclick" />
