@@ -36,9 +36,20 @@ $html =
 '<br>'.
 '<br>'.
 '<br>'.
+'<p><center>Sampaloc II, Bucal, Dasmarinas, Cavite</center></p>'.
+'<br>'.
+'<br>'.
+'<br>'.
+'<hr>'.
 '<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Dear Guest,</p>'.
+'<p>Dear Mr/Ms.'.$data[0][2].',</p>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
+'<hr>'.
+'<h3>Guest Details:</h3>'.
+'<p>Full Name.:'.$data[0][1] . $data[0][2].'</p>'.
+'<p>Contact No.:'.$data[0][3].'</p>'.
+'<p>Email Address:'.$data[0][20].'</p>'.
+'<hr>'.
 '<h3>Reservation Details</h3>'.
 '<p>Reservation No.:'.$data[0][22].'</p>'.
 '<p>Check-in Date:'.$data[0][9].'</p>'.
@@ -50,14 +61,14 @@ $html =
 '<p>Paid:'.number_format($data[0][16]).'</p>'.
 '<p>Balance:'.number_format($data[0][18]).'</p>'.
 '<p>Total Fee:'.number_format($data[0][17]).'</p>'.
-'<h3>Guest Details:</h3>'.
-'<p>Full Name.:'.$data[0][1] . $data[0][2].'</p>'.
-'<p>Contact No.:'.$data[0][3].'</p>'.
-'<p>Email Address:'.$data[0][20].'</p>'.
 '<hr>'.
 '<h3>Cancellation Policy</h3>'.
 '<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.
 '<br>'.
+'<br>'.
+'<p>If you want to Cancel your Reservation, Please visit the link below:</p>'.
+'<br>'.
+'https://www.springplazahotel247.com/SP/SpringPlaza/'.
 '<h4 style="text-align: right;">Thanks and Regards,</h4>'.
 '<p style="text-align: right;"><b>Mr. Sherwin Go</b></p>'.
 '<p style="text-align: right; font-size: 15px;">General Manager/Reservation Executive</p>'.
@@ -101,7 +112,14 @@ $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 	Your Reservation is Approved!
 	<br>
 	<br>
-	RESERVATION DETAILS
+	Please kindly present this attachment to the front desk of Spring Plaza Hotel for Verification.
+	<br>
+	<br>
+	To cancel your reservation please visit the link below:
+	<br>
+	<a>https://www.springplazahotel247.com/SP/SpringPlaza/</a>
+	<br>
+	<b>NOTE:</b>A 50% refund will be made for cancellations.
 	<br>
 	<br>
 	<br>

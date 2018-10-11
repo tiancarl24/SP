@@ -21,9 +21,7 @@ $PRICE = $_POST['price'];
 $DAYS = $_POST['days'];
 $TOTAL = $_POST['totalprice'];
 $DATES = $_POST['date'];
-$TOTAL = explode(" ", $TOTAL);
-$TOTAL = $TOTAL[1];
-//dump($TOTAL);
+//dump($FNAME);
 
 $timestampIN = strtotime($CIN);
 $NEWCIN = date('Y-m-d', $timestampIN);
@@ -193,7 +191,7 @@ $mailer = new Swift_Mailer($transport);
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
 ->setTo([$EMAIL => 'A name'])
-->setBody('Hi Mr/Ms '.$FNAME.' '.$LNAME.'!
+->setBody('Hi '.$FNAME.' '.$LNAME.'!
 	<br>
 	<br>
 	<br>
@@ -201,12 +199,31 @@ $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 	<br>
 	please settle atleast half of the total price of your bill to ensure your reservation.
 	<br>
+	<h2>Reservation Details</h2>
+	<br>
+	ReservationID: '.$AppID.'
+	<br>
+	Check In Date: '.$CIN.'
+	<br>
+	Check Out Date: '.$COUT.'
+	<br>
+	Room Type: '.$RTYPE.'
+	<br>
+	Room NO.: '.$ROOMNO.'
+	<br>
+	TOTAL FEES: '.$TOTAL.'
+	<br>
 	<br>
 	Bank: '.$bankinfo[0][1].'
 	<br>
 	Account Name: '.$bankinfo[0][2].'
 	<br>
 	Account Number: '.$bankinfo[0][3].'
+	<br>
+	<br>
+	Please click this link to submit your deposit slip and if you have other question please message us at:
+	<br>
+	<a>www.https://www.springplazahotel247.com/SP/SpringPlaza/</a>
 	<br>
 	<br>
 	Regards,',"text/html");

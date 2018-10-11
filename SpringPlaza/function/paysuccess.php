@@ -39,7 +39,7 @@ do
 	}
 }
 while ($x <= $TempData[0][10]);
-//dump($TempData[0][1]);
+
 
 $SaveData = DBExecute(" INSERT INTO reservations SET firstname = '".$TempData[0][1]."',
 	lastname = '".$TempData[0][2]."',
@@ -88,7 +88,8 @@ $html =
 '<br>'.
 '<br>'.
 '<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Dear Guest,</p>'.
+'<p>Hi Mr/Ms. '$TempData[0][2].' ,</p>'.
+'<br>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
 '<p>Reservation No.:'.$TempData[0][22].'</p>'.
@@ -152,18 +153,19 @@ $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setBody('Hi '.$TempData[0][1].' '.$TempData[0][2].'!
 	<br>
 	<br>
-	<br>
-	Your Reservation is paid via Paypal.
-	<br>
-	please kindly present this to the front desk of Hotel Spring Plaza for verification
+	<p>Your Reservation is paid via Paypal. Please kindly present the attachment to the front desk of Spring Plaza Hotel for verification</p>
 	<br>
 	<br>
+	<p>To cancel your Reservation please visit the link below:</p>
 	<br>
+	https://www.springplazahotel247.com/SP/SpringPlaza/
+	<br>
+	<b>NOTE:</b>A 50% refund will be made for cancellations.
 	Regards,',"text/html");
 	// Send the message
-$result = $mailer->send($message);
+	$result = $mailer->send($message);
 
-DbClose();
+	DbClose();
 
-redirMsg("../index.php","Reservation Successfully!");
-?>
+	redirMsg("../index.php","Reservation Successfully!");
+	?>

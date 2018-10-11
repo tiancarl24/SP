@@ -87,7 +87,6 @@ include "utils.php";
                     <li><a class="scroll-to" href="#sc-features">Amenities</a></li>
                     <li><a class="scroll-to" href="#sc-rooms">Rooms</a></li>
                     <li><a class="scroll-to" href="#Gallery">Gallery</a></li>
-                    <li><a class="scroll-to" href="#MapLocation">Terms and Conditions</a></li>
                     <li><a class="scroll-to" href="#About">About Us</a></li>
                     <li><a class="scroll-to" href="#Contact">Contact Us</a></li>
                     <li><a id="btnviewres" name="btnviewres" class="btn btn-color1 call-to-action-button show-inquiry-modal ShowModal">View Reservation</a></li>

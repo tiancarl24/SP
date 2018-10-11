@@ -47,13 +47,14 @@ include "incAmenities.php";
 <!--Room Tabs start-->
 
 <!--Location start-->
-<section class="location" id="MapLocation">
+<!-- <section class="location" id="MapLocation">
     <iframe frameborder="0" width="100%" height="500"  src='https://maps.google.com?q=<SpringPlazaHotel>&output=embed'></iframe>
         <div class="location-address text-center">
             <address>Location <i class="icon-pointer"></i> Hotel Spring Plaza | Sampaloc, Dasmariñas, Cavite</address>
         </div>
-    </section>
+    </section> -->
     <!--Location end-->
+    <hr>
     <!--Room Tabs start-->
     <section class="room-tabs" id="Gallery">
         <div class="container">
@@ -152,46 +153,47 @@ include "incAmenities.php";
             </section>
             <!--About end-->
             <!--Address start-->
-           <section class="address" id="Contact">
+            <section class="address" id="Contact">
                 <div class="container">
-                    <br>
-                    <h2>Message Us</h2>
-                    <div style="padding-left: 400px;">
-                        <div class="row">
-                            <input type="text" id="" name="" class="form-control col-sm-4" placeholder="Email Address" style="width: 50%; margin-right: auto; margin-left: auto; display: block;">
-                        </div>
-                        <br>
-                        <div class="row">
-                            <textarea class="form-control" rows="4" style="width: 50%;" placeholder="Message"></textarea>
-                        </div>
-                    </div>
                     <br>
                     <?php
                     DBOpen();
                     $Contact = DBGetData(" SELECT * FROM contact ");
                     foreach($Contact as $Contact)
                     {
-                       wr("<div class='row'>");
-                       wr("<div class='col-md-12'>");
-                       wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
-                       wr("<address>$Contact[1]</address>");
-                       wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
-                       wr("<ul class='phones'>");
-                       wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
-                       wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
-                       wr("</ul>");
-                       wr("</div>"); 
-                   }
-                   DBClose();
-                   ?>
-                   <br>
+                     wr("<div class='row'>");
+                     wr("<div class='col-md-12'>");
+                     wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
+                     wr("<address>$Contact[1]</address>");
+                     wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
+                     wr("<ul class='phones'>");
+                     wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
+                     wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
+                     wr("</ul>");
+                     wr("</div>"); 
+                 }
+                 DBClose();
+                 ?>
+                 <br>
+                 <br>
+                 <h2>Message Us</h2>
+                 <div style="padding-left: 400px;">
+                    <div class="row">
+                        <input type="text" id="" name="" class="form-control col-sm-4" placeholder="Email Address" style="width: 50%; margin-right: auto; margin-left: auto; display: block;">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <textarea class="form-control" rows="4" style="width: 50%;" placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <br>
+                <img src="img/loc.png" style="width: 100%; height: 280px;">
+            </div>
+        </section>
+        <!--Address end-->
 
-               </div>
-           </section>
-         <!--Address end-->
-
-         <!--Footer start-->
-         <footer class="footer" id="sc-footer">
+        <!--Footer start-->
+        <footer class="footer" id="sc-footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">

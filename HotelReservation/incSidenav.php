@@ -36,13 +36,13 @@
             <!--Category name-->
             <li class="list-header">Navigation</li>
             <li class="">
-                  <a href="home.php">
-                    <i class="fa fa-users"></i>
-                    <span class="menu-title">
-                      <strong>Dashboard</strong>
-                    </span>
-                  </a>
-                </li> 
+              <a href="home.php">
+                <i class="fa fa-users"></i>
+                <span class="menu-title">
+                  <strong>Dashboard</strong>
+                </span>
+              </a>
+            </li> 
 
             <!--Menu list item-->
             <li class="">
@@ -171,6 +171,14 @@
                 </li> 
               </ul>
             </li>  
+            <li class="">
+              <a href="Deposit.php">
+                <i class="fa fa-users"></i>
+                <span class="menu-title">
+                  <strong>Deposit Slip</strong>
+                </span>
+              </a>
+            </li> 
             <li class="">
               <a href="Reports.php">
                 <i class="fa fa-users"></i>

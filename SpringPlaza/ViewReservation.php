@@ -224,6 +224,32 @@ include 'utils.php';
 	</div>
 </form>
 
+<form method="POST" action="function/UploadDepo.php" enctype="multipart/form-data">
+	<div class="modal fade" id="ModalDepo" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!--Modal header-->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<!--Modal body-->
+				<div class="modal-body">
+					<h2>Upload Deposit Slip</h2>
+					<br>
+					<br>
+					<input type="file" id="image" name="image">
+				</div>
+				<!--Modal footer-->
+				<div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+					<button id="btncancelyes" name="btncancelyes" class="btn btn-primary">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
 <script type="text/javascript">
 	
 	var btnCancelReservation = document.getElementById('btnCancelReservation');
@@ -244,6 +270,14 @@ include 'utils.php';
 				document.getElementById('reserveid').value = rs[0][0];
 			}
 		});
+	}
+</script>
+
+<script type="text/javascript">
+	var UploadDepoSlip = document.getElementById('UploadDepoSlip');
+	UploadDepoSlip.onclick = function()
+	{
+		$('#ModalDepo').modal();
 	}
 </script>
 

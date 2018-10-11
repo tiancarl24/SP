@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2018 at 06:27 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Oct 11, 2018 at 07:33 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -180,6 +180,17 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `Address`, `TelNo`, `MobileNo`) VALUES
 (1, 'Sampaloc, Dasmarinas, Cavite 2', 7811542, 7811542);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deposit`
+--
+
+CREATE TABLE `deposit` (
+  `id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -464,6 +475,12 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `deposit`
+--
+ALTER TABLE `deposit`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `floors`
 --
 ALTER TABLE `floors`
@@ -556,6 +573,12 @@ ALTER TABLE `carousel`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `deposit`
+--
+ALTER TABLE `deposit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `floors`
