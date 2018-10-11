@@ -192,7 +192,7 @@ include "utils.php";
 											'COUT' => $COUT,
 											'ADULT' => $ADULT,
 											'CHILD' => $CHILD,
-											'RTYPE' => $RTYPE,
+											'RTYPE' => $rs[2],
 											'IMAGE' => $rs[0],
 											'DESCRIPTION'=> $rs[1],
 											'AMOUNT' => $rs[3],

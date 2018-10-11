@@ -152,28 +152,42 @@ include "incAmenities.php";
             </section>
             <!--About end-->
             <!--Address start-->
-            <section class="address" id="Contact">
+           <section class="address" id="Contact">
                 <div class="container">
+                    <br>
+                    <h2>Message Us</h2>
+                    <div style="padding-left: 400px;">
+                        <div class="row">
+                            <input type="text" id="" name="" class="form-control col-sm-4" placeholder="Email Address" style="width: 50%; margin-right: auto; margin-left: auto; display: block;">
+                        </div>
+                        <br>
+                        <div class="row">
+                            <textarea class="form-control" rows="4" style="width: 50%;" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <br>
                     <?php
                     DBOpen();
                     $Contact = DBGetData(" SELECT * FROM contact ");
                     foreach($Contact as $Contact)
                     {
-                     wr("<div class='row'>");
-                     wr("<div class='col-md-12'>");
-                     wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
-                     wr("<address>$Contact[1]</address>");
-                     wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
-                     wr("<ul class='phones'>");
-                     wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
-                     wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
-                     wr("</ul>");
-                     wr("</div>"); 
-                 }
-                 DBClose();
-                 ?>
-             </div>
-         </section>
+                       wr("<div class='row'>");
+                       wr("<div class='col-md-12'>");
+                       wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
+                       wr("<address>$Contact[1]</address>");
+                       wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
+                       wr("<ul class='phones'>");
+                       wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
+                       wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
+                       wr("</ul>");
+                       wr("</div>"); 
+                   }
+                   DBClose();
+                   ?>
+                   <br>
+
+               </div>
+           </section>
          <!--Address end-->
 
          <!--Footer start-->

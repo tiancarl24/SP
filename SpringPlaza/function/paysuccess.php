@@ -39,7 +39,7 @@ do
 	}
 }
 while ($x <= $TempData[0][10]);
-
+//dump($TempData[0][1]);
 
 $SaveData = DBExecute(" INSERT INTO reservations SET firstname = '".$TempData[0][1]."',
 	lastname = '".$TempData[0][2]."',

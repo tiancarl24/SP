@@ -26,6 +26,7 @@ $paypalConfig = [
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
 // Product being purchased.
+$Name = $_POST['lblname'];
 $DATA = $_POST;
 $option = $_POST['txtOption'];
 $CIN = $_POST['cin'];

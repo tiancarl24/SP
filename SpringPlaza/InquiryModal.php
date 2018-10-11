@@ -34,23 +34,6 @@
 
                         <!-- Inquiry Room and Date start -->
                         <div class="room-and-date">
-                             <div class="room-select">
-                                <div class="input-group">
-                                    <?php 
-                                    DBOpen();
-
-                                    $rooms = DBGetData(" SELECT distinct roomtype from roominformation where roomavailability = 'Available' ");
-                                    DBClose();
-                                    wr('<select name="cboRoom" id="cboRoom" class="form-control" required>');
-                                    wr('<option value="">Select a Room Type!</option>');
-                                    foreach($rooms as $rooms)
-                                    {
-                                        wr('<option value="'.$rooms[0].'">'.$rooms[0].'</option>');
-                                    }
-                                    wr('</select>');
-                                    ?>
-                                </div>
-                            </div>
                             <div class="alert hidden" id="inquiry-form-msg"></div>
                             <div class="inquiry-check-in">
                                 <div class="date-select">

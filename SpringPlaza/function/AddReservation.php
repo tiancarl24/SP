@@ -21,7 +21,9 @@ $PRICE = $_POST['price'];
 $DAYS = $_POST['days'];
 $TOTAL = $_POST['totalprice'];
 $DATES = $_POST['date'];
-//dump($FNAME);
+$TOTAL = explode(" ", $TOTAL);
+$TOTAL = $TOTAL[1];
+//dump($TOTAL);
 
 $timestampIN = strtotime($CIN);
 $NEWCIN = date('Y-m-d', $timestampIN);
@@ -191,7 +193,7 @@ $mailer = new Swift_Mailer($transport);
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
 ->setTo([$EMAIL => 'A name'])
-->setBody('Hi '.$FNAME.' '.$LNAME.'!
+->setBody('Hi Mr/Ms '.$FNAME.' '.$LNAME.'!
 	<br>
 	<br>
 	<br>

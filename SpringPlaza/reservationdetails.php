@@ -122,7 +122,7 @@ else
 						<br>
 						<div class="row">
 							<div class="col-md-6">
-								<label>NAME :</label><input type="text" id="name" name="name" value="" required="">
+								<label>NAME :</label><input type="text" id="xname" name="xname" value="" required="">
 							</div>
 							<div class="col-md-6">
 								<label>ADDRESS :</label><input type="text" id="address" name="address" value=""  required="">
@@ -141,10 +141,21 @@ else
 								<label>PHONE :</label><input type="number" id="phone" name="phone" value=""  required="">
 							</div>
 							<div class="col-md-6">
-								<label>EMAIL :</label><input type="text" id="email" name="email" value=""  required="">
+								<label>EMAIL :</label><input type="text" id="lblemail" name="lblemail" value=""  required="">
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="checkbox checkbox-success">
+										<input id="chkaddons" name="chkaddons" type="checkbox" onclick="addon();">
+										<label for="chkaddons"> ADD ONS: Extra Bed </label>
+									</div>
+								</div>
 							</div>
 						</div>
+
 					</div>
+					
+
 					<!-- RESERVATION -->
 					<div style="padding: 10px; color: orange; font-size: 20px;">
 						<h2 class="hometext"><center>Reservation Details</center></h2>
@@ -220,9 +231,9 @@ else
 					</div>
 				</div>
 				<br>
-			
+
 				<center style="color: orange">REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>
-			
+
 			</div>
 		</div>
 	</div>
@@ -237,12 +248,13 @@ else
 					<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
 				</div>
 				<div class="modal-body form-contol">
+					<label>NAME:</label><input type="text" class="LabelInput" id="lblname" name="lblname" value=""  readonly>
 					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
 					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
 					<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
 					<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
 					<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
-					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="₱ <?php echo $TOTAL ?>"  readonly>
+					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
 					<br>
 					<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
 
@@ -368,6 +380,40 @@ else
 			$("#PaymentModal").modal();
 		});
 	});
+</script>
+
+<script type="text/javascript">
+	
+	function addon()
+	{
+		var totalFee;
+		var x = document.getElementById('totalprice').value;
+		var xx = x.split(" ");
+		var y = document.getElementById('days').value;
+		var yy = y.split(" ");
+		var z = document.getElementById('price').value;
+		var zz = z.split(" ");
+		if(chkaddons.checked == true)
+		{
+			totalFee = parseInt(xx[1]) + parseInt(200);
+			document.getElementById('totalprice').value = "₱" + " " +  totalFee;
+		}
+		else
+		{
+			totalFee = parseInt(zz[1]) * parseInt(y);
+			document.getElementById('totalprice').value = "₱" + " " + totalFee;
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	
+	btnPaypal = document.getElementById('btnPaypal');
+	btnPaypal.onclick = function()
+	{
+		email.value = lblemail.value;
+		lblname.value = xname.value;
+	}
 </script>
 
 
