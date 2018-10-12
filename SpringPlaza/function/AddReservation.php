@@ -3,14 +3,14 @@ include '../utils.php';
 include '../incSecure.php';
 
 $AppID = $_POST['resID1'];
-$FNAME = $_POST['name'];
+$FNAME = $_POST['xname'];
 $LNAME = $_POST['lname'];
 $NAME = $_POST['name'];
 $ADDRESS = $_POST['address'];
 $CITY = $_POST['city'];
 $ZIPCODE = $_POST['zipcode'];
 $PHONE = $_POST['phone'];
-$EMAIL = $_POST['email'];
+$EMAIL = $_POST['lblemail'];
 $CIN = $_POST['cin1'];
 $COUT = $_POST['cout'];
 $ROOMNO = $_POST['roomno1'];
@@ -21,7 +21,9 @@ $PRICE = $_POST['price'];
 $DAYS = $_POST['days'];
 $TOTAL = $_POST['totalprice'];
 $DATES = $_POST['date'];
-//dump($FNAME);
+$EMAIL = explode(" ",$EMAIL);
+$TOTAL = explode(" ", $TOTAL);
+$TOTAL = $TOTAL[1];
 
 $timestampIN = strtotime($CIN);
 $NEWCIN = date('Y-m-d', $timestampIN);
@@ -75,8 +77,8 @@ $rs = DBExecute(" INSERT INTO reservations SET firstname = '$FNAME',
 	reservationdate = '$maniladate',
 	checkindate = '$NEWCIN',
 	checkoutdate = '$NEWCOUT',
-	checkintime = '$manilatime',
-	checkouttime = '$manilatime',
+	checkintime = '14:00:00',
+	checkouttime = '12:00:00',
 	roomtype = '$RTYPE',
 	roomno = '$ROOMNO',
 	modeofpayment = 'Pay in Bank',
@@ -84,7 +86,7 @@ $rs = DBExecute(" INSERT INTO reservations SET firstname = '$FNAME',
 	totalamount = '$TOTAL',
 	balance = '$TOTAL',
 	Status = 'Pending', 
-	Email = '$EMAIL',
+	Email = '$EMAIL[1]',
 	TotalPaid = '0',
 	ReservationID = '$AppID' ");
 
@@ -99,8 +101,8 @@ $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
 	reservationdate = '$maniladate',
 	checkindate = '$NEWCIN',
 	checkoutdate = '$NEWCOUT',
-	checkintime = '$manilatime',
-	checkouttime = '$manilatime',
+	checkintime = '14:00:00',
+	checkouttime = '12:00:00',
 	roomtype = '$RTYPE',
 	roomno = '$ROOMNO',
 	modeofpayment = 'Pay in Bank',
@@ -108,7 +110,7 @@ $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
 	totalamount = '$TOTAL',
 	balance = '$TOTAL',
 	Status = 'Pending', 
-	Email = '$EMAIL',
+	Email = '$EMAIL[1]',
 	TotalPaid = '0',
 	ReservationID = '$AppID' ");
 
@@ -150,7 +152,7 @@ $html =
 '<h3>Guest Details:</h3>'.
 '<p>Full Name.:'.$FNAME . $LNAME.'</p>'.
 '<p>Contact No.:'.$PHONE.'</p>'.
-'<p>Email Address:'.$EMAIL.'</p>'.
+'<p>Email Address:'.$EMAIL[1].'</p>'.
 '<hr>'.
 '<h3>Cancellation Policy</h3>'.
 '<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.
@@ -190,8 +192,8 @@ $mailer = new Swift_Mailer($transport);
 	// Create a message
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
-->setTo([$EMAIL => 'A name'])
-->setBody('Hi '.$FNAME.' '.$LNAME.'!
+->setTo([$EMAIL[1] => 'A name'])
+->setBody('Hi Mr/Ms '.$FNAME.' '.$LNAME.'!
 	<br>
 	<br>
 	<br>

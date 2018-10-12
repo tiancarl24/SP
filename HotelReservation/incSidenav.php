@@ -170,7 +170,15 @@
                   </a>
                 </li> 
               </ul>
-            </li>  
+            </li> 
+             <li class="">
+                  <a href="Messages.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Messages</strong>
+                    </span>
+                  </a>
+                </li>  
             <li class="">
               <a href="Deposit.php">
                 <i class="fa fa-users"></i>

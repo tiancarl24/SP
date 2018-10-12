@@ -1,6 +1,9 @@
 <?php
 include "utils.php";
 ?>
+<?php $INFO = json_decode($_GET['Data'],true); 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -110,7 +113,34 @@ include "utils.php";
 							<br>
 							<br>
 							<br>
-							<form>
+							<form method="GET" action="reservationdetails.php">
+								<?php 
+								$FNAME = $_SESSION['txtFirstname'];
+								$LNAME = $_SESSION['txtLastname'];
+								$ADDRESS = $_SESSION['txtAddress'];
+								$ZIP = $_SESSION['txtZipcode'];
+								$CITY = $_SESSION['txtCity'];
+								$PHONE = $_SESSION['txtPhone'];
+								$EMAIL = $_SESSION['txtEmail'];
+								$ADDONS = $_SESSION['txtaddons'];
+								$CIN = $_SESSION['datacin'];
+								$COUT = $_SESSION['datacout'];
+								$ADULT = $_SESSION['dataadult'];
+								$CHILD = $_SESSION['datachild'];
+								$RTYPE = $_SESSION['dataroomtype'];
+								$AMOUNT = $_SESSION['dataamount'];
+								$ROOMNO = $_SESSION['dataroomno'];
+								$NIGHTS = $_SESSION['datanights'];
+								?>
+								<input type="hidden" id="datacin" name="datacin" value=" <?php echo $INFO['CIN'] ?> ">
+								<input type="hidden" id="datacout" name="datacout" value=" <?php echo $INFO['COUT'] ?> ">
+								<input type="hidden" id="dataadult" name="dataadult" value=" <?php echo $INFO['ADULT'] ?> ">
+								<input type="hidden" id="datachild" name="datachild" value=" <?php echo $INFO['CHILD'] ?> ">
+								<input type="hidden" id="dataroomtype" name="dataroomtype" value=" <?php echo $INFO['RTYPE'] ?> ">
+								<input type="hidden" id="dataamount" name="dataamount" value=" <?php echo $INFO['AMOUNT'] ?> ">
+								<input type="hidden" id="dataroomno" name="dataroomno" value=" <?php echo $INFO['ROOMNO'] ?> ">
+								<input type="hidden" id="datanights" name="datanights" value=" <?php echo $INFO['DAYS'] ?> ">
+
 								<h2>Personal Information</h2>
 
 								<div class="form-group first-name-group">
@@ -129,7 +159,7 @@ include "utils.php";
 								<div class="clearfix"></div>
 								<div class="form-group zip-code-group">
 									<label for="txtZipcode">Zip Code</label>
-									<input type="text" name="txtZipcode" class="form-control" id="txtZipcode" placeholder="Enter your zip-code" >
+									<input type="number" name="txtZipcode" class="form-control" id="txtZipcode" placeholder="Enter your zip-code" >
 								</div>
 								<div class="form-group city-group">
 									<label for="txtCity">City</label>
@@ -146,14 +176,14 @@ include "utils.php";
 								</div>
 								<h2>ADD ONS</h2>
 								<div class="form-group phone-group">
-									<input type="checkbox" name="txtBED" id="txtBED" required="">
-									<label for="txtBED">1 BED</label>
+									<input type="checkbox" name="txtaddons" id="txtaddons" value="1">
+									<label for="txtaddons">EXTRA BED ₱ 200.00</label>
 								</div>
 								<div class="clearfix"></div>
 								<div class="row">
 									<div class="col-md-8"></div>
 									<div class="col-md-4">
-										<button type="button" id="btnNext" name="btnNext" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;">Next</button>
+										<button type="submit" id="btnNext" name="btnNext" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;">Next</button>
 									</div>
 								</div>
 							</div> 

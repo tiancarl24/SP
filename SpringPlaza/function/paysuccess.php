@@ -88,7 +88,7 @@ $html =
 '<br>'.
 '<br>'.
 '<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Hi Mr/Ms. '$TempData[0][2].' ,</p>'.
+'<p>Hi Mr/Ms. '.$TempData[0][2].' ,</p>'.
 '<br>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
@@ -118,6 +118,9 @@ $html =
 '</html>';
 
 // ----
+//dump($TempData[0][20]);
+$TempData = explode(" ", $TempData[0][20]);
+$TempData = $TempData[1];
 
 //instantiate and use the dompdf class
 $dompdf = new Dompdf();
@@ -148,7 +151,7 @@ $mailer = new Swift_Mailer($transport);
 	// Create a message
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
-->setTo([$TempData[0][20] => 'A name'])
+->setTo([$TempData => 'A name'])
 ->attach(Swift_Attachment::fromPath('../pdf/'.$TempData[0][22].'.pdf'))
 ->setBody('Hi '.$TempData[0][1].' '.$TempData[0][2].'!
 	<br>

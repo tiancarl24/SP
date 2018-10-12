@@ -106,7 +106,7 @@ include "utils.php";
 							<br>
 							<br>
 							<br>
-							<form method="GET" action="reservationdetails.php">
+							<form method="GET" action="personalinfo.php">
 								<?php 
 								$RTYPE = $_GET['cboRoom'];
 								$CIN = $_GET['dtCheckIN'];
@@ -214,7 +214,7 @@ include "utils.php";
 										wr(" <td>$rs[1]</td> ");
 										wr(" <td>$rs[2]</td> ");
 										wr(" <td>₱ $rs[3]</td> ");
-										wr(" <td style='text-align:center;'><a href ='reservationdetails.php?Data=".json_encode($array1)."'>BOOK NOW!!</a></td> ");						
+										wr(" <td style='text-align:center;'><a href ='personalinfo.php?Data=".json_encode($array1)."'>BOOK NOW!!</a></td> ");						
 										wr(" </tr> ");
 									}
 									wr(" </tbody> ");

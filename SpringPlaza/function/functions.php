@@ -23,8 +23,8 @@ if($option == "Half")
         reservationdate = '".$maniladate."',
         checkindate = '".$NEWCIN."',
         checkoutdate = '".$NEWCOUT."',
-        checkintime = '".$manilatime."',
-        checkouttime = '".$manilatime."',
+        checkintime = '14:00:00',
+        checkouttime = '12:00:00',
         roomtype = '".$DATA['roomtype']."',
         roomno = '".$DATA['roomno']."',
         modeofpayment = 'Paypal',
@@ -48,7 +48,7 @@ else
     $timestampOUT = strtotime($COUT);
     $NEWCOUT = date('Y-m-d', $timestampOUT);
 
-    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['fname']."',
+    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['lblname']."',
         lastname = '".$DATA['lname']."',
         contactno = '".$DATA['phone']."',
         address = '".$DATA['address']."',
@@ -58,8 +58,8 @@ else
         reservationdate = '".$maniladate."',
         checkindate = '".$NEWCIN."',
         checkoutdate = '".$NEWCOUT."',
-        checkintime = '".$manilatime."',
-        checkouttime = '".$manilatime."',
+        checkintime = '14:00:00',
+        checkouttime = '12:00:00',
         roomtype = '".$DATA['roomtype']."',
         roomno = '".$DATA['roomno']."',
         modeofpayment = 'Paypal',

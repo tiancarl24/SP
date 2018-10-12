@@ -3,15 +3,37 @@ include 'utils.php';
 ?>
 <?php 
 $RNo = json_decode($_GET['Data'],true);
+$FNAME = $_GET['txtFirstname'];
+$LNAME = $_GET['txtLastname'];
+$ADDRESS = $_GET['txtAddress'];
+$ZIP = $_GET['txtZipcode'];
+$CITY = $_GET['txtCity'];
+$PHONE = $_GET['txtPhone'];
+$EMAIL = $_GET['txtEmail'];
+$ADDONS = $_GET['txtaddons'];
+$CIN = $_GET['datacin'];
+$COUT = $_GET['datacout'];
+$ADULT = $_GET['dataadult'];
+$CHILD = $_GET['datachild'];
+$RTYPE = $_GET['dataroomtype'];
+$AMOUNT = $_GET['dataamount'];
+$ROOMNO = $_GET['dataroomno'];
+$NIGHTS = $_GET['datanights'];
+//dump($ADULT);
 
-if(intval($RNo['ADULT']) == 3)
+if(intval($ADULT) == 3)
 {
-	$DAY = intval($RNo['DAYS']) * 650;
-	$TOTAL = intval($RNo['AMOUNT'] * intval($RNo['DAYS']) + $DAY);	
+	$X = intval($NIGHTS) * intval($AMOUNT);
+	$XX = 450 * $NIGHTS;
+	$TOTAL = $X + $XX ;	
 }
 else
 {
-	$TOTAL = intval($RNo['AMOUNT']) * intval($RNo['DAYS']);
+	$TOTAL = intval($AMOUNT) * intval($NIGHTS);
+}
+if($ADDONS == 1)
+{
+	$TOTAL = $TOTAL + 200;
 }
 ?>
 <!DOCTYPE html>
@@ -122,34 +144,26 @@ else
 						<br>
 						<div class="row">
 							<div class="col-md-6">
-								<label>NAME :</label><input type="text" id="xname" name="xname" value="" required="">
+								<label>NAME :</label><input type="text" id="xname" name="xname" class="LabelInput" value="<?php echo $FNAME ?> <?php echo $LNAME ?>" required="" readonly>
 							</div>
 							<div class="col-md-6">
-								<label>ADDRESS :</label><input type="text" id="address" name="address" value=""  required="">
+								<label>ADDRESS :</label><input type="text" id="address" name="address" class="LabelInput" value=" <?php echo $ADDRESS ?> "  required="" readonly>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>CITY :</label><input type="text" id="city" name="city" value=""  required="">
+								<label>CITY :</label><input type="text" id="city" name="city" class="LabelInput" value=" <?php echo $CITY ?> "  required="" readonly>
 							</div>
 							<div class="col-md-6">
-								<label>ZIPCODE :</label><input type="text" id="zipcode" name="zipcode" value="">
+								<label>ZIPCODE :</label><input type="text" id="zipcode" name="zipcode" class="LabelInput" value=" <?php echo $ZIP ?> " readonly>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>PHONE :</label><input type="number" id="phone" name="phone" value=""  required="">
+								<label>PHONE :</label><input type="text" id="phone" name="phone" class="LabelInput" value=" <?php echo $PHONE ?> "  required="" readonly>
 							</div>
 							<div class="col-md-6">
-								<label>EMAIL :</label><input type="text" id="lblemail" name="lblemail" value=""  required="">
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="checkbox checkbox-success">
-										<input id="chkaddons" name="chkaddons" type="checkbox" onclick="addon();">
-										<label for="chkaddons"> ADD ONS: Extra Bed </label>
-									</div>
-								</div>
+								<label>EMAIL :</label><input type="text" id="lblemail" name="lblemail" class="LabelInput" value=" <?php echo $EMAIL ?> " style="width: 80%" required="" readonly>
 							</div>
 						</div>
 
@@ -180,34 +194,34 @@ else
 								<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID1" name="resID1" value="<?php echo $AppID ?>"  readonly>
 							</div>
 							<div class="col-md-6">
-								<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin1" name="cin1" value="<?php echo $RNo['CIN'] ?>"  readonly>
+								<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin1" name="cin1" value="<?php echo $CIN ?>"  readonly>
 							</div>
 							<div class="col-md-6">
-								<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno1" name="roomno1" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
-							</div>
-							<div class="col-md-6">
-								<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype1" name="roomtype1" value="<?php echo $RNo['RTYPE'] ?>" readonly >
+								<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $COUT ?>"  readonly>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>ADULT :</label><input type="text" class="LabelInput" id="adult" name="adult" value="<?php echo $RNo['ADULT'] ?>" readonly >
+								<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno1" name="roomno1" value="<?php echo $ROOMNO ?>"  readonly>
 							</div>
 							<div class="col-md-6">
-								<label>CHILDREN :</label><input type="text" class="LabelInput" id="children" name="children" value="<?php echo $RNo['CHILD'] ?>"  readonly>
+								<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype1" name="roomtype1" value="<?php echo $RTYPE ?>" readonly >
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label>PRICE :</label><input type="text" class="LabelInput" id="price" name="price" value="₱ <?php echo $RNo['AMOUNT'] ?>"  readonly>
+								<label>ADULT :</label><input type="text" class="LabelInput" id="adult" name="adult" value="<?php echo $ADULT ?>" readonly >
 							</div>
 							<div class="col-md-6">
-								<label>TOTAL NIGHTS :</label><input type="text" class="LabelInput" id="days" name="days" value="<?php echo $RNo['DAYS'] ?>"  readonly>
+								<label>CHILDREN :</label><input type="text" class="LabelInput" id="children" name="children" value="<?php echo $CHILD ?>"  readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<label>PRICE :</label><input type="text" class="LabelInput" id="price" name="price" value="₱ <?php echo $AMOUNT ?>"  readonly>
+							</div>
+							<div class="col-md-6">
+								<label>TOTAL NIGHTS :</label><input type="text" class="LabelInput" id="days" name="days" value="<?php echo $NIGHTS ?>"  readonly>
 							</div>
 						</div>
 						<div class="row">
@@ -232,7 +246,7 @@ else
 				</div>
 				<br>
 
-				<center style="color: orange">REMINDER: There is an additional payment of 650.00 for each exceeding guest.</center>
+				<center style="color: orange">REMINDER: There is an additional payment of 450.00 for each exceeding guest.</center>
 
 			</div>
 		</div>
@@ -250,13 +264,13 @@ else
 				<div class="modal-body form-contol">
 					<label>NAME:</label><input type="text" class="LabelInput" id="lblname" name="lblname" value=""  readonly>
 					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
-					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $RNo['CIN'] ?>"  readonly>
-					<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $RNo['COUT'] ?>"  readonly>
-					<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RNo['RTYPE'] ?>"  readonly>
-					<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $RNo['ROOMNO'] ?>"  readonly>
+					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $CIN ?>"  readonly>
+					<label>CHECK OUT :</label><input type="text" class="LabelInput" id="cout" name="cout" value="<?php echo $COUT ?>"  readonly>
+					<label>ROOM TYPE  :</label><input type="text" class="LabelInput" id="roomtype" name="roomtype" value="<?php echo $RTYPE ?>"  readonly>
+					<label>ROOM NO :</label><input type="text" class="LabelInput" id="roomno" name="roomno" value="<?php echo $ROOMNO ?>"  readonly>
 					<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="<?php echo $TOTAL ?>"  readonly>
 					<br>
-					<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $RNo['EMAIL'] ?>"  readonly>
+					<label>EMAIL :</label><input type="text" class="LabelInput" style="width: 80%" id="email" name="email" value="<?php echo $EMAIL ?>"  readonly>
 
 					<!-- -------------------------------------------------- -->
 					<label style="display: none;">FNAME :</label><input type="hidden" class="LabelInput" id="fname" name="fname" value="<?php echo $RNo['FNAME'] ?>"  readonly>

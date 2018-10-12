@@ -109,15 +109,25 @@ include 'utils.php';
 					<h2 class="hometext"><center>Reservation Details</center></h2>
 					<?php 
 					$RESID = $_GET['txtResID'];
+
 					DBOpen();
 					$rs = DBGetData(" SELECT * FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
 					$count = DBGetData(" SELECT COUNT(*) FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
+
+					$today = $maniladate;
+					$checkin = $rs[0][9];
+
+					$date1=date_create($today);
+					$date2=date_create($checkin);
+					$DAYS=date_diff($date1,$date2);
+					$DAYS = $DAYS->format("%a");
 
 					DBClose();
 					?>
 					<br>
 					<div id="divres" style="text-align: center; font-size: 30px; display: none">No Reservation Found.</div>
 					<input type="hidden" id="txtcount" name="txtcount" value="<?php echo $count[0][0] ?>">
+					<input type="hidden" id="txtdays" name="txtdays" value=" <?php echo $DAYS ?> ">
 					<div class="row">
 						<div class="col-md-6">
 							<label>RESERVATION ID : </label><input type="text" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>" style="border: none" readonly>
@@ -255,21 +265,28 @@ include 'utils.php';
 	var btnCancelReservation = document.getElementById('btnCancelReservation');
 	btnCancelReservation.onclick = function()
 	{
-		$.ajax(
+		if(txtdays.value <= 30)
 		{
-			type: "POST",
-			url: "function/GetResID.php",
-			data:
+			alert("You cannot cancel your reservation! Please call our hotline for more information");
+		}
+		else
+		{
+			$.ajax(
 			{
-				viewresid: viewresid.value
-			},
-			success: function(response)
-			{
-				var rs = JSON.parse(response);
-				$('#CancelModal').modal();
-				document.getElementById('reserveid').value = rs[0][0];
-			}
-		});
+				type: "POST",
+				url: "function/GetResID.php",
+				data:
+				{
+					viewresid: viewresid.value
+				},
+				success: function(response)
+				{
+					var rs = JSON.parse(response);
+					$('#CancelModal').modal();
+					document.getElementById('reserveid').value = rs[0][0];
+				}
+			});
+		}
 	}
 </script>
 
@@ -353,14 +370,14 @@ include 'utils.php';
 
 <script type="text/javascript">
 
-if(txtcount.value == "0")
-{
-	document.getElementById('divres').style.display = "block";
-}
-else
-{
-	document.getElementById('divres').style.display = "none";
-}
+	if(txtcount.value == "0")
+	{
+		document.getElementById('divres').style.display = "block";
+	}
+	else
+	{
+		document.getElementById('divres').style.display = "none";
+	}
 </script>
 
 </body>

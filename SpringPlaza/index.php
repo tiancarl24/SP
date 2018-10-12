@@ -161,31 +161,41 @@ include "incAmenities.php";
                     $Contact = DBGetData(" SELECT * FROM contact ");
                     foreach($Contact as $Contact)
                     {
-                     wr("<div class='row'>");
-                     wr("<div class='col-md-12'>");
-                     wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
-                     wr("<address>$Contact[1]</address>");
-                     wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
-                     wr("<ul class='phones'>");
-                     wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
-                     wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
-                     wr("</ul>");
-                     wr("</div>"); 
-                 }
-                 DBClose();
-                 ?>
-                 <br>
-                 <br>
-                 <h2>Message Us</h2>
-                 <div style="padding-left: 400px;">
-                    <div class="row">
-                        <input type="text" id="" name="" class="form-control col-sm-4" placeholder="Email Address" style="width: 50%; margin-right: auto; margin-left: auto; display: block;">
+                       wr("<div class='row'>");
+                       wr("<div class='col-md-12'>");
+                       wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
+                       wr("<address>$Contact[1]</address>");
+                       wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
+                       wr("<ul class='phones'>");
+                       wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
+                       wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
+                       wr("</ul>");
+                       wr("</div>"); 
+                   }
+                   DBClose();
+                   ?>
+                   <br>
+                   <br>
+                   <h2>Message Us</h2>
+                   <form method="post" action="function/Messageus.php">
+                       <div style="padding-left: 400px;">
+                        <div class="row">
+                            <input type="text" id="txtemail" name="txtemail" class="form-control col-sm-4" placeholder="Email Address" style="width: 50%; margin-right: auto; margin-left: auto; display: block;">
+                        </div>
+                        <br>
+                        <div class="row">
+                            <textarea id="txtmessage" name="txtmessage" class="form-control" rows="4" style="width: 50%;" placeholder="Message"></textarea>
+                        </div>
+                        <br>
+                        <div class="row col-sm-6" style="text-align: center;">
+                            <input type="submit" id="btnsend" name="btnsend" class="btn btn-inquiry-submit col-md-12 col-sm-2" value="Send">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     </div>
-                    <br>
-                    <div class="row">
-                        <textarea class="form-control" rows="4" style="width: 50%;" placeholder="Message"></textarea>
-                    </div>
-                </div>
+                </form>
                 <br>
                 <img src="img/loc.png" style="width: 100%; height: 280px;">
             </div>
