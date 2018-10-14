@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2018 at 05:04 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Oct 14, 2018 at 03:52 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -147,7 +147,12 @@ INSERT INTO `audit` (`RowID`, `User`, `Action`, `AuditDate`, `AuditTime`) VALUES
 (63, '', 'Add Reservation: 201800000002', '2018-10-12', '22:23:36'),
 (64, '', 'Add Reservation: 201800000003', '2018-10-12', '22:25:02'),
 (65, '', 'Add Reservation: 201800000004', '2018-10-12', '22:26:06'),
-(66, 'gimson', 'Login', '2018-10-12', '22:54:40');
+(66, 'gimson', 'Login', '2018-10-12', '22:54:40'),
+(67, '', 'Add Reservation: 201800000005', '2018-10-14', '20:11:13'),
+(68, 'gimson', 'Add TC: Online reservations\r\n A reservation is only valid when a reservation number has been issued.', '2018-10-14', '20:28:27'),
+(69, 'gimson', 'Add TC: BOOKING AND CONFIRMATION\r\nWhen reserving a room your name, address, Email  and method of payment are required.', '2018-10-14', '20:32:16'),
+(70, 'gimson', 'Delete Terms and Conditions: 2', '2018-10-14', '20:33:53'),
+(71, '', 'Add Reservation: 201800000006', '2018-10-14', '20:34:21');
 
 -- --------------------------------------------------------
 
@@ -208,6 +213,26 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `Address`, `TelNo`, `MobileNo`) VALUES
 (1, 'Sampaloc, Dasmarinas, Cavite 2', 7811542, 7811542);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deposit`
+--
+
+CREATE TABLE `deposit` (
+  `id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `ResID` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `deposit`
+--
+
+INSERT INTO `deposit` (`id`, `filename`, `ResID`) VALUES
+(1, 'Screenshot (1).png', ''),
+(2, 'Screenshot (2).png', '201800000004');
 
 -- --------------------------------------------------------
 
@@ -327,7 +352,9 @@ INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Addr
 (1, 'Mark Angelo Guanez', '', ' 34324 ', ' Baccor Cavite ', 1, 0, 1, '2018-10-12', '2018-11-04', '2018-11-05', '14:00:00', '12:00:00', ' Deluxe ', ' 1 ', 'Pay in Bank', 0, 0, 0, 'Pending', 'markangeloguanez@gmail.com', 0, '201800000001', ''),
 (2, 'Mark Angelo Guanez', '', ' 34234 ', ' Baccor Cavite ', 1, 0, 1, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Deluxe ', ' 1 ', 'Pay in Bank', 0, 5000, 5000, 'Pending', 'markangeloguanez@gmail.com', 0, '201800000002', ''),
 (3, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Paypal', 1500, 3000, 1500, 'Approved', ' markangeloguanez@gmail.com ', 1500, '201800000003', ''),
-(4, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Paypal', 1200, 1200, 0, 'Approved', ' markangeloguanez@gmail.com ', 1200, '201800000004', '');
+(4, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Paypal', 1200, 1200, 0, 'Approved', ' markangeloguanez@gmail.com ', 1200, '201800000004', ''),
+(5, 'asdccc ccc', '', ' 123 ', ' c ', 1, 0, 5, '2018-10-14', '2018-11-04', '2018-11-09', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Pay in Bank', 0, 5200, 5200, 'Pending', 'recillagimson@gmail.com', 0, '201800000005', ''),
+(6, 'asdccc ccc', '', ' 123 ', ' c ', 1, 0, 5, '2018-10-14', '2018-11-04', '2018-11-09', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Pay in Bank', 0, 5200, 5200, 'Pending', 'recillagimson@gmail.com', 0, '201800000006', '');
 
 -- --------------------------------------------------------
 
@@ -369,7 +396,9 @@ INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, 
 (1, 'Mark Angelo Guanez', '', ' 34324 ', ' Baccor Cavite ', 1, 0, 1, '2018-10-12', '2018-11-04', '2018-11-05', '14:00:00', '12:00:00', ' Deluxe ', ' 1 ', 'Pay in Bank', 0, 0, 0, 'Pending', 'markangeloguanez@gmail.com', 0, '201800000001'),
 (2, 'Mark Angelo Guanez', '', ' 34234 ', ' Baccor Cavite ', 1, 0, 1, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Deluxe ', ' 1 ', 'Pay in Bank', 0, 5000, 5000, 'Pending', 'markangeloguanez@gmail.com', 0, '201800000002'),
 (3, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Paypal', 1500, 3000, 1500, 'Approved', ' markangeloguanez@gmail.com ', 1500, '201800000003'),
-(4, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Paypal', 1200, 1200, 0, 'Approved', ' markangeloguanez@gmail.com ', 1200, '201800000004');
+(4, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-12', '2018-10-28', '2018-10-29', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Paypal', 1200, 1200, 0, 'Approved', ' markangeloguanez@gmail.com ', 1200, '201800000004'),
+(5, 'asdccc ccc', '', ' 123 ', ' c ', 1, 0, 5, '2018-10-14', '2018-11-04', '2018-11-09', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Pay in Bank', 0, 5200, 5200, 'Pending', 'recillagimson@gmail.com', 0, '201800000005'),
+(6, 'asdccc ccc', '', ' 123 ', ' c ', 1, 0, 5, '2018-10-14', '2018-11-04', '2018-11-09', '14:00:00', '12:00:00', ' Standard ', ' 0 ', 'Pay in Bank', 0, 5200, 5200, 'Pending', 'recillagimson@gmail.com', 0, '201800000006');
 
 -- --------------------------------------------------------
 
@@ -399,7 +428,19 @@ INSERT INTO `reservedate` (`RowID`, `reservationID`, `ReservationDate`, `Checkin
 (5, '201800000003', '2018-10-12', '2018-10-28', '2018-10-29', 123, ' Fan Room '),
 (6, '201800000003', '2018-10-12', '2018-10-29', '2018-10-29', 123, ' Fan Room '),
 (7, '201800000004', '2018-10-12', '2018-10-28', '2018-10-29', 0, ' Standard '),
-(8, '201800000004', '2018-10-12', '2018-10-29', '2018-10-29', 0, ' Standard ');
+(8, '201800000004', '2018-10-12', '2018-10-29', '2018-10-29', 0, ' Standard '),
+(9, '201800000005', '2018-10-14', '2018-11-04', '2018-11-09', 0, ' Standard '),
+(10, '201800000005', '2018-10-14', '2018-11-05', '2018-11-09', 0, ' Standard '),
+(11, '201800000005', '2018-10-14', '2018-11-06', '2018-11-09', 0, ' Standard '),
+(12, '201800000005', '2018-10-14', '2018-11-07', '2018-11-09', 0, ' Standard '),
+(13, '201800000005', '2018-10-14', '2018-11-08', '2018-11-09', 0, ' Standard '),
+(14, '201800000005', '2018-10-14', '2018-11-09', '2018-11-09', 0, ' Standard '),
+(15, '201800000006', '2018-10-14', '2018-11-04', '2018-11-09', 0, ' Standard '),
+(16, '201800000006', '2018-10-14', '2018-11-05', '2018-11-09', 0, ' Standard '),
+(17, '201800000006', '2018-10-14', '2018-11-06', '2018-11-09', 0, ' Standard '),
+(18, '201800000006', '2018-10-14', '2018-11-07', '2018-11-09', 0, ' Standard '),
+(19, '201800000006', '2018-10-14', '2018-11-08', '2018-11-09', 0, ' Standard '),
+(20, '201800000006', '2018-10-14', '2018-11-09', '2018-11-09', 0, ' Standard ');
 
 -- --------------------------------------------------------
 
@@ -455,6 +496,24 @@ INSERT INTO `roominformation` (`id`, `RoomID`, `RoomNo`, `RoomName`, `RoomType`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tc`
+--
+
+CREATE TABLE `tc` (
+  `id` int(11) NOT NULL,
+  `tc` varchar(10000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tc`
+--
+
+INSERT INTO `tc` (`id`, `tc`) VALUES
+(1, 'Online reservations\r\n A reservation is only valid when a reservation number has been issued.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -481,6 +540,18 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `userid`, `name`, `username`, `password`, `email`, `address`, `birthday`, `gender`, `deptid`, `positionid`, `image`, `dateadded`) VALUES
 (1, '1', 'Joean Diomano', 'Joean', 'aOXFEFrblQEyXFRqqIIeIw==', 'jo@email.com', 'asdasdasd', '0000-00-00', '', '', '', '', '0000-00-00'),
 (2, '2', 'gimson', 'admin', 'tvEXrJBUo5CeG6VYXQ0V/A==', 'admin@gmail.com', 'imus cavite', '0000-00-00', 'male', '', '', '', '2018-05-04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `webtitle`
+--
+
+CREATE TABLE `webtitle` (
+  `id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `Title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -520,6 +591,12 @@ ALTER TABLE `carousel`
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `deposit`
+--
+ALTER TABLE `deposit`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -577,9 +654,21 @@ ALTER TABLE `roominformation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tc`
+--
+ALTER TABLE `tc`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `webtitle`
+--
+ALTER TABLE `webtitle`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -602,7 +691,7 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `bankinfo`
@@ -621,6 +710,12 @@ ALTER TABLE `carousel`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `deposit`
+--
+ALTER TABLE `deposit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `floors`
@@ -650,19 +745,19 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `reservedate`
 --
 ALTER TABLE `reservedate`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `roomimage`
@@ -677,10 +772,22 @@ ALTER TABLE `roominformation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `tc`
+--
+ALTER TABLE `tc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `webtitle`
+--
+ALTER TABLE `webtitle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

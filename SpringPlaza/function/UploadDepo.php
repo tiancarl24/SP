@@ -2,6 +2,8 @@
 include "../utils.php";
 include '../incSecure.php';
 
+$ResID = $_POST["viewresid"];
+
 $filename = $_FILES["image"]["name"];
 $filetype = $_FILES["image"]["type"];
 $filetmp = $_FILES["image"]["tmp_name"];
@@ -13,7 +15,7 @@ move_uploaded_file($filetmp, $target_file);
 
 	DBOpen();
 
-	$imgupload = DBExecute(" INSERT INTO deposit (filename)VALUES('$filename')");
+	$imgupload = DBExecute(" INSERT INTO deposit (filename, ResID)VALUES('$filename','$ResID')");
 
 	DBClose();
 

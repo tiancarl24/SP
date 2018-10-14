@@ -13,6 +13,9 @@ include "utils.php";
 	.screen {
 		display: none;
 	}
+	.show2{
+		border: none;
+	}
 	.print {
 		display: inline-block;
 	}
@@ -33,64 +36,91 @@ include "utils.php";
 		<div class="panel">
 			<div class="panel-heading">
 				<br>
-				<label class="screen">FROM:</label><input type="date" id="dtFrom" name="dtFrom" class="screen">
-				<label class="screen">TO:</label><input type="date" id="dtTo" name="dtTo" class="screen">
-
-				<label class="screen">STATUS:</label>
-				<select id="cboStatus" name="cboStatus" class="screen">
-					<option></option>
-					<option>Approved</option>
-					<option>Disapproved</option>
-					<option>Pending</option>
-				</select>
-				<label class="screen">FILTER:</label>
-				<select id="cboFilter" name="cboFilter" class="screen">
-					<option></option>
-					<option>Daily</option>
-					<option>Monthly</option>
-					<option>Quarterly</option>
-					<option>Yearly</option>
-				</select>
-				<label class="screen">Room Type:</label>
-				<select id="cboRoomType" name="cboRoomType" class="screen">
-					<option></option>
-					<option value="All">All</option>
-					<?php
-					DBOpen();
-					$RT = DBGetData("SELECT DISTINCT RoomType FROM roominformation");
-					foreach($RT as $RT)
-					{
-						wr("<option value='$RT[0]'>$RT[0]</option>");
-					}
-					DBClose();
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<label class="screen">FILTER:</label>
+						<select id="cboFilter" name="cboFilter" class="show2 form-control">
+							<option></option>
+							<option>Daily</option>
+							<option>Monthly</option>
+							<option>Quarterly</option>
+							<option>Yearly</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label class="screen">Room Type:</label>
+						<select id="cboRoomType" name="cboRoomType" class="screen form-control">
+							<option></option>
+							<option value="All">All</option>
+							<?php
+							DBOpen();
+							$RT = DBGetData("SELECT DISTINCT RoomType FROM roominformation");
+							foreach($RT as $RT)
+							{
+								wr("<option value='$RT[0]'>$RT[0]</option>");
+							}
+							DBClose();
+							?>
+						</select>
+					</div>
+					<br>
+					<div class="col-md-3 col-sm-6">
+						<label class="screen" style="display: none;">Quarter:</label>
+						<select id="cboQuarter" name="cboQuarter" style="display: none;" class="screen form-control show2">
+							<option></option>
+							<option value="First">First Quarter</option>
+							<option value="Second">Second Quarter</option>
+							<option value="Third">Third Quarter</option>
+							<option value="Fourth">Fourth Quarter</option>
+						</select>
+						<select id="cboMonth" name="cboMonth" style="display: none;" class="screen form-control show2">
+							<option></option>
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-3">
+						<label class="screen">FROM:</label>
+						<input type="date" id="dtFrom" name="dtFrom" class="screen form-control">
+					</div>
+					<div class="col-md-3">
+						<label class="screen">TO:</label>
+						<input type="date" id="dtTo" name="dtTo" class="screen form-control">
+					</div>
+					<div class="col-md-3">
+						<label class="screen">STATUS:</label>
+						<select id="cboStatus" name="cboStatus" class="screen form-control">
+							<option></option>
+							<option>Approved</option>
+							<option>Disapproved</option>
+							<option>Pending</option>
+						</select>
+					</div>
+					<br>
+					<?php 
+					wrBtn("button","btnFilter","Filter","col-sm-2 Right MR screen","orange"); 
 					?>
-				</select>
-				<select id="cboQuarter" name="cboQuarter" style="display: none;" class="screen">
-					<option></option>
-					<option value="First">First Quarter</option>
-					<option value="Second">Second Quarter</option>
-					<option value="Third">Third Quarter</option>
-					<option value="Fourth">Fourth Quarter</option>
-				</select>
-				<select id="cboMonth" name="cboMonth" style="display: none;" class="screen">
-					<option></option>
-					<option value="01">January</option>
-					<option value="02">February</option>
-					<option value="03">March</option>
-					<option value="04">April</option>
-					<option value="05">May</option>
-					<option value="06">June</option>
-					<option value="07">July</option>
-					<option value="08">August</option>
-					<option value="09">September</option>
-					<option value="10">October</option>
-					<option value="11">November</option>
-					<option value="12">December</option>
-				</select>
-				<?php 
-				wrBtn("button","btnFilter","Filter","col-sm-2 Right MR screen","orange"); 
-				?>
+				</div>
+				
 			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<div class="panel-body">
 				<?php
 				
@@ -109,7 +139,7 @@ include "utils.php";
 				wr(" <tbody> ");
 				wr(" </tbody> ");
 				wr(" </table> ");
-				?>
+				?> 
 				<div class="row">
 					<a href="PrintSales.php" class="screen"><button class="col-sm-2 Right btn btn-warning screen" onclick="window.print()">Print</button></a>
 				</div>

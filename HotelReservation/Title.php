@@ -12,7 +12,7 @@ include "utils.php";
 
 		<!--Page Title-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">Deposit Slip</h1>
+			<h1 class="page-header text-overflow">Website Title</h1>
 		</div>
 		<div class="modal fade" id="ViewMemberModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
@@ -37,6 +37,7 @@ include "utils.php";
 			<div class="panel-heading">
 				<br>
 				<span class="panel-title">
+					<span>Image list</span>
 				</span>
 			</div>
 			<div class="panel-body">
@@ -44,16 +45,15 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from deposit");
-				// dump($rs[0][1]);
+				$rs = DBGetData("SELECT * from WebTitle ");
 				if(empty($rs))
 				{
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 					wr(" <thead> ");
-					wr("  <tr> ");
+					wr(" <tr> ");
 					wr(" <th><center>ID</center></th> ");
-					wr(" <th><center>ReservationID</center></th> ");
-					wr(" <th><center>Deposit</center></th> ");
+					wr(" <th><center>Website Title</center></th> ");
+					wr(" <th><center>Website Logo</center></th> ");
 					wr(" </tr> ");
 					wr(" </thead> ");
 					wr(" <tbody> ");
@@ -73,8 +73,8 @@ include "utils.php";
 					wr(" <thead> ");
 					wr(" <tr> ");
 					wr(" <th><center>ID</center></th> ");
-					wr(" <th><center>ReservationID</center></th> ");
-					wr(" <th><center>Deposit</center></th> ");
+					wr(" <th><center>Website Title</center></th> ");
+					wr(" <th><center>Website Logo</center></th> ");
 					wr(" </tr> ");
 					wr(" </thead> ");
 					wr(" <tbody> ");
@@ -82,41 +82,39 @@ include "utils.php";
 					{
 						wr(" <tr> ");
 						wr(" <td style='text-align: center';>$rs[0]</td> ");
+						wr(" <td style='text-align: center';>$rs[1]</td> ");
 						wr(" <td style='text-align: center';>$rs[2]</td> ");
-						wr(" <td><img src='../SpringPlaza/function/Image/$rs[1]' style='width:100%;'></td> ");
+							// wr(" <td>$rs[4]</td> ");
 						wr(" </tr> ");
 					}
 					wr(" </tbody> ");
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnUpdateImage","View Image","col-sm-2 Right","blue");
+				wrBtn("button","btnNewRoom","Add New Image","col-sm-2 Right","bluegreen");
+				wrBtn("button","btnDeleteRoom","Discard Image","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
 	</div>
 </div>
-<!--Update Item Modal-->
-<form method="POST" action="Function/Function-UpdateAbout.php" enctype="multipart/form-data">
-	<div class="modal fade" id="UpdateAccountModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+</div>
+<!--Add new Item Modal-->
+<form method="POST" action="Function/Function-AddImageCarousel.php" enctype="multipart/form-data">
+	<div class="modal fade" id="NewRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update About</h4>
+					<h4 class="modal-title">Insert New Item</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
 					<div class="row">
 						<?php
-						wrInput('text','updatetxtRowID','','col-lg-6');
-						?>
-					</div>
-					<br>
-					<div class="row">
-						<?php
-						wrInput('text','txtUpdateAboutDescription','DESCRIPTION','col-lg-12');
+						wrInput('text','txtImageName','Image Name','col-lg-4');
+						wrInput('file','image','Upload image','col-lg-4 Righttxt');
 						?>
 					</div>
 				</div>
@@ -125,32 +123,29 @@ include "utils.php";
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<input type="submit" id="btnYes" name="btnYes" class="btn btn-primary" value="Yes">
+					<button class="btn btn-primary">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-<form method="POST" action="Function/Function-UpdateAboutImage.php" enctype="multipart/form-data" >
-	<div class="modal fade" id="UpdateImageModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<!-- Update Room MODAL -->
+<form method="POST" action="Function/Function-DeleteImage.php">
+	<div class="modal fade" id="DeleteRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
+
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update About</h4>
+					<h4 class="modal-title">Delete Room</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
+					<center><h1>Are you sure you want to delete </h1></center>
 					<div class="row">
 						<?php
-						wrInput('text','txtRowID','','col-lg-6');
-						?>
-					</div>
-					<br>
-					<div class="row">
-						<?php
-						wrInput('file','txtImageFile','Upload New Image','col-lg-12');
+						wrInput('hidden','GetImageID','','col-lg-4');
 						?>
 					</div>
 				</div>
@@ -159,12 +154,13 @@ include "utils.php";
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<input type="submit" id="btnYes" name="btnYes" class="btn btn-primary" value="Yes">
+					<button class="btn btn-primary">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
+<!-- ------------ -->
 <script type="text/javascript">
 	var ctr;
 	var ctr_ID;
@@ -210,76 +206,46 @@ include "utils.php";
 		});
 	}
 </script>
-<!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
 <script type="text/javascript">
-	var btnUpdateAmenities = document.getElementById('btnUpdateAmenities');
-	btnUpdateAmenities.onclick = function()
+	var btnNewRoom = document.getElementById('btnNewRoom');
+	btnNewRoom.onclick = function()
 	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Select Amenities you want to update!',
-				container: 'floating',
-				timer: 3000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetUpdateAbout.php",
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-				success: function(response)
-				{
-					var res = JSON.parse(response);
-					$('#UpdateAccountModal').modal('show');
-					document.getElementById("updatetxtRowID").value = res[0][0];
-					document.getElementById('txtUpdateAboutDescription').value = res[0][2];
-				}
-			});
-		}
+		$('#NewRoomModal').modal('show');
 	}
 </script>
-<!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
 <script type="text/javascript">
-	var btnUpdateImage = document.getElementById('btnUpdateImage');
-	btnUpdateImage.onclick = function()
+	var btnDeleteRoom = document.getElementById('btnDeleteRoom');
+	btnDeleteRoom.onclick = function()
 	{
-		if(ctr_ID == null)
+		if (ctr_ID == null) 
 		{
 			$.niftyNoty
 			({
 				type: 'danger',
 				title: 'Invalid Action',
-				message: 'Select Amenities you want to update!',
+				message: 'Please select room to edit!',
 				container: 'floating',
-				timer: 3000,
+				timer: 1000,
 			});
 		}
 		else
 		{
+			
 			$.ajax(
 			{
 				type: "POST",
-				url: "Function/GetUpdateAbout.php",
+				url: "Function/GetIDImageDelete.php",
+				cache: false,
 				data:
 				{
 					ctr_ID: ctr_ID
 				},
 				success: function(response)
 				{
-					var res = JSON.parse(response);
-					$('#UpdateImageModal').modal('show');
-					document.getElementById("txtRowID").value = res[0][0];
-					document.getElementById('txtUpdateAboutDescription').value = res[0][1];
-				}
+					var result = JSON .parse(response);
+					$('#DeleteRoomModal').modal('show');
+					document.getElementById('GetImageID').value = result[0][0];
+				},
 			});
 		}
 	}

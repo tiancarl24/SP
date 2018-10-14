@@ -229,6 +229,13 @@ if($ADDONS == 1)
 							<div class="col-md-6">
 								<label>TOTAL FEES :</label><input type="text" class="LabelInput" id="totalprice" name="totalprice" value="₱ <?php echo $TOTAL ?>"  readonly>
 							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<input type="checkbox" class="LabelInput" id="aa" name="aa" required="">
+								<label id="TC" style="cursor: pointer; ">I AGREE ON THE TERMS AND CONDITIONS</label>
+							</div>
 						</div>	
 					</div>
 					<br>
@@ -252,7 +259,54 @@ if($ADDONS == 1)
 		</div>
 	</div>
 </div>
+<form method="GET" action="ViewReservation.php">
+	<div class="modal fade" id="TCModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!--Modal header-->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<!--Modal body-->
+				<div class="modal-body">
+					<p>Terms and condition:</p>
 
+					<p>The following Terms and Conditions apply to all bookings made on this website. </p>
+					<p>The hotel reserves a right to apply special terms and conditions</p>
+					<p>We kindly ask that you take a moment to read them prior to making a online reservation.</p>
+
+					<p>RESERVATIONS PROCEDURE AND POLICIES:</p>
+					<?php
+					DBOpen();
+					$tc = DBGetData("SELECT * FROM tc");
+					foreach($tc as $tc)
+					{
+						wr("<p><b>$tc[1]</b></p>");
+					}
+
+					DBClose();
+					?>
+					<p>RESERVATION PRIVACY POLICY:</p>
+
+					<p>To complete your reservation and arrange its fulfilment SPH needs to collect the following personal data as part of the reservation process:</p>
+
+					<p>your first and last name;</p>
+					<p>your email address;</p>
+
+
+					<b>*The Reservation Data will be destroyed, anonymised and/or deleted once your reservation has been fulfilled and all payment
+					and administrative matters have been completed.</b>
+				</div>
+				<!--Modal footer-->
+				<div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+					<button id="btnproceed" name="btnproceed" class="btn btn-primary">Proceed</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 <form class="paypal" action="function/payments.php" method="post" id="paypal_form">
 	<div id="PaymentModal" class="modal fade" role="dialog" data-backdrop="dynamic">
 		<div class="modal-dialog" style="width: 25%">
@@ -357,6 +411,15 @@ if($ADDONS == 1)
 			$("#btnFull").click(function()
 			{
 				$(".OPT").val("Full");
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$("#TC").click(function()
+			{
+				$("#TCModal").modal('show');
 			});
 		});
 	</script>

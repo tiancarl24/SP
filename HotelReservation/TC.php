@@ -12,7 +12,7 @@ include "utils.php";
 
 		<!--Page Title-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">Deposit Slip</h1>
+			<h1 class="page-header text-overflow">Terms and Conditions</h1>
 		</div>
 		<div class="modal fade" id="ViewMemberModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
@@ -37,6 +37,7 @@ include "utils.php";
 			<div class="panel-heading">
 				<br>
 				<span class="panel-title">
+					<span>LIST</span>
 				</span>
 			</div>
 			<div class="panel-body">
@@ -44,22 +45,19 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from deposit");
-				// dump($rs[0][1]);
+				$rs = DBGetData("SELECT * from tc");
 				if(empty($rs))
 				{
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
 					wr(" <thead> ");
 					wr("  <tr> ");
 					wr(" <th><center>ID</center></th> ");
-					wr(" <th><center>ReservationID</center></th> ");
-					wr(" <th><center>Deposit</center></th> ");
+					wr(" <th><center>TERMS AND CONDITIONS</center></th> ");
 					wr(" </tr> ");
 					wr(" </thead> ");
 					wr(" <tbody> ");
 					wr(" <tr> ");
 					wr(" <td style='color: red;'>No data available in table</td>");
-					wr(" <td></td>");
 					wr(" <td></td>");
 					wr(" </tr> ");
 					wr(" </tbody> ");
@@ -73,8 +71,7 @@ include "utils.php";
 					wr(" <thead> ");
 					wr(" <tr> ");
 					wr(" <th><center>ID</center></th> ");
-					wr(" <th><center>ReservationID</center></th> ");
-					wr(" <th><center>Deposit</center></th> ");
+					wr(" <th><center>TERMS AND CONDITIONS</center></th> ");
 					wr(" </tr> ");
 					wr(" </thead> ");
 					wr(" <tbody> ");
@@ -82,41 +79,37 @@ include "utils.php";
 					{
 						wr(" <tr> ");
 						wr(" <td style='text-align: center';>$rs[0]</td> ");
-						wr(" <td style='text-align: center';>$rs[2]</td> ");
-						wr(" <td><img src='../SpringPlaza/function/Image/$rs[1]' style='width:100%;'></td> ");
+						wr(" <td style='text-align: center';>$rs[1]</td> ");
+							// wr(" <td>$rs[4]</td> ");
 						wr(" </tr> ");
 					}
 					wr(" </tbody> ");
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnUpdateImage","View Image","col-sm-2 Right","blue");
+				wrBtn("button","btnNewItem","Add Terms and Conditions","col-sm-2 Right","bluegreen");
+				wrBtn("button","btnDeleteItem","Delete Terms and Conditions","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
 	</div>
 </div>
-<!--Update Item Modal-->
-<form method="POST" action="Function/Function-UpdateAbout.php" enctype="multipart/form-data">
-	<div class="modal fade" id="UpdateAccountModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+</div>
+<!--Add new Item Modal-->
+<form method="POST" action="Function/Function-Addtc.php" enctype="multipart/form-data">
+	<div class="modal fade" id="InsertItemModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update About</h4>
+					<h4 class="modal-title">Insert Terms and Conditions</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
 					<div class="row">
 						<?php
-						wrInput('text','updatetxtRowID','','col-lg-6');
-						?>
-					</div>
-					<br>
-					<div class="row">
-						<?php
-						wrInput('text','txtUpdateAboutDescription','DESCRIPTION','col-lg-12');
+						wrTextArea('txttc', 'Terms and Conditions', 'col-lg-12')
 						?>
 					</div>
 				</div>
@@ -125,46 +118,40 @@ include "utils.php";
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<input type="submit" id="btnYes" name="btnYes" class="btn btn-primary" value="Yes">
+					<button class="btn btn-primary">Yes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-<form method="POST" action="Function/Function-UpdateAboutImage.php" enctype="multipart/form-data" >
-	<div class="modal fade" id="UpdateImageModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<!-- Discard MODAL -->
+<form method="POST" action="Function/DeleteTC.php">
+	<div class="modal fade" id="DiscardItemModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Update About</h4>
+					<h4 class="modal-title">DELETE TERMS AND CONDITION</h4>
 				</div>
+
 				<!--Modal body-->
 				<div class="modal-body">
-					<div class="row">
-						<?php
-						wrInput('text','txtRowID','','col-lg-6');
-						?>
-					</div>
-					<br>
-					<div class="row">
-						<?php
-						wrInput('file','txtImageFile','Upload New Image','col-lg-12');
-						?>
-					</div>
+					<center><h3 class="text-semibold text-main">Are you sure you want to DISCARD this User?</h3></center>
+					<?php wrInput("text","lblDeleteRowID","","col-lg-4"); ?>
 				</div>
 				<br>
 				<br>
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<input type="submit" id="btnYes" name="btnYes" class="btn btn-primary" value="Yes">
+					<input type="submit" id="btnYes" name="btnYes" class="btn btn-danger" value="Yes">
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
+<!-- ------------ -->
 <script type="text/javascript">
 	var ctr;
 	var ctr_ID;
@@ -197,6 +184,12 @@ include "utils.php";
     });
 </script>
 <script type="text/javascript">
+	document.getElementById('btnNewItem').onclick = function()
+	{
+		$('#InsertItemModal').modal('show');
+	}
+</script>
+<script type="text/javascript">
 	var SuccessReturn = '<?php echo $_POST['msg'] ?>';
 	if(SuccessReturn)
 	{
@@ -210,10 +203,10 @@ include "utils.php";
 		});
 	}
 </script>
-<!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
+
 <script type="text/javascript">
-	var btnUpdateAmenities = document.getElementById('btnUpdateAmenities');
-	btnUpdateAmenities.onclick = function()
+	var btnDeleteItem = document.getElementById('btnDeleteItem');
+	btnDeleteItem.onclick = function()
 	{
 		if(ctr_ID == null)
 		{
@@ -221,7 +214,7 @@ include "utils.php";
 			({
 				type: 'danger',
 				title: 'Invalid Action',
-				message: 'Select Amenities you want to update!',
+				message: 'Select Floor!',
 				container: 'floating',
 				timer: 3000,
 			});
@@ -231,7 +224,7 @@ include "utils.php";
 			$.ajax(
 			{
 				type: "POST",
-				url: "Function/GetUpdateAbout.php",
+				url: "Function/GetDeleteTC.php",
 				data:
 				{
 					ctr_ID: ctr_ID
@@ -239,49 +232,12 @@ include "utils.php";
 				success: function(response)
 				{
 					var res = JSON.parse(response);
-					$('#UpdateAccountModal').modal('show');
-					document.getElementById("updatetxtRowID").value = res[0][0];
-					document.getElementById('txtUpdateAboutDescription').value = res[0][2];
+					$('#DiscardItemModal').modal('show');
+					document.getElementById('lblDeleteRowID').value = res[0][0];
 				}
 			});
 		}
 	}
 </script>
-<!-- ------------UPDATE ITEM MODAL SCRIPT---------------------- -->
-<script type="text/javascript">
-	var btnUpdateImage = document.getElementById('btnUpdateImage');
-	btnUpdateImage.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Select Amenities you want to update!',
-				container: 'floating',
-				timer: 3000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetUpdateAbout.php",
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-				success: function(response)
-				{
-					var res = JSON.parse(response);
-					$('#UpdateImageModal').modal('show');
-					document.getElementById("txtRowID").value = res[0][0];
-					document.getElementById('txtUpdateAboutDescription').value = res[0][1];
-				}
-			});
-		}
-	}
-</script>
+
 <?php include "incFoot.php" ?>

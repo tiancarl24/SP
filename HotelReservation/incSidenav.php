@@ -93,6 +93,14 @@
                     </span>
                   </a>
                 </li>
+                <li class="">
+                  <a href="TC.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Terms and Conditions</strong>
+                    </span>
+                  </a>
+                </li>
               </ul>
             </li>  
 

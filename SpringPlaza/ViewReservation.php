@@ -245,6 +245,7 @@ include 'utils.php';
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
+					<input type="text" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>">
 					<h2>Upload Deposit Slip</h2>
 					<br>
 					<br>
