@@ -87,7 +87,8 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnNewItem","Update Terms and Conditions","col-sm-2 Right","bluegreen");
+				wrBtn("button","btnNewItem2","Add Terms and Conditions","col-sm-2 Right","greensuccess");
+				wrBtn("button","btnNewItem","Update Terms and Conditions","col-sm-2 Right MR","bluegreen");
 				wrBtn("button","btnDeleteItem","Delete Terms and Conditions","col-sm-2 Right MR","red");
 				?>
 			</div>
@@ -108,6 +109,35 @@ include "utils.php";
 				<!--Modal body-->
 				<div class="modal-body">
 					<input type="hidden" id="lblupdate" name="lblupdate">
+					<div class="row">
+						<?php
+						wrTextArea('txttc', 'Terms and Conditions', 'col-lg-12')
+						?>
+					</div>
+				</div>
+				<br>
+				<br>
+				<!--Modal footer-->
+				<div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+					<button class="btn btn-primary">Yes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<!--Add new Item Modal-->
+<form method="POST" action="Function/Function-Addtc2.php" enctype="multipart/form-data">
+	<div class="modal fade" id="InsertItemModal2" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!--Modal header-->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+					<h4 class="modal-title">Insert Terms and Conditions</h4>
+				</div>
+				<!--Modal body-->
+				<div class="modal-body">
 					<div class="row">
 						<?php
 						wrTextArea('txttc', 'Terms and Conditions', 'col-lg-12')
@@ -183,6 +213,12 @@ include "utils.php";
     		ctr_ID = ctr[0];
     	}
     });
+</script>
+<script type="text/javascript">
+	document.getElementById('btnNewItem2').onclick = function()
+	{
+		$('#InsertItemModal2').modal('show');
+	}
 </script>
 <script type="text/javascript">
 	document.getElementById('btnNewItem').onclick = function()
