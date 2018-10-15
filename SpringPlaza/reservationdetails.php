@@ -144,6 +144,7 @@ if($ADDONS == 1)
 						<br>
 						<div class="row">
 							<div class="col-md-6">
+								<input type="hidden" id="lbladdons" name="lbladdons" value="<?php echo $ADDONS ?>">
 								<label>NAME :</label><input type="text" id="xname" name="xname" class="LabelInput" value="<?php echo $FNAME ?> <?php echo $LNAME ?>" required="" readonly>
 							</div>
 							<div class="col-md-6">
@@ -301,7 +302,7 @@ if($ADDONS == 1)
 				<!--Modal footer-->
 				<div class="modal-footer">
 					<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-					<button id="btnproceed" name="btnproceed" class="btn btn-primary">Proceed</button>
+					<button data-dismiss="modal" id="btnproceed" name="btnproceed" class="btn btn-primary">Proceed</button>
 				</div>
 			</div>
 		</div>
@@ -316,6 +317,7 @@ if($ADDONS == 1)
 					<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
 				</div>
 				<div class="modal-body form-contol">
+					<input type="hidden" id="ddonsmodal" name="addonsmodal" value="<?php echo $ADDONS ?>">
 					<label>NAME:</label><input type="text" class="LabelInput" id="lblname" name="lblname" value=""  readonly>
 					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
 					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $CIN ?>"  readonly>

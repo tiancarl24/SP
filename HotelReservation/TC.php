@@ -87,7 +87,7 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnNewItem","Add Terms and Conditions","col-sm-2 Right","bluegreen");
+				wrBtn("button","btnNewItem","Update Terms and Conditions","col-sm-2 Right","bluegreen");
 				wrBtn("button","btnDeleteItem","Delete Terms and Conditions","col-sm-2 Right MR","red");
 				?>
 			</div>
@@ -107,6 +107,7 @@ include "utils.php";
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
+					<input type="hidden" id="lblupdate" name="lblupdate">
 					<div class="row">
 						<?php
 						wrTextArea('txttc', 'Terms and Conditions', 'col-lg-12')
@@ -186,7 +187,29 @@ include "utils.php";
 <script type="text/javascript">
 	document.getElementById('btnNewItem').onclick = function()
 	{
-		$('#InsertItemModal').modal('show');
+		if(ctr_ID == null)
+		{
+
+		}
+		else
+		{
+			$.ajax(
+			{
+				type: "POST",
+				url: "Function/GetTC.php",
+				data:
+				{
+					ctr_ID: ctr_ID
+				},
+				success: function(response)
+				{
+					var rs = JSON.parse(response);
+					$('#InsertItemModal').modal('show');
+					document.getElementById('lblupdate').value = rs[0][0];
+					document.getElementById('txttc').value = rs[0][1];
+				}
+			});
+		}
 	}
 </script>
 <script type="text/javascript">

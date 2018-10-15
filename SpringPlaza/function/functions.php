@@ -4,44 +4,44 @@ include '../utils.php';
 
 if($option == "Half")
 {
-     DBOpen();
+   DBOpen();
 
-    $timestampIN = strtotime($CIN);
-    $NEWCIN = date('Y-m-d', $timestampIN);
+   $timestampIN = strtotime($CIN);
+   $NEWCIN = date('Y-m-d', $timestampIN);
 
-    $timestampOUT = strtotime($COUT);
-    $NEWCOUT = date('Y-m-d', $timestampOUT);
-    //dump($DATA['lblname']);
+   $timestampOUT = strtotime($COUT);
+   $NEWCOUT = date('Y-m-d', $timestampOUT);
 
-    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['lblname']."',
-        lastname = '".$DATA['lname']."',
-        contactno = '".$DATA['phone']."',
-        address = '".$DATA['address']."',
-        adult = '".$DATA['adult']."',
-        child = '".$DATA['children']."',
-        days = '".$DATA['days']."',
-        reservationdate = '".$maniladate."',
-        checkindate = '".$NEWCIN."',
-        checkoutdate = '".$NEWCOUT."',
-        checkintime = '14:00:00',
-        checkouttime = '12:00:00',
-        roomtype = '".$DATA['roomtype']."',
-        roomno = '".$DATA['roomno']."',
-        modeofpayment = 'Paypal',
-        downpayment = '".$itemAmount."',
-        totalamount = '".$DATA['totalprice']."',
-        balance = '".$itemAmount."',
-        Status = 'Approved',
-        Email = '".$DATA['email']."',
-        TotalPaid = '".$itemAmount."',
-        ReservationID = '".$ResID."' ");
 
-    DBClose();
+   $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['lblname']."',
+    lastname = '".$DATA['lname']."',
+    contactno = '".$DATA['phone']."',
+    address = '".$DATA['address']."',
+    adult = '".$DATA['adult']."',
+    child = '".$DATA['children']."',
+    days = '".$DATA['days']."',
+    reservationdate = '".$maniladate."',
+    checkindate = '".$NEWCIN."',
+    checkoutdate = '".$NEWCOUT."',
+    checkintime = '14:00:00',
+    checkouttime = '12:00:00',
+    roomtype = '".$DATA['roomtype']."',
+    roomno = '".$DATA['roomno']."',
+    modeofpayment = 'Paypal',
+    downpayment = '".$itemAmount."',
+    totalamount = '".$DATA['totalprice']."',
+    balance = '".$itemAmount."',
+    Status = 'Approved',
+    Email = '".$DATA['email']."',
+    TotalPaid = '".$itemAmount."',
+    ReservationID = '".$ResID."',
+    addons = '.".$ADDONS.".' ");
+
+   DBClose();
 }
 else
 {
     DBOpen();
-
     $timestampIN = strtotime($CIN);
     $NEWCIN = date('Y-m-d', $timestampIN);
 
@@ -69,7 +69,8 @@ else
         Status = 'Approved',
         Email = '".$DATA['email']."',
         TotalPaid = '".$itemAmount."',
-        ReservationID = '".$ResID."' ");
+        ReservationID = '".$ResID."',
+        addons = '".$ADDONS."' ");
 
     DBClose();
 }

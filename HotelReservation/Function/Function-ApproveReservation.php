@@ -57,7 +57,8 @@ $html =
 '<p>Room Type:'.$data[0][13].'</p>'.
 '<p>Adult/s:'.$data[0][5].'</p>'.
 '<p>Child/s:'.$data[0][6].'</p>'.
-'<p>Day/s:'.$data[0][7].'</p>'.
+'<p>Night/s:'.$data[0][7].'</p>'.
+'<p>EXTRA BED: '.$data[0][24].'</p>'.
 '<p>Paid:'.number_format($data[0][16]).'</p>'.
 '<p>Balance:'.number_format($data[0][18]).'</p>'.
 '<p>Total Fee:'.number_format($data[0][17]).'</p>'.

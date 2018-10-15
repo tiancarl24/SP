@@ -157,9 +157,9 @@ include "utils.php";
 								wr("<h3 class='hometext'>Select Available Room</h3>");
 								wr("<label style='font-size: 20px; color: orange;'>".$count[0][0]." Available Room(s)</label>");
 								DBOpen();
-								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservedate where checkin between '$NEWCIN' AND '$NEWCOUT' or Checkout between '$NEWCIN' AND '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
+								$rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservedate where checkin > '$NEWCIN' or Checkout > '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
 
-								//ORIGINAL.. $rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservations where checkindate between '$NEWCIN' AND '$NEWCOUT' or CheckoutDate between '$NEWCIN' AND '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
+						//URIGINAL VALIDATION $rs = DBGetData(" SELECT a.filename, b.roomdescription, b.roomtype, b.roomprice, b.roomavailability, b.roomid, b.id, b.roomno from roomimage as a join roominformation as b on a.roomid = b.roomid where b.roomno NOT IN (SELECT roomno from reservedate where checkin between '$NEWCIN' AND '$NEWCOUT' or Checkout between '$NEWCIN' AND '$NEWCOUT') AND b.roomtype LIKE '%$RTYPE%' and b.roomavailability = 'Available' group by b.roomtype ");
 
 
 								if(empty($rs))

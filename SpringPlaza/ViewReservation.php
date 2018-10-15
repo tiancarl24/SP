@@ -113,7 +113,7 @@ include 'utils.php';
 					DBOpen();
 					$rs = DBGetData(" SELECT * FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
 					$count = DBGetData(" SELECT COUNT(*) FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
-
+					$paypal = DBGetData(" SELECT ModeOfPayment FROM reservations WHERE reservationid = " .SQLs($RESID));
 					$today = $maniladate;
 					$checkin = $rs[0][9];
 
@@ -128,6 +128,7 @@ include 'utils.php';
 					<div id="divres" style="text-align: center; font-size: 30px; display: none">No Reservation Found.</div>
 					<input type="hidden" id="txtcount" name="txtcount" value="<?php echo $count[0][0] ?>">
 					<input type="hidden" id="txtdays" name="txtdays" value=" <?php echo $DAYS ?> ">
+					<input type="hidden" id="txtMOP" name="txtMOP" value=" <?php echo $paypal[0][0] ?> ">
 					<div class="row">
 						<div class="col-md-6">
 							<label>RESERVATION ID : </label><input type="text" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>" style="border: none" readonly>
@@ -195,7 +196,7 @@ include 'utils.php';
 				<div style="margin-right: auto; margin-left: auto; display: block;">
 					<div class="row">
 						<div class="col-lg-2 col-md-2"></div>
-						<div class="col-md-4">
+						<div class="col-md-4" id="divdepo">
 							<input type="submit" id="UploadDepoSlip" class="btn btn-inquiry-submit col-md-12" style="background-color: orange; color: white;" name="UploadDepoSlip" value="Upload Deposit Slip">
 						</div>
 						<div class="col-md-4">
@@ -245,7 +246,7 @@ include 'utils.php';
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
-					<input type="text" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>">
+					<input type="hidden" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>">
 					<h2>Upload Deposit Slip</h2>
 					<br>
 					<br>
@@ -370,7 +371,6 @@ include 'utils.php';
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
 	if(txtcount.value == "0")
 	{
 		document.getElementById('divres').style.display = "block";
@@ -379,6 +379,11 @@ include 'utils.php';
 	{
 		document.getElementById('divres').style.display = "none";
 	}
+	
+</script>
+
+<script type="text/javascript">
+	
 </script>
 
 </body>

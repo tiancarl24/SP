@@ -62,7 +62,8 @@ $SaveData = DBExecute(" INSERT INTO reservations SET firstname = '".$TempData[0]
 	Status = '".$TempData[0][19]."',
 	Email = '".$TempData[0][20]."',
 	TotalPaid = '".$TempData[0][21]."',
-	ReservationID = '".$TempData[0][22]."' ");
+	ReservationID = '".$TempData[0][22]."',
+	addons = '".$TempData[0][23]."' ");
 
 $user = $_SESSION['HotelReservation.name'];
 $audit = DBExecute(" INSERT INTO audit SET user = '$user', action = 'Add Reservation: ".$TempData[0][22]."', auditdate = '$maniladate', audittime = '$manilatime' ");
@@ -88,7 +89,7 @@ $html =
 '<br>'.
 '<br>'.
 '<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Hi Mr/Ms. '.$TempData[0][2].' ,</p>'.
+'<p>Hi Mr/Ms: '.$TempData[0][2].' ,</p>'.
 '<br>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
@@ -98,7 +99,8 @@ $html =
 '<p>Room Type:'.$TempData[0][13].'</p>'.
 '<p>Adult/s:'.$TempData[0][5].'</p>'.
 '<p>Child/s:'.$TempData[0][6].'</p>'.
-'<p>Day/s:'.$TempData[0][7].'</p>'.
+'<p>Night/s:'.$TempData[0][7].'</p>'.
+'<p>EXTRA BED: '.$TempData[0][23].'</p>'.
 '<p>Paid:'.number_format($TempData[0][16]).'</p>'.
 '<p>Balance:'.number_format($TempData[0][18]).'</p>'.
 '<p>Total Fee:'.number_format($TempData[0][17]).'</p>'.
@@ -151,9 +153,9 @@ $mailer = new Swift_Mailer($transport);
 	// Create a message
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
-->setTo([$TempData => 'A name'])
+->setTo([$TempData[0][20] => 'A name'])
 ->attach(Swift_Attachment::fromPath('../pdf/'.$TempData[0][22].'.pdf'))
-->setBody('Hi '.$TempData[0][1].' '.$TempData[0][2].'!
+->setBody('Hi Mr/Ms '.$TempData[0][2].',' $TempData[0][1]'!
 	<br>
 	<br>
 	<p>Your Reservation is paid via Paypal. Please kindly present the attachment to the front desk of Spring Plaza Hotel for verification</p>

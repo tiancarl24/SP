@@ -24,6 +24,7 @@ $DATES = $_POST['date'];
 $EMAIL = explode(" ",$EMAIL);
 $TOTAL = explode(" ", $TOTAL);
 $TOTAL = $TOTAL[1];
+$ADDONS = $_POST['lbladdons'];
 
 $timestampIN = strtotime($CIN);
 $NEWCIN = date('Y-m-d', $timestampIN);
@@ -88,7 +89,8 @@ $rs = DBExecute(" INSERT INTO reservations SET firstname = '$FNAME',
 	Status = 'Pending', 
 	Email = '$EMAIL[1]',
 	TotalPaid = '0',
-	ReservationID = '$AppID' ");
+	ReservationID = '$AppID',
+	addons = '$ADDONS' ");
 
 
 $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '$FNAME',
@@ -136,7 +138,7 @@ $html =
 '<br>'.
 '<br>'.
 '<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Dear Guest,</p>'.
+'<p>Hi Mr/Mrs: '.$LNAME.', '$FNAME'</p>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
 '<p>Reservation No.:'.$AppID.'</p>'.
@@ -145,7 +147,8 @@ $html =
 '<p>Room Type:'.$RTYPE.'</p>'.
 '<p>Adult/s:'.$ADULT.'</p>'.
 '<p>Child/s:'.$CHILD.'</p>'.
-'<p>Day/s:'.$DAYS.'</p>'.
+'<p>Night/s:'.$DAYS.'</p>'.
+'<p>EXTRA BED: '.$ADDONS.'</p>'.
 '<p>Paid:'.number_format($TempData[0][16]).'</p>'.
 '<p>Balance:'.number_format($TempData[0][18]).'</p>'.
 '<p>Total Fee:'.number_format($TOTAL).'</p>'.
@@ -212,6 +215,8 @@ $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 	Room Type: '.$RTYPE.'
 	<br>
 	Room NO.: '.$ROOMNO.'
+	<br>
+	Extra BED: '.$ADDONS.'
 	<br>
 	TOTAL FEES: '.$TOTAL.'
 	<br>

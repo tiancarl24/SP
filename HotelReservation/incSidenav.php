@@ -162,6 +162,14 @@
                   </a>
                 </li> 
                 <li class="">
+                  <a href="CancelReservation.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Cancelled</strong>
+                    </span>
+                  </a>
+                </li> 
+                <li class="">
                   <a href="CheckinReservation.php">
                     <i class="fa fa-users"></i>
                     <span class="menu-title">

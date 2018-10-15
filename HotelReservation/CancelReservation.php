@@ -12,7 +12,7 @@ include "utils.php";
 
 		<!--Page Title-->
 		<div id="page-title">
-			<h1 class="page-header text-overflow">Pending Reservations</h1>
+			<h1 class="page-header text-overflow">Cancelled Reservations</h1>
 		</div>
 		<div class="modal fade" id="ViewMemberModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
@@ -46,7 +46,7 @@ include "utils.php";
 
 				DBOpen();
 
-				$rs = DBGetData("SELECT * from reservations WHERE Status = 'Pending'");
+				$rs = DBGetData("SELECT * from reservations WHERE Status = 'Cancelled'");
 				if(empty($rs))
 				{
 					wr(" <table id = 'tblMembership' name = 'tblMembership' class = 'table table-bordered table-striped' style = 'font-size: 13px;'> ");
@@ -100,9 +100,6 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnApprove","Approve","col-sm-2 Right MR","greensuccess");
-				wrBtn("button","btnDisapprove","Disapprove","col-sm-2 Right MR","red");
-				wrBtn("button","btnCancelRes","Cancel","col-sm-2 Right MR","orange");
 				wrBtn("button","bntView","View","col-sm-2 Right MR","blue");
 				?>
 			</div>
@@ -234,34 +231,6 @@ include "utils.php";
 		</div>
 	</div>
 </form>
-
-<form method="POST" action="Function/CancelRes.php">
-	<div class="modal fade" id="CancelResModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!--Modal header-->
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Cancel Reservation</h4>
-				</div>
-				<!--Modal body-->
-				<div class="modal-body">
-					<input type="hidden" id="lblcancel" name="lblcancel">
-					<center><h1>Are you sure you want to Cancel this reservation? </h1></center>
-				</div>
-				<br>
-				<br>
-				<!--Modal footer-->
-				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">No</button>
-					<button class="btn btn-primary">Yes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-
 <!-- ------------ -->
 <script type="text/javascript">
 	var ctr;
@@ -429,43 +398,6 @@ include "utils.php";
 					document.getElementById('txtDownpayment').value = res[0][16];
 				}
 			});
-		}
-	}
-</script>
-
-<script type="text/javascript">
-	
-	var btnCancelRes = document.getElementById('btnCancelRes');
-	btnCancelRes.onclick = function()
-	{
-		if(ctr_ID == null)
-		{
-			$.niftyNoty
-			({
-				type: 'danger',
-				title: 'Invalid Action',
-				message: 'Please Select Reservation Details!',
-				container: 'floating',
-				timer: 1000,
-			});
-		}
-		else
-		{
-			$.ajax(
-			{
-				type: "POST",
-				url: "Function/GetCancelRes.php",
-				data:
-				{
-					ctr_ID: ctr_ID
-				},
-				success: function(response)
-				{
-					var rs = JSON.parse(response);
-					$('#CancelResModal').modal('show');
-					document.getElementById('lblcancel').value = rs[0][0];
-				}
-			})
 		}
 	}
 </script>
