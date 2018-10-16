@@ -109,7 +109,6 @@ include 'utils.php';
 					<h2 class="hometext"><center>Reservation Details</center></h2>
 					<?php 
 					$RESID = $_GET['txtResID'];
-
 					DBOpen();
 					$rs = DBGetData(" SELECT * FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
 					$count = DBGetData(" SELECT COUNT(*) FROM reservations WHERE status <> 'Cancelled' AND reservationid = " .SQLs($RESID));
@@ -193,7 +192,7 @@ include 'utils.php';
 					</div>
 				</div>
 				<br>
-				<div style="margin-right: auto; margin-left: auto; display: block;">
+				<div style="margin-right: auto; margin-left: auto;">
 					<div class="row">
 						<div class="col-lg-2 col-md-2"></div>
 						<div class="col-md-4" id="divdepo">
@@ -261,7 +260,19 @@ include 'utils.php';
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+	var txtMOP = document.getElementById('txtMOP');
+	var UploadDepoSlip = document.getElementById('UploadDepoSlip');
+	if(txtMOP.value == 'Paypal') 
+	{
+		document.getElementById('UploadDepoSlip').style.display = "none";
+	}
+	else
+	{
+		document.getElementById('UploadDepoSlip').style.display = "block";
+	}
 
+</script>
 <script type="text/javascript">
 	
 	var btnCancelReservation = document.getElementById('btnCancelReservation');

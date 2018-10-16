@@ -91,30 +91,32 @@ include "utils.php";
 					wr(" </table> ");
 				}
 				DBClose();
-				wrBtn("button","btnNewRoom","Add New Image","col-sm-2 Right","bluegreen");
-				wrBtn("button","btnDeleteRoom","Discard Image","col-sm-2 Right MR","red");
+				wrBtn("button","btnNewRoom","Edit Logo","col-sm-2 Right","bluegreen");
+				wrBtn("button","btnDeleteRoom","Edit Title","col-sm-2 Right MR","red");
 				?>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
-<!--Add new Item Modal-->
-<form method="POST" action="Function/Function-AddImageCarousel.php" enctype="multipart/form-data">
-	<div class="modal fade" id="NewRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<!-- Update Room MODAL -->
+<form method="POST" action="Function/Function-UpdateTitle.php">
+	<div class="modal fade" id="DeleteRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
+
 				<!--Modal header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-					<h4 class="modal-title">Insert New Item</h4>
+					<h4 class="modal-title">Website Title</h4>
 				</div>
 				<!--Modal body-->
 				<div class="modal-body">
+					<center><h1>Update Website Title</h1></center>
 					<div class="row">
 						<?php
-						wrInput('text','txtImageName','Image Name','col-lg-4');
-						wrInput('file','image','Upload image','col-lg-4 Righttxt');
+						wrInput('hide','GetImageID','','col-lg-4');
+						wrInput('text','UpdateTitle','','col-lg-4');
 						?>
 					</div>
 				</div>
@@ -129,9 +131,10 @@ include "utils.php";
 		</div>
 	</div>
 </form>
+
 <!-- Update Room MODAL -->
-<form method="POST" action="Function/Function-DeleteImage.php">
-	<div class="modal fade" id="DeleteRoomModal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+<form method="POST" action="Function/Function-UpdateLogo.php" enctype="multipart/form-data">
+	<div class="modal fade" id="DeleteRoomModal2" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -145,7 +148,8 @@ include "utils.php";
 					<center><h1>Are you sure you want to delete </h1></center>
 					<div class="row">
 						<?php
-						wrInput('hidden','GetImageID','','col-lg-4');
+						wrInput('text','GetLogoID','','col-lg-4');
+						wrInput('file','UpdateLogo','','col-lg-4');
 						?>
 					</div>
 				</div>
@@ -234,7 +238,7 @@ include "utils.php";
 			$.ajax(
 			{
 				type: "POST",
-				url: "Function/GetIDImageDelete.php",
+				url: "Function/GetIDTitle.php",
 				cache: false,
 				data:
 				{
@@ -245,6 +249,47 @@ include "utils.php";
 					var result = JSON .parse(response);
 					$('#DeleteRoomModal').modal('show');
 					document.getElementById('GetImageID').value = result[0][0];
+					document.getElementById('UpdateTitle').value = result[0][2];
+
+				},
+			});
+		}
+	}
+</script>
+<script type="text/javascript">
+	var btnNewRoom = document.getElementById('btnNewRoom');
+	btnNewRoom.onclick = function()
+	{
+		if (ctr_ID == null) 
+		{
+			$.niftyNoty
+			({
+				type: 'danger',
+				title: 'Invalid Action',
+				message: 'Please select room to edit!',
+				container: 'floating',
+				timer: 1000,
+			});
+		}
+		else
+		{
+			
+			$.ajax(
+			{
+				type: "POST",
+				url: "Function/GetIDLogo.php",
+				cache: false,
+				data:
+				{
+					ctr_ID: ctr_ID
+				},
+				success: function(response)
+				{
+					var result = JSON .parse(response);
+					$('#DeleteRoomModal2').modal('show');
+					document.getElementById('GetLogoID').value = result[0][0];
+					document.getElementById('UpdateTitle').value = result[0][1];
+
 				},
 			});
 		}

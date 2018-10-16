@@ -148,7 +148,6 @@ include "incAmenities.php";
                     }
                     DBClose();
                     ?>
-
                 </div>
             </section>
             <!--About end-->
@@ -161,162 +160,166 @@ include "incAmenities.php";
                     $Contact = DBGetData(" SELECT * FROM contact ");
                     foreach($Contact as $Contact)
                     {
-                     wr("<div class='row'>");
-                     wr("<div class='col-md-12'>");
-                     wr("<h2><img src='img/address-logo.png' alt='Logo'/></h2>");
-                     wr("<address>$Contact[1]</address>");
-                     wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
-                     wr("<ul class='phones'>");
-                     wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
-                     wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
-                     wr("</ul>");
-                     wr("</div>"); 
-                 }
-                 DBClose();
-                 ?>
-                 <br>
-                 <br>
-                 <h2>Message Us</h2>
-                 <div class="row">
+                       wr("<div class='row'>");
+                       wr("<div class='col-md-12'>");
+                       $WT2 = DBGetData("SELECT * FROM webtitle");
+                       foreach($WT2 as $WT2)
+                       {
+                        wr("<h2><img src='../HotelReservation/Function/RoomImages/$WT2[1]' alt='Logo'/></h2>");
+                    }
+                    wr("<address>$Contact[1]</address>");
+                    wr("<p class='address-info'>If you have questions or need additional information, please call Us:</p>");
+                    wr("<ul class='phones'>");
+                    wr("<li><i class='fa fa-phone'></i>$Contact[2]</li>");
+                    wr("<li><i class='fa fa-mobile'></i>$Contact[3]</li>");
+                    wr("</ul>");
+                    wr("</div>"); 
+                }
+                DBClose();
+                ?>
+                <br>
+                <br>
+                <h2>Message Us</h2>
+                <div class="row">
                     <div class="col-md-6">
                         <form method="post" action="function/Messageus.php">
                             <div>
-                            <div class="row">
-                                <input type="text" id="txtemail" name="txtemail" class="form-control col-sm-4" placeholder="Email Address" style="margin-right: auto; margin-left: auto; display: block;">
+                                <div class="row">
+                                    <input type="text" id="txtemail" name="txtemail" class="form-control col-sm-4" placeholder="Email Address" style="margin-right: auto; margin-left: auto; display: block;">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <textarea id="txtmessage" name="txtmessage" class="form-control" rows="4" placeholder="Message"></textarea>
+                                </div>
+                                <br>
+                                <div class="row col-sm-12" style="text-align: center;">
+                                    <input type="submit" id="btnsend" name="btnsend" class="btn btn-inquiry-submit col-md-12 col-sm-12" value="Send">
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                             </div>
-                            <br>
-                            <div class="row">
-                                <textarea id="txtmessage" name="txtmessage" class="form-control" rows="4" placeholder="Message"></textarea>
-                            </div>
-                            <br>
-                            <div class="row col-sm-12" style="text-align: center;">
-                                <input type="submit" id="btnsend" name="btnsend" class="btn btn-inquiry-submit col-md-12 col-sm-12" value="Send">
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <img src="img/loc.png" style="width: 100%; height: 280px;">
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/loc.png" style="width: 100%; height: 280px;">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--Address end-->
+        </section>
+        <!--Address end-->
 
-    <!--Footer start-->
-    <footer class="footer" id="sc-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="footer-copyright">
-                        &copy; 2018 Spring Plaza Hotel. All rights reserved.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <ul class="footer-social-media">
-                        <li><a href="https://www.twitter.com/tian24_" target="_blank"><i class="fa fa-twitter fa-fw"></i></a></li>
-                        <li><a href="https://mail.google.com/springplazahotel247" target="_blank"><i class="fa fa-google-plus fa-fw"></i></a></li>
-                        <li><a href="https://web.facebook.com/springplazahotel/" target="_blank"><i class="fa fa-facebook fa-fw"></i></a></li>
-                    </ul>
+        <!--Footer start-->
+        <footer class="footer" id="sc-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="footer-copyright">
+                            &copy; 2018 Spring Plaza Hotel. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="footer-social-media">
+                            <li><a href="https://www.twitter.com/tian24_" target="_blank"><i class="fa fa-twitter fa-fw"></i></a></li>
+                            <li><a href="https://mail.google.com/springplazahotel247" target="_blank"><i class="fa fa-google-plus fa-fw"></i></a></li>
+                            <li><a href="https://web.facebook.com/springplazahotel/" target="_blank"><i class="fa fa-facebook fa-fw"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!--Footer end-->
-</div>
-<!--End content before Slider-->
+        </footer>
+        <!--Footer end-->
+    </div>
+    <!--End content before Slider-->
 
-<a href="#page-top" class="scroll-to scroll-up-btn"><i class="fa fa-angle-up"></i></a>
+    <a href="#page-top" class="scroll-to scroll-up-btn"><i class="fa fa-angle-up"></i></a>
 
-<!--Room Tabs Gallery Preview Modal start-->
-<div class="modal fade" id="roomTabsGalleryPreviewModal" tabindex="-1" role="dialog" aria-labelledby="roomTabsGalleryPreviewModalLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-nav">
-            <div class="title pull-left"><!-- title via js --></div>
-            <button type="button" class="close pull-right" data-dismiss="modal"><span
-                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body" id="roomTabsGalleryPreviewModalLabel">
-                <!-- img via js -->
+    <!--Room Tabs Gallery Preview Modal start-->
+    <div class="modal fade" id="roomTabsGalleryPreviewModal" tabindex="-1" role="dialog" aria-labelledby="roomTabsGalleryPreviewModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-nav">
+                <div class="title pull-left"><!-- title via js --></div>
+                <button type="button" class="close pull-right" data-dismiss="modal"><span
+                    aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body" id="roomTabsGalleryPreviewModalLabel">
+                    <!-- img via js -->
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--Room Tabs Gallery Preview Modal start-->
-<?php include "InquiryModal.php"; ?>
-<?php include 'ResModal.php'; ?>
+    <!--Room Tabs Gallery Preview Modal start-->
+    <?php include "InquiryModal.php"; ?>
+    <?php include 'ResModal.php'; ?>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
-<!--Start Style Switcher (remove before upload to Themeforest)-->
-<script src="js/style-switcher.js"></script>
-<!--End Style Switcher (remove before upload to Themeforest)-->
+    <!--Start Style Switcher (remove before upload to Themeforest)-->
+    <script src="js/style-switcher.js"></script>
+    <!--End Style Switcher (remove before upload to Themeforest)-->
 
-<script src="bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="bower_components/jquery-animatenumber/jquery.animateNumber.min.js"></script>
-<script src="bower_components/bootstrap-3-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script src="bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="bower_components/jquery-animatenumber/jquery.animateNumber.min.js"></script>
+    <script src="bower_components/bootstrap-3-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
-<script src="js/custom.js"></script>
+    <script src="js/custom.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#ShowModal").click(function(){
-            $("#inquiryModal").modal();
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#ShowModal").click(function(){
+                $("#inquiryModal").modal();
+            });
         });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        $("#btnviewres").click(function()
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function()
         {
-            $("#ResModal").modal('show');
+            $("#btnviewres").click(function()
+            {
+                $("#ResModal").modal('show');
+            });
         });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#ShowModal2").click(function(){
-            $("#inquiryModal").modal();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#ShowModal2").click(function(){
+                $("#inquiryModal").modal();
+            });
         });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#CancelRes").click(function(){
-            $("#inquiryModal2").modal();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#CancelRes").click(function(){
+                $("#inquiryModal2").modal();
+            });
         });
-    });
-</script>
-<script type="text/javascript">
+    </script>
+    <script type="text/javascript">
 
-    $(".AlbumGallery").on('click',function()
-    {
-        $.ajax(
+        $(".AlbumGallery").on('click',function()
         {
-            type: "POST",
-            url: "GetImageFloors.php",
-            data:
+            $.ajax(
             {
-                divID: $('.AlbumGallery').val(),
-            },
-            success: function(response)
-            {
-                alert($('.AlbumGallery').val());
-            }
+                type: "POST",
+                url: "GetImageFloors.php",
+                data:
+                {
+                    divID: $('.AlbumGallery').val(),
+                },
+                success: function(response)
+                {
+                    alert($('.AlbumGallery').val());
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

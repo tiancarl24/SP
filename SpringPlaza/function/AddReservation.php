@@ -138,7 +138,7 @@ $html =
 '<br>'.
 '<br>'.
 '<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Hi Mr/Mrs: '.$LNAME.', '$FNAME'</p>'.
+'<p>Hi Mr/Mrs: '.$LNAME.'</p>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<h3>Reservation Details</h3>'.
 '<p>Reservation No.:'.$AppID.'</p>'.

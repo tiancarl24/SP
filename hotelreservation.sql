@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2018 at 03:56 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Oct 16, 2018 at 06:30 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -159,7 +159,8 @@ INSERT INTO `audit` (`RowID`, `User`, `Action`, `AuditDate`, `AuditTime`) VALUES
 (76, '', 'Add Reservation: 201800000001', '2018-10-15', '20:52:12'),
 (77, 'gimson', 'Login', '2018-10-15', '21:07:51'),
 (78, 'gimson', 'Add TC: Online reservations\r\n A reservation is only valid when a reservation number has been issued.\r\nzzxzz', '2018-10-15', '21:26:44'),
-(79, 'gimson', 'Add TC: Online reservations\r\n A reservation is only valid when a reservation number has been issued.', '2018-10-15', '21:26:53');
+(79, 'gimson', 'Add TC: Online reservations\r\n A reservation is only valid when a reservation number has been issued.', '2018-10-15', '21:26:53'),
+(80, '', 'Add Reservation: 201800000007', '2018-10-16', '22:05:28');
 
 -- --------------------------------------------------------
 
@@ -357,7 +358,8 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`, `CheckinStatus`, `Addons`) VALUES
-(1, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-15', '2018-11-01', '2018-11-03', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Paypal', 6200, 6200, 0, 'Cancelled', ' markangeloguanez@gmail.com ', 1550, '201800000001', '', '1');
+(1, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-15', '2018-11-01', '2018-11-03', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Paypal', 6200, 6200, 0, 'Cancelled', ' markangeloguanez@gmail.com ', 1550, '201800000001', '', '1'),
+(2, 'asd asd', '', ' 123 ', ' asd ', 1, 0, 4, '2018-10-16', '2018-11-04', '2018-11-08', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Pay in Bank', 0, 12000, 12000, 'Pending', 'recillagimson@gmail.com', 0, '201800000007', '', '');
 
 -- --------------------------------------------------------
 
@@ -397,7 +399,8 @@ CREATE TABLE `reservations_temp` (
 --
 
 INSERT INTO `reservations_temp` (`RowID`, `FirstName`, `LastName`, `ContactNo`, `Address`, `Adult`, `Child`, `days`, `ReservationDate`, `CheckinDate`, `CheckoutDate`, `CheckinTime`, `CheckoutTime`, `RoomType`, `RoomNo`, `ModeOfPayment`, `DownPayment`, `TotalAmount`, `Balance`, `Status`, `Email`, `TotalPaid`, `ReservationID`, `Addons`) VALUES
-(1, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-15', '2018-11-01', '2018-11-03', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Paypal', 6200, 6200, 0, 'Approved', ' markangeloguanez@gmail.com ', 6200, '201800000001', '1');
+(1, 'Mark Angelo Guanez', '', '', '', 0, 0, 0, '2018-10-15', '2018-11-01', '2018-11-03', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Paypal', 6200, 6200, 0, 'Approved', ' markangeloguanez@gmail.com ', 6200, '201800000001', '1'),
+(2, 'asd asd', '', ' 123 ', ' asd ', 1, 0, 4, '2018-10-16', '2018-11-04', '2018-11-08', '14:00:00', '12:00:00', ' Fan Room ', ' 123 ', 'Pay in Bank', 0, 12000, 12000, 'Pending', 'recillagimson@gmail.com', 0, '201800000007', '');
 
 -- --------------------------------------------------------
 
@@ -422,7 +425,12 @@ CREATE TABLE `reservedate` (
 INSERT INTO `reservedate` (`RowID`, `reservationID`, `ReservationDate`, `Checkin`, `Checkout`, `Roomno`, `Roomtype`) VALUES
 (1, '201800000001', '2018-10-15', '2018-11-01', '2018-11-03', 123, ' Fan Room '),
 (2, '201800000001', '2018-10-15', '2018-11-02', '2018-11-03', 123, ' Fan Room '),
-(3, '201800000001', '2018-10-15', '2018-11-03', '2018-11-03', 123, ' Fan Room ');
+(3, '201800000001', '2018-10-15', '2018-11-03', '2018-11-03', 123, ' Fan Room '),
+(4, '201800000007', '2018-10-16', '2018-11-04', '2018-11-08', 123, ' Fan Room '),
+(5, '201800000007', '2018-10-16', '2018-11-05', '2018-11-08', 123, ' Fan Room '),
+(6, '201800000007', '2018-10-16', '2018-11-06', '2018-11-08', 123, ' Fan Room '),
+(7, '201800000007', '2018-10-16', '2018-11-07', '2018-11-08', 123, ' Fan Room '),
+(8, '201800000007', '2018-10-16', '2018-11-08', '2018-11-08', 123, ' Fan Room ');
 
 -- --------------------------------------------------------
 
@@ -534,6 +542,13 @@ CREATE TABLE `webtitle` (
   `filename` varchar(255) NOT NULL,
   `Title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `webtitle`
+--
+
+INSERT INTO `webtitle` (`id`, `filename`, `Title`) VALUES
+(1, 'navbar-logo.png', 'Spring Plaza Hotel2 ');
 
 --
 -- Indexes for dumped tables
@@ -673,7 +688,7 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `bankinfo`
@@ -727,19 +742,19 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reservations_temp`
 --
 ALTER TABLE `reservations_temp`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reservedate`
 --
 ALTER TABLE `reservedate`
-  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `RowID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roomimage`
@@ -769,7 +784,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `webtitle`
 --
 ALTER TABLE `webtitle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

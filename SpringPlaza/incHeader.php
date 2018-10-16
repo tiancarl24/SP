@@ -56,8 +56,15 @@ include "utils.php";
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="img/ico/favicon.png">
-
+<?php
+DBOpen();
+$WT2 = DBGetData("SELECT * FROM webtitle");
+foreach($WT2 as $WT2)
+{
+    wr("<link rel='shortcut icon' href='../HotelReservation/Function/RoomImages/$WT2[1]'>");
+}
+DBClose();
+?>
 </head>
 <body>
     <div id="page-top"></div>
@@ -76,7 +83,15 @@ include "utils.php";
                 </button>
                 <!--Brand / Logo start-->
                 <a class="navbar-brand scroll-to" href="#page-top">
-                    <img src="img/navbar-logo.png" class="img-responsive" alt="Accommodation Landing Page"/>
+                    <?php
+                    DBOpen();
+                    $WT = DBGetData("SELECT * FROM webtitle");
+                    foreach($WT as $WT)
+                    {
+                        wr("<img src='../HotelReservation/Function/RoomImages/$WT[1]' class='img-responsive' alt='Accommodation Landing Page'/>");
+                    }
+                    DBClose();
+                    ?>
                 </a>
                 <!--Brand / Logo end-->
             </div>

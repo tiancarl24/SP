@@ -101,6 +101,14 @@
                     </span>
                   </a>
                 </li>
+                <li class="">
+                  <a href="Title.php">
+                    <i class="fa fa-users"></i>
+                    <span class="menu-title">
+                      <strong>Title and Logo</strong>
+                    </span>
+                  </a>
+                </li>
               </ul>
             </li>  
 
