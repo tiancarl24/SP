@@ -130,7 +130,7 @@ include 'utils.php';
 					<input type="hidden" id="txtMOP" name="txtMOP" value=" <?php echo $paypal[0][0] ?> ">
 					<div class="row">
 						<div class="col-md-6">
-							<label>RESERVATION ID : </label><input type="text" class="" id="viewresid" name="viewresid" value="<?php echo $rs[0][22] ?>" style="border: none" readonly>
+							<label>RESERVATION ID : </label><input type="text" class="" id="viewresid1" name="viewresid1" value="<?php echo $rs[0][22] ?>" style="border: none" readonly>
 						</div>
 						<br>
 						<br>
@@ -187,7 +187,7 @@ include 'utils.php';
 							<label>PHONE :</label><input type="text" class="LabelInput" id="phone" name="phone" value="<?php echo $rs[0][3] ?>"  readonly>
 						</div>
 						<div class="col-md-6">
-							<label>EMAIL :</label><input type="text" class="LabelInput" id="email" name="email" value="<?php echo $rs[0][20] ?>"  readonly>
+							<label>EMAIL :</label><input type="text" class="LabelInput" id="email" name="email" value="<?php echo $rs[0][20] ?>" style="width: 80%"  readonly>
 						</div>
 					</div>
 				</div>
@@ -290,7 +290,7 @@ include 'utils.php';
 				url: "function/GetResID.php",
 				data:
 				{
-					viewresid: viewresid.value
+					viewresid1: viewresid1.value
 				},
 				success: function(response)
 				{

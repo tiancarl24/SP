@@ -1,6 +1,6 @@
 <?php include '../utils.php';
 
-$RESID = $_POST['viewresid'];
+$RESID = $_POST['viewresid1'];
 
 DBOpen();
 
