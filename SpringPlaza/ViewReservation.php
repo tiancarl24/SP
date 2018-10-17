@@ -278,12 +278,12 @@ include 'utils.php';
 	var btnCancelReservation = document.getElementById('btnCancelReservation');
 	btnCancelReservation.onclick = function()
 	{
-		if(txtdays.value <= 30)
-		{
-			alert("You cannot cancel your reservation! Please call our hotline for more information");
-		}
-		else
-		{
+		// if(txtdays.value <= 30)
+		// {
+		// 	alert("You cannot cancel your reservation! Please call our hotline for more information");
+		// }
+		// else
+		// {
 			$.ajax(
 			{
 				type: "POST",
@@ -300,7 +300,7 @@ include 'utils.php';
 				}
 			});
 		}
-	}
+	// /}
 </script>
 
 <script type="text/javascript">
@@ -384,6 +384,8 @@ include 'utils.php';
 <script type="text/javascript">
 	if(txtcount.value == "0")
 	{
+		alert("No reservation found!","index.php");
+		window.location.href = "index.php";
 		document.getElementById('divres').style.display = "block";
 	}
 	else

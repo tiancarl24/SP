@@ -73,6 +73,8 @@ DBClose();
 DBOpen();
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
+$TempData = explode(" ", $TempData[0][20]);
+$TempData = $TempData[1];
 
 require_once '../vendor/autoload.php';
 
@@ -121,8 +123,7 @@ $html =
 
 // ----
 //dump($TempData[0][20]);
-$TempData = explode(" ", $TempData[0][20]);
-$TempData = $TempData[1];
+//dump($TempData);
 
 //instantiate and use the dompdf class
 $dompdf = new Dompdf();
@@ -153,9 +154,9 @@ $mailer = new Swift_Mailer($transport);
 	// Create a message
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
-->setTo([$TempData[0][20] => 'A name'])
+->setTo([$TempData => 'A name'])
 ->attach(Swift_Attachment::fromPath('../pdf/'.$TempData[0][22].'.pdf'))
-->setBody('Hi Mr/Ms '.$TempData[0][2].',' $TempData[0][1]'!
+->setBody('Hi Mr/Ms '.$TempData[0][2].','.$TempData[0][1].'!
 	<br>
 	<br>
 	<p>Your Reservation is paid via Paypal. Please kindly present the attachment to the front desk of Spring Plaza Hotel for verification</p>

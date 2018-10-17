@@ -13,6 +13,8 @@
 
 	$rs = DBExecute(" UPDATE reservations SET status = 'Cancelled', totalpaid = '$getdata' WHERE reservationid = " .SQLs($RESID));
 
+	$rs2 = DBExecute("DELETE FROM reservedate WHERE reservationid = " .SQLs($RESID));
+
 	DBClose();
 
 	

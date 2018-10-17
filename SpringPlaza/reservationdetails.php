@@ -33,7 +33,7 @@ else
 }
 if($ADDONS == 1)
 {
-	$TOTAL = $TOTAL + 200;
+	$TOTAL = $TOTAL + 200 * $NIGHTS;
 }
 ?>
 <!DOCTYPE html>
@@ -333,7 +333,12 @@ DBClose();
 					<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">X</button>
 				</div>
 				<div class="modal-body form-contol">
-					<input type="hidden" id="ddonsmodal" name="addonsmodal" value="<?php echo $ADDONS ?>">
+					<input type="hidden" id="addonsmodal" name="addonsmodal" value="<?php echo $ADDONS ?>">
+					<input type="hidden" id="contactmodal" name="contactmodal" value="<?php echo $PHONE ?>">
+					<input type="hidden" id="addressmodal" name="addressmodal" value="<?php echo $ADDRESS ?>">
+					<input type="hidden" id="adultmodal" name="adultmodal" value="<?php echo $ADULT ?>">
+					<input type="hidden" id="childmodal" name="childmodal" value="<?php echo $CHILD ?>">
+					<input type="hidden" id="nightsmodal" name="nightsmodal" value="<?php echo $NIGHTS ?>">
 					<label>NAME:</label><input type="text" class="LabelInput" id="lblname" name="lblname" value=""  readonly>
 					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
 					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $CIN ?>"  readonly>
