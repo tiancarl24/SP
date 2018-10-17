@@ -339,8 +339,8 @@ DBClose();
 					<input type="hidden" id="adultmodal" name="adultmodal" value="<?php echo $ADULT ?>">
 					<input type="hidden" id="childmodal" name="childmodal" value="<?php echo $CHILD ?>">
 					<input type="hidden" id="nightsmodal" name="nightsmodal" value="<?php echo $NIGHTS ?>">
-					<input type="text" id="fnamemodal" name="fnamemodal" value="<?php echo $FNAME ?>">
-					<input type="text" id="lnamemodal" name="lnamemodal" value="<?php echo $LNAME ?>">
+					<input type="hidden" id="fnamemodal" name="fnamemodal" value="<?php echo $FNAME ?>">
+					<input type="hidden" id="lnamemodal" name="lnamemodal" value="<?php echo $LNAME ?>">
 					<label>NAME:</label><input type="text" class="LabelInput" id="lblname" name="lblname" value=""  readonly>
 					<label>RESERVATION ID :</label><input type="text" class="LabelInput" id="resID" name="resID" value="<?php echo $AppID ?>"  readonly>
 					<label>CHECK IN :</label><input type="text" class="LabelInput" id="cin" name="cin" value="<?php echo $CIN ?>"  readonly>
