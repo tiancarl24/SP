@@ -27,6 +27,8 @@ $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 
 
 // Product being purchased.
 $Name = $_POST['lblname'];
+$FNAME = $_POST['fnamemodal'];
+$LNAME = $_POST['lnamemodal'];
 $ADDONS = $_POST['addonsmodal'];
 $PHONE = $_POST['contactmodal'];
 $ADDRESS = $_POST['addressmodal'];

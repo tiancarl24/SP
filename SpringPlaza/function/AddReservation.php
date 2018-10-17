@@ -3,7 +3,7 @@ include '../utils.php';
 include '../incSecure.php';
 
 $AppID = $_POST['resID1'];
-$FNAME = $_POST['xname'];
+$FNAME = $_POST['fname'];
 $LNAME = $_POST['lname'];
 $NAME = $_POST['name'];
 $ADDRESS = $_POST['address'];

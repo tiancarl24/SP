@@ -13,8 +13,8 @@ if($option == "Half")
    $NEWCOUT = date('Y-m-d', $timestampOUT);
 
 
-   $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['lblname']."',
-    lastname = '".$DATA['lname']."',
+   $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$FNAME."',
+    lastname = '".$LNAME."',
     contactno = '".$PHONE."',
     address = '".$ADDRESS."',
     adult = '".$ADULT."',
@@ -48,8 +48,8 @@ else
     $timestampOUT = strtotime($COUT);
     $NEWCOUT = date('Y-m-d', $timestampOUT);
 
-    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$DATA['lblname']."',
-        lastname = '".$DATA['lname']."',
+    $rs = DBExecute(" INSERT INTO reservations_temp SET firstname = '".$FNAME."',
+        lastname = '".$LNAME."',
         contactno = '".$PHONE."',
         address = '".$ADDRESS."',
         adult = '".$ADULT."',

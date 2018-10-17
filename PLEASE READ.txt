@@ -1,0 +1,8 @@
+laging burahin ang laman ng pdf folder kung uulit ng database
+
+in first test please paste this in sql sa phpmyadmin
+
+truncate reservedate;
+truncate reservations;
+truncate reservations_temp;
+

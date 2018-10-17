@@ -73,8 +73,8 @@ DBClose();
 DBOpen();
 
 $bankinfo = DBGetData("SELECT * from bankinfo");
-$TempData = explode(" ", $TempData[0][20]);
-$TempData = $TempData[1];
+$EMAIL = explode(" ", $TempData[0][20]);
+$EMAIL = $EMAIL[1];
 
 require_once '../vendor/autoload.php';
 //PDF
@@ -99,7 +99,7 @@ $html =
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
 '<hr>'.
 '<h3>Guest Details:</h3>'.
-'<p>Full Name.:'.$TempData[0][1] . $TempData[0][2].'</p>'.
+'<p>Full Name.:'.$TempData[0][1] ." ". $TempData[0][2].'</p>'.
 '<p>Contact No.:'.$TempData[0][3].'</p>'.
 '<p>Email Address:'.$TempData[0][20].'</p>'.
 '<hr>'.
@@ -133,7 +133,6 @@ $html =
 // ----
 //dump($TempData[0][20]);
 //dump($TempData);
-
 //instantiate and use the dompdf class
 $dompdf = new Dompdf();
 $dompdf->loadHtml($html);
@@ -163,7 +162,7 @@ $mailer = new Swift_Mailer($transport);
 	// Create a message
 $message = (new Swift_Message('Reservation from SPRING PLAZA HOTEL'))
 ->setFrom(['springplazahotel247@gmail.com' => 'Spring Plaza Hotel'])
-->setTo([$TempData => 'A name'])
+->setTo([$EMAIL => 'A name'])
 ->attach(Swift_Attachment::fromPath('../pdf/'.$TempData[0][22].'.pdf'))
 ->setBody('Hi Mr/Ms '.$TempData[0][2].','.$TempData[0][1].'!
 	<br>
