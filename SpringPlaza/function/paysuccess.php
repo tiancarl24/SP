@@ -77,7 +77,6 @@ $TempData = explode(" ", $TempData[0][20]);
 $TempData = $TempData[1];
 
 require_once '../vendor/autoload.php';
-
 //PDF
 
 // reference the Dompdf namespace
@@ -90,10 +89,20 @@ $html =
 '<br>'.
 '<br>'.
 '<br>'.
-'<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
-'<p>Hi Mr/Ms: '.$TempData[0][2].' ,</p>'.
+'<p><center>Sampaloc II, Bucal, Dasmarinas, Cavite</center></p>'.
 '<br>'.
+'<br>'.
+'<br>'.
+'<hr>'.
+'<div class="container" style="width: 95%; margin-left: auto; margin-right: auto; display: block; font-size: 20px; line-height: 15px;">'.
+'<p>Dear Mr/Ms.'.$TempData[0][2].',</p>'.
 '<p>Thank you for choosing Spring Plaza Hotel. It is our pleasure to confirm your reservation as follows.</p>'.
+'<hr>'.
+'<h3>Guest Details:</h3>'.
+'<p>Full Name.:'.$TempData[0][1] . $TempData[0][2].'</p>'.
+'<p>Contact No.:'.$TempData[0][3].'</p>'.
+'<p>Email Address:'.$TempData[0][20].'</p>'.
+'<hr>'.
 '<h3>Reservation Details</h3>'.
 '<p>Reservation No.:'.$TempData[0][22].'</p>'.
 '<p>Check-in Date:'.$TempData[0][9].'</p>'.
@@ -102,18 +111,18 @@ $html =
 '<p>Adult/s:'.$TempData[0][5].'</p>'.
 '<p>Child/s:'.$TempData[0][6].'</p>'.
 '<p>Night/s:'.$TempData[0][7].'</p>'.
-'<p>EXTRA BED: '.$TempData[0][23].'</p>'.
+'<p>EXTRA BED: '.$TempData[0][24].'</p>'.
 '<p>Paid:'.number_format($TempData[0][16]).'</p>'.
 '<p>Balance:'.number_format($TempData[0][18]).'</p>'.
 '<p>Total Fee:'.number_format($TempData[0][17]).'</p>'.
-'<h3>Guest Details:</h3>'.
-'<p>Full Name.:'.$TempData[0][1] . $TempData[0][2].'</p>'.
-'<p>Contact No.:'.$TempData[0][3].'</p>'.
-'<p>Email Address:'.$TempData[0][20].'</p>'.
 '<hr>'.
 '<h3>Cancellation Policy</h3>'.
 '<p>A 50% refund will be made for cancellations received 30days before date of check-in, No refund thereafter</p>'.
 '<br>'.
+'<br>'.
+'<p>If you want to Cancel your Reservation, Please visit the link below:</p>'.
+'<br>'.
+'https://www.springplazahotel247.com/SP/SpringPlaza/'.
 '<h4 style="text-align: right;">Thanks and Regards,</h4>'.
 '<p style="text-align: right;"><b>Mr. Sherwin Go</b></p>'.
 '<p style="text-align: right; font-size: 15px;">General Manager/Reservation Executive</p>'.
